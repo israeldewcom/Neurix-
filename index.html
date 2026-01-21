@@ -22,19 +22,1487 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/components.css">
-    <link rel="stylesheet" href="/styles/animations.css">
-    <link rel="stylesheet" href="/styles/mobile.css">
+    <style>
+    /* ===== MAIN STYLES ===== */
+    :root {
+        /* Primary Colors */
+        --primary-50: #eef2ff;
+        --primary-100: #e0e7ff;
+        --primary-200: #c7d2fe;
+        --primary-300: #a5b4fc;
+        --primary-400: #818cf8;
+        --primary-500: #6366f1;
+        --primary-600: #4f46e5;
+        --primary-700: #4338ca;
+        --primary-800: #3730a3;
+        --primary-900: #312e81;
+        
+        /* Neutral Colors */
+        --gray-50: #f9fafb;
+        --gray-100: #f3f4f6;
+        --gray-200: #e5e7eb;
+        --gray-300: #d1d5db;
+        --gray-400: #9ca3af;
+        --gray-500: #6b7280;
+        --gray-600: #4b5563;
+        --gray-700: #374151;
+        --gray-800: #1f2937;
+        --gray-900: #111827;
+        
+        /* Semantic Colors */
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --info: #3b82f6;
+        
+        /* Gradients */
+        --gradient-primary: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+        --gradient-dark: linear-gradient(135deg, var(--gray-800), var(--gray-900));
+        --gradient-success: linear-gradient(135deg, var(--success), #059669);
+        
+        /* Shadows */
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        
+        /* Spacing */
+        --spacing-unit: 0.25rem;
+        
+        /* Typography */
+        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        --font-size-xs: 0.75rem;
+        --font-size-sm: 0.875rem;
+        --font-size-base: 1rem;
+        --font-size-lg: 1.125rem;
+        --font-size-xl: 1.25rem;
+        --font-size-2xl: 1.5rem;
+        --font-size-3xl: 1.875rem;
+        --font-size-4xl: 2.25rem;
+        
+        /* Border Radius */
+        --radius-sm: 0.25rem;
+        --radius-md: 0.5rem;
+        --radius-lg: 0.75rem;
+        --radius-xl: 1rem;
+        --radius-full: 9999px;
+        
+        /* Transitions */
+        --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+        
+        /* Z-index */
+        --z-dropdown: 1000;
+        --z-sticky: 1020;
+        --z-fixed: 1030;
+        --z-modal-backdrop: 1040;
+        --z-modal: 1050;
+        --z-popover: 1060;
+        --z-tooltip: 1070;
+        --z-toast: 1080;
+    }
+
+    /* Dark Theme */
+    [data-theme="dark"] {
+        --bg-primary: var(--gray-900);
+        --bg-secondary: var(--gray-800);
+        --bg-tertiary: var(--gray-700);
+        --bg-surface: var(--gray-800);
+        --bg-card: var(--gray-800);
+        
+        --text-primary: var(--gray-100);
+        --text-secondary: var(--gray-300);
+        --text-tertiary: var(--gray-400);
+        --text-muted: var(--gray-500);
+        
+        --border-color: var(--gray-700);
+        --border-hover: var(--gray-600);
+        
+        --shadow-color: rgba(0, 0, 0, 0.3);
+    }
+
+    /* Light Theme */
+    [data-theme="light"] {
+        --bg-primary: var(--gray-50);
+        --bg-secondary: var(--gray-100);
+        --bg-tertiary: var(--gray-200);
+        --bg-surface: white;
+        --bg-card: white;
+        
+        --text-primary: var(--gray-900);
+        --text-secondary: var(--gray-700);
+        --text-tertiary: var(--gray-600);
+        --text-muted: var(--gray-500);
+        
+        --border-color: var(--gray-200);
+        --border-hover: var(--gray-300);
+        
+        --shadow-color: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Base Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        font-size: 16px;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--font-family);
+        font-size: var(--font-size-base);
+        line-height: 1.5;
+        color: var(--text-primary);
+        background-color: var(--bg-primary);
+        overflow-x: hidden;
+        transition: background-color var(--transition-base), color var(--transition-base);
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: var(--z-modal);
+        transition: opacity var(--transition-base);
+    }
+
+    .loading-screen.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .loading-content {
+        text-align: center;
+        animation: fadeIn 0.5s ease;
+    }
+
+    .neuron-loader {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        margin: 0 auto;
+    }
+
+    .neuron-dot {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: var(--primary-500);
+        border-radius: 50%;
+        animation: neuronPulse 1.2s ease-in-out infinite;
+    }
+
+    .neuron-dot:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); animation-delay: 0s; }
+    .neuron-dot:nth-child(2) { top: 50%; right: 0; transform: translateY(-50%); animation-delay: 0.3s; }
+    .neuron-dot:nth-child(3) { bottom: 0; left: 50%; transform: translateX(-50%); animation-delay: 0.6s; }
+    .neuron-dot:nth-child(4) { top: 50%; left: 0; transform: translateY(-50%); animation-delay: 0.9s; }
+
+    /* App Container */
+    .app-container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Navigation */
+    .neurix-navbar {
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-color);
+        padding: 0.75rem 0;
+        backdrop-filter: blur(10px);
+        position: sticky;
+        top: 0;
+        z-index: var(--z-sticky);
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--gradient-primary);
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        color: white;
+    }
+
+    .brand-name {
+        font-weight: 800;
+        font-size: 1.25rem;
+        background: linear-gradient(90deg, var(--primary-400), var(--primary-600));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .brand-subname {
+        font-weight: 600;
+        color: var(--text-secondary);
+    }
+
+    /* Sidebar */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 280px;
+        height: 100%;
+        background: var(--bg-secondary);
+        border-right: 1px solid var(--border-color);
+        z-index: var(--z-fixed);
+        transition: transform var(--transition-base);
+        overflow-y: auto;
+    }
+
+    .sidebar.show {
+        transform: translateX(280px);
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: var(--z-modal-backdrop);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition-base);
+    }
+
+    .sidebar-overlay.show {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .sidebar-header {
+        padding: 1.25rem;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .sidebar-content {
+        padding: 1rem 0;
+    }
+
+    .sidebar-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .sidebar-section-title {
+        padding: 0.5rem 1.25rem;
+        font-size: var(--font-size-xs);
+        font-weight: 600;
+        color: var(--text-tertiary);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .sidebar-item {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1.25rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all var(--transition-fast);
+        border-left: 3px solid transparent;
+    }
+
+    .sidebar-item:hover,
+    .sidebar-item.active {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+        border-left-color: var(--primary-500);
+    }
+
+    .sidebar-item i {
+        margin-right: 0.75rem;
+        width: 20px;
+        text-align: center;
+    }
+
+    .sidebar-footer {
+        padding: 1.25rem;
+        border-top: 1px solid var(--border-color);
+        margin-top: auto;
+    }
+
+    .usage-widget {
+        background: var(--bg-tertiary);
+        padding: 0.75rem;
+        border-radius: var(--radius-md);
+    }
+
+    .usage-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        font-size: var(--font-size-sm);
+    }
+
+    /* Main Content */
+    .main-content {
+        flex: 1;
+        padding-top: 70px;
+        padding-bottom: 60px;
+        transition: margin-left var(--transition-base);
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: var(--bg-secondary);
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        justify-content: space-around;
+        padding: 0.5rem 0;
+        z-index: var(--z-sticky);
+    }
+
+    .bottom-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem;
+        color: var(--text-tertiary);
+        text-decoration: none;
+        transition: color var(--transition-fast);
+        font-size: var(--font-size-xs);
+    }
+
+    .bottom-nav-item:hover,
+    .bottom-nav-item.active {
+        color: var(--primary-500);
+    }
+
+    .bottom-nav-item i {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .create-button {
+        position: relative;
+        top: -20px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--gradient-primary);
+        color: white !important;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .create-button i {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    /* Toast Container */
+    .toast-container {
+        z-index: var(--z-toast);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--gray-600);
+        border-radius: var(--radius-full);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--gray-500);
+    }
+
+    /* ===== COMPONENT STYLES ===== */
+    /* Cards */
+    .neurix-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        transition: all var(--transition-base);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .neurix-card:hover {
+        border-color: var(--border-hover);
+        box-shadow: var(--shadow-md);
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-title {
+        font-weight: 600;
+        font-size: var(--font-size-lg);
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .card-subtitle {
+        color: var(--text-tertiary);
+        font-size: var(--font-size-sm);
+        margin-top: 0.25rem;
+    }
+
+    .card-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    /* Buttons */
+    .btn-neurix {
+        padding: 0.625rem 1.25rem;
+        font-weight: 500;
+        border-radius: var(--radius-md);
+        border: none;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        text-decoration: none;
+    }
+
+    .btn-neurix-primary {
+        background: var(--gradient-primary);
+        color: white;
+    }
+
+    .btn-neurix-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .btn-neurix-secondary {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+    }
+
+    .btn-neurix-secondary:hover {
+        background: var(--bg-surface);
+        border-color: var(--primary-500);
+    }
+
+    .btn-neurix-outline {
+        background: transparent;
+        color: var(--primary-500);
+        border: 1px solid var(--primary-500);
+    }
+
+    .btn-neurix-outline:hover {
+        background: var(--primary-500);
+        color: white;
+    }
+
+    .btn-neurix-sm {
+        padding: 0.375rem 0.75rem;
+        font-size: var(--font-size-sm);
+    }
+
+    .btn-neurix-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: var(--font-size-lg);
+    }
+
+    .btn-neurix-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        padding: 0;
+        border-radius: 50%;
+    }
+
+    /* Forms */
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: var(--text-primary);
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: var(--font-size-base);
+        color: var(--text-primary);
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        transition: all var(--transition-fast);
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: var(--primary-500);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    .form-control::placeholder {
+        color: var(--text-tertiary);
+    }
+
+    .form-text {
+        font-size: var(--font-size-sm);
+        color: var(--text-tertiary);
+        margin-top: 0.25rem;
+    }
+
+    /* Textareas */
+    textarea.form-control {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    /* Select */
+    select.form-control {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+        background-position: right 0.75rem center;
+        background-repeat: no-repeat;
+        background-size: 1.25rem;
+        padding-right: 2.5rem;
+    }
+
+    /* Checkboxes & Radios */
+    .form-check {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-check-input {
+        width: 1.125rem;
+        height: 1.125rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        background: var(--bg-surface);
+        cursor: pointer;
+    }
+
+    .form-check-input:checked {
+        background: var(--primary-500);
+        border-color: var(--primary-500);
+    }
+
+    .form-check-label {
+        color: var(--text-primary);
+        cursor: pointer;
+    }
+
+    /* Range Slider */
+    .range-slider {
+        width: 100%;
+        height: 0.375rem;
+        background: var(--bg-tertiary);
+        border-radius: var(--radius-full);
+        outline: none;
+        -webkit-appearance: none;
+    }
+
+    .range-slider::-webkit-slider-thumb {
+        width: 1.25rem;
+        height: 1.25rem;
+        background: var(--primary-500);
+        border-radius: 50%;
+        cursor: pointer;
+        -webkit-appearance: none;
+    }
+
+    .range-slider-value {
+        display: inline-block;
+        min-width: 2rem;
+        text-align: center;
+        font-weight: 500;
+        color: var(--primary-500);
+    }
+
+    /* Badges */
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.25rem 0.75rem;
+        font-size: var(--font-size-xs);
+        font-weight: 600;
+        border-radius: var(--radius-full);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .badge-primary {
+        background: var(--primary-100);
+        color: var(--primary-700);
+    }
+
+    .badge-success {
+        background: color-mix(in srgb, var(--success) 20%, transparent);
+        color: var(--success);
+    }
+
+    .badge-warning {
+        background: color-mix(in srgb, var(--warning) 20%, transparent);
+        color: var(--warning);
+    }
+
+    .badge-danger {
+        background: color-mix(in srgb, var(--danger) 20%, transparent);
+        color: var(--danger);
+    }
+
+    .badge-info {
+        background: color-mix(in srgb, var(--info) 20%, transparent);
+        color: var(--info);
+    }
+
+    /* Alerts */
+    .alert {
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        border: 1px solid transparent;
+        margin-bottom: 1rem;
+    }
+
+    .alert-success {
+        background: color-mix(in srgb, var(--success) 10%, transparent);
+        border-color: var(--success);
+        color: var(--success);
+    }
+
+    .alert-warning {
+        background: color-mix(in srgb, var(--warning) 10%, transparent);
+        border-color: var(--warning);
+        color: var(--warning);
+    }
+
+    .alert-danger {
+        background: color-mix(in srgb, var(--danger) 10%, transparent);
+        border-color: var(--danger);
+        color: var(--danger);
+    }
+
+    .alert-info {
+        background: color-mix(in srgb, var(--info) 10%, transparent);
+        border-color: var(--info);
+        color: var(--info);
+    }
+
+    /* Progress Bars */
+    .progress-container {
+        background: var(--bg-tertiary);
+        border-radius: var(--radius-full);
+        overflow: hidden;
+        height: 0.5rem;
+    }
+
+    .progress-bar {
+        height: 100%;
+        background: var(--gradient-primary);
+        border-radius: var(--radius-full);
+        transition: width var(--transition-base);
+    }
+
+    /* Avatars */
+    .avatar {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: white;
+    }
+
+    .avatar-sm {
+        width: 2rem;
+        height: 2rem;
+        font-size: var(--font-size-sm);
+    }
+
+    .avatar-lg {
+        width: 3rem;
+        height: 3rem;
+        font-size: var(--font-size-lg);
+    }
+
+    .avatar-xl {
+        width: 4rem;
+        height: 4rem;
+        font-size: var(--font-size-xl);
+    }
+
+    .avatar-initials {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    /* Tabs */
+    .tabs {
+        display: flex;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 1.5rem;
+        overflow-x: auto;
+    }
+
+    .tab {
+        padding: 0.75rem 1rem;
+        font-weight: 500;
+        color: var(--text-tertiary);
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        white-space: nowrap;
+        transition: all var(--transition-fast);
+    }
+
+    .tab:hover {
+        color: var(--text-primary);
+    }
+
+    .tab.active {
+        color: var(--primary-500);
+        border-bottom-color: var(--primary-500);
+    }
+
+    /* Accordion */
+    .accordion {
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+    }
+
+    .accordion-item {
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .accordion-item:last-child {
+        border-bottom: none;
+    }
+
+    .accordion-header {
+        padding: 1rem;
+        background: var(--bg-surface);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background var(--transition-fast);
+    }
+
+    .accordion-header:hover {
+        background: var(--bg-tertiary);
+    }
+
+    .accordion-title {
+        font-weight: 500;
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .accordion-icon {
+        transition: transform var(--transition-fast);
+    }
+
+    .accordion-icon.rotated {
+        transform: rotate(180deg);
+    }
+
+    .accordion-content {
+        padding: 0 1rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: all var(--transition-base);
+    }
+
+    .accordion-content.show {
+        padding: 1rem;
+        max-height: 1000px;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: var(--z-modal-backdrop);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition-base);
+    }
+
+    .modal-backdrop.show {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        background: var(--bg-surface);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-xl);
+        z-index: var(--z-modal);
+        opacity: 0;
+        pointer-events: none;
+        transition: all var(--transition-base);
+        max-width: 90%;
+        width: 500px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal.show {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        pointer-events: all;
+    }
+
+    .modal-header {
+        padding: 1.5rem 1.5rem 1rem;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .modal-title {
+        font-weight: 600;
+        font-size: var(--font-size-lg);
+        margin: 0;
+        color: var(--text-primary);
+    }
+
+    .modal-close {
+        background: none;
+        border: none;
+        color: var(--text-tertiary);
+        cursor: pointer;
+        font-size: 1.25rem;
+        padding: 0.25rem;
+        transition: color var(--transition-fast);
+    }
+
+    .modal-close:hover {
+        color: var(--text-primary);
+    }
+
+    .modal-body {
+        padding: 1.5rem;
+    }
+
+    .modal-footer {
+        padding: 1rem 1.5rem 1.5rem;
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.75rem;
+    }
+
+    /* Tooltips */
+    .tooltip {
+        position: absolute;
+        padding: 0.5rem 0.75rem;
+        background: var(--gray-900);
+        color: white;
+        border-radius: var(--radius-md);
+        font-size: var(--font-size-sm);
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all var(--transition-fast);
+        z-index: var(--z-tooltip);
+        max-width: 200px;
+        text-align: center;
+    }
+
+    .tooltip.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Dropdown */
+    .dropdown-menu {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
+        padding: 0.5rem 0;
+        min-width: 200px;
+    }
+
+    .dropdown-item {
+        padding: 0.5rem 1rem;
+        color: var(--text-primary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all var(--transition-fast);
+    }
+
+    .dropdown-item:hover {
+        background: var(--bg-tertiary);
+        color: var(--primary-500);
+    }
+
+    .dropdown-divider {
+        height: 1px;
+        background: var(--border-color);
+        margin: 0.5rem 0;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInUp {
+        from { transform: translateY(100%); }
+        to { transform: translateY(0); }
+    }
+
+    @keyframes slideInDown {
+        from { transform: translateY(-100%); }
+        to { transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+        from { transform: translateX(-100%); }
+        to { transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+        from { transform: translateX(100%); }
+        to { transform: translateX(0); }
+    }
+
+    @keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    @keyframes neuronPulse {
+        0%, 100% {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: translateX(-50%) scale(1.5);
+            opacity: 0.5;
+        }
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    /* Animation Classes */
+    .animate-fade-in {
+        animation: fadeIn var(--transition-base);
+    }
+
+    .animate-fade-in-up {
+        animation: fadeInUp var(--transition-base);
+    }
+
+    .animate-fade-in-down {
+        animation: fadeInDown var(--transition-base);
+    }
+
+    .animate-fade-in-left {
+        animation: fadeInLeft var(--transition-base);
+    }
+
+    .animate-fade-in-right {
+        animation: fadeInRight var(--transition-base);
+    }
+
+    .animate-scale-in {
+        animation: scaleIn var(--transition-base);
+    }
+
+    .animate-spin {
+        animation: spin 1s linear infinite;
+    }
+
+    .animate-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .animate-bounce {
+        animation: bounce 1s infinite;
+    }
+
+    .animate-shake {
+        animation: shake 0.5s ease-in-out;
+    }
+
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .animate-gradient {
+        background-size: 200% 200%;
+        animation: gradientShift 3s ease infinite;
+    }
+
+    .animate-typing {
+        overflow: hidden;
+        white-space: nowrap;
+        animation: typing 3s steps(40, end);
+    }
+
+    .animate-blink {
+        animation: blink 1s step-end infinite;
+    }
+
+    /* ===== MOBILE STYLES ===== */
+    @media (max-width: 767.98px) {
+        html {
+            font-size: 14px;
+        }
+        
+        body {
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        
+        .container-fluid {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+        
+        .navbar-brand {
+            font-size: 0.875rem;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            font-size: 1rem;
+        }
+        
+        .navbar-nav .nav-link span {
+            display: none;
+        }
+        
+        .navbar-nav .nav-link i {
+            font-size: 1.25rem;
+            margin-right: 0;
+        }
+        
+        .d-lg-block {
+            display: none !important;
+        }
+        
+        .d-mobile-block {
+            display: block !important;
+        }
+        
+        .neurix-card {
+            padding: 1rem;
+            border-radius: var(--radius-md);
+        }
+        
+        .card-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .card-actions {
+            width: 100%;
+            justify-content: flex-end;
+        }
+        
+        .btn-neurix {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .btn-neurix-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+        }
+        
+        .form-control {
+            padding: 0.625rem 0.875rem;
+            font-size: 16px;
+        }
+        
+        .modal {
+            width: 95%;
+            max-height: 85vh;
+            border-radius: var(--radius-md);
+        }
+        
+        .modal-header,
+        .modal-body,
+        .modal-footer {
+            padding: 1rem;
+        }
+        
+        .grid-cols-2,
+        .grid-cols-3,
+        .grid-cols-4 {
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+        
+        .stats-widget {
+            margin-bottom: 0.75rem;
+        }
+        
+        .stats-number {
+            font-size: 1.5rem;
+        }
+        
+        .model-interface {
+            flex-direction: column;
+        }
+        
+        .model-input-container,
+        .model-output-container {
+            width: 100%;
+            height: 300px;
+        }
+        
+        .model-controls {
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .image-preview-container {
+            height: 250px;
+        }
+        
+        .generation-controls {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .generation-params {
+            grid-template-columns: 1fr;
+        }
+        
+        .video-timeline {
+            height: 80px;
+        }
+        
+        .timeline-scrubber {
+            width: 12px;
+            height: 12px;
+        }
+        
+        .iot-device-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .iot-device-controls {
+            flex-wrap: wrap;
+        }
+        
+        .code-editor {
+            font-size: 12px;
+        }
+        
+        .chart-container {
+            height: 200px;
+        }
+        
+        .toast-container {
+            padding: 0.5rem;
+        }
+        
+        .toast {
+            margin-bottom: 0.5rem;
+            max-width: 100%;
+        }
+        
+        .dropdown-menu {
+            position: fixed !important;
+            top: auto !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            transform: translateY(100%) !important;
+            transition: transform var(--transition-base) !important;
+        }
+        
+        .dropdown-menu.show {
+            transform: translateY(0) !important;
+        }
+        
+        .mobile-sheet {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            max-height: 85vh;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform var(--transition-base);
+            z-index: var(--z-modal);
+        }
+        
+        .mobile-sheet.show {
+            transform: translateY(0);
+        }
+        
+        .sheet-header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .sheet-body {
+            padding: 1rem;
+        }
+        
+        .safe-area-top {
+            padding-top: env(safe-area-inset-top);
+        }
+        
+        .safe-area-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        
+        .safe-area-left {
+            padding-left: env(safe-area-inset-left);
+        }
+        
+        .safe-area-right {
+            padding-right: env(safe-area-inset-right);
+        }
+        
+        .touch-target {
+            min-height: 44px;
+            min-width: 44px;
+        }
+    }
+
+    /* ===== UTILITY CLASSES ===== */
+    .text-gradient {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .bg-gradient {
+        background: var(--gradient-primary) !important;
+    }
+
+    .card-hover {
+        transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg) !important;
+    }
+
+    .grid {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+    .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+    /* Empty States */
+    .empty-state {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--text-tertiary);
+    }
+
+    .empty-state-icon {
+        font-size: 3rem;
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+
+    .empty-state-title {
+        font-size: var(--font-size-xl);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--text-secondary);
+    }
+
+    .empty-state-description {
+        max-width: 400px;
+        margin: 0 auto 1.5rem;
+    }
+
+    /* Loading States */
+    .loading-spinner {
+        width: 2rem;
+        height: 2rem;
+        border: 2px solid var(--border-color);
+        border-top-color: var(--primary-500);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+    }
+
+    .loading-text {
+        text-align: center;
+        color: var(--text-tertiary);
+        margin-top: 0.5rem;
+    }
+    </style>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="/scripts/app.js" as="script">
-    <link rel="preload" href="/scripts/api.js" as="script">
 </head>
 <body>
     <!-- Loading Screen -->
@@ -273,24 +1741,1948 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- Socket.IO -->
     <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
     
-    <!-- Custom Scripts -->
-    <script src="/scripts/utils.js"></script>
-    <script src="/scripts/api.js"></script>
-    <script src="/scripts/components.js"></script>
-    <script src="/scripts/models.js"></script>
-    <script src="/scripts/app.js"></script>
-
-    <!-- Initialize App -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize application
-            window.app = new NeurixApp();
-            app.init();
-        });
+    /**
+     * ChangeX Neurix - Complete Frontend Application
+     * Advanced AI Platform with Media Generation
+     */
+
+    // ===== UTILITY FUNCTIONS =====
+    class NeurixUtils {
+        static debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        static throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            };
+        }
+
+        static formatBytes(bytes, decimals = 2) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const dm = decimals < 0 ? 0 : decimals;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
+
+        static formatTime(seconds) {
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = Math.floor(seconds % 60);
+            
+            if (hours > 0) {
+                return `${hours}h ${minutes}m ${secs}s`;
+            } else if (minutes > 0) {
+                return `${minutes}m ${secs}s`;
+            } else {
+                return `${secs}s`;
+            }
+        }
+
+        static generateUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                const r = Math.random() * 16 | 0;
+                const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        static validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        static deepClone(obj) {
+            return JSON.parse(JSON.stringify(obj));
+        }
+
+        static getContrastColor(hexColor) {
+            const r = parseInt(hexColor.slice(1, 3), 16);
+            const g = parseInt(hexColor.slice(3, 5), 16);
+            const b = parseInt(hexColor.slice(5, 7), 16);
+            const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+            return (yiq >= 128) ? '#000000' : '#ffffff';
+        }
+    }
+
+    // ===== API CLIENT =====
+    class NeurixAPI {
+        constructor(config = {}) {
+            this.baseUrl = config.baseUrl || '/api/v2';
+            this.token = config.token || null;
+            this.onTokenExpired = config.onTokenExpired || null;
+            this.onRateLimitExceeded = config.onRateLimitExceeded || null;
+            
+            this.requests = {};
+            this.queue = [];
+            this.isProcessingQueue = false;
+            this.retryAttempts = 3;
+            
+            this.initialize();
+        }
+        
+        initialize() {
+            this.defaultHeaders = {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            };
+            
+            this.interceptors = {
+                request: [],
+                response: []
+            };
+            
+            // Add default request interceptor for auth
+            this.addRequestInterceptor(async (config) => {
+                if (this.token) {
+                    config.headers = {
+                        ...config.headers,
+                        'Authorization': `Bearer ${this.token}`
+                    };
+                }
+                return config;
+            });
+            
+            // Add default response interceptor for error handling
+            this.addResponseInterceptor(async (response) => {
+                if (response.status === 401 && this.onTokenExpired) {
+                    this.onTokenExpired();
+                }
+                if (response.status === 429 && this.onRateLimitExceeded) {
+                    this.onRateLimitExceeded();
+                }
+                return response;
+            });
+        }
+        
+        setToken(token) {
+            this.token = token;
+        }
+        
+        async request(method, endpoint, data = null, options = {}) {
+            const requestId = NeurixUtils.generateUUID();
+            
+            const config = {
+                method,
+                headers: { ...this.defaultHeaders, ...options.headers },
+                ...options
+            };
+            
+            if (data) {
+                if (method === 'GET') {
+                    const params = new URLSearchParams(data).toString();
+                    endpoint += `?${params}`;
+                } else {
+                    config.body = JSON.stringify(data);
+                }
+            }
+            
+            // Apply request interceptors
+            let modifiedConfig = config;
+            for (const interceptor of this.interceptors.request) {
+                modifiedConfig = await interceptor(modifiedConfig);
+            }
+            
+            // Track request
+            this.requests[requestId] = {
+                endpoint,
+                method,
+                timestamp: Date.now(),
+                status: 'pending'
+            };
+            
+            try {
+                let response;
+                let attempt = 0;
+                
+                while (attempt < this.retryAttempts) {
+                    try {
+                        response = await fetch(`${this.baseUrl}${endpoint}`, modifiedConfig);
+                        break;
+                    } catch (error) {
+                        attempt++;
+                        if (attempt === this.retryAttempts) throw error;
+                        await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
+                    }
+                }
+                
+                // Apply response interceptors
+                let modifiedResponse = response;
+                for (const interceptor of this.interceptors.response) {
+                    modifiedResponse = await interceptor(modifiedResponse);
+                }
+                
+                const contentType = modifiedResponse.headers.get('content-type');
+                let responseData;
+                
+                if (contentType && contentType.includes('application/json')) {
+                    responseData = await modifiedResponse.json();
+                } else if (contentType && contentType.includes('text/')) {
+                    responseData = await modifiedResponse.text();
+                } else {
+                    responseData = await modifiedResponse.blob();
+                }
+                
+                this.requests[requestId].status = 'completed';
+                this.requests[requestId].response = {
+                    status: modifiedResponse.status,
+                    data: responseData
+                };
+                
+                if (!modifiedResponse.ok) {
+                    await this.handleError(modifiedResponse, responseData);
+                }
+                
+                const remaining = modifiedResponse.headers.get('X-RateLimit-Remaining');
+                const reset = modifiedResponse.headers.get('X-RateLimit-Reset');
+                
+                if (remaining && parseInt(remaining) < 10) {
+                    this.handleRateLimitWarning(parseInt(remaining), parseInt(reset));
+                }
+                
+                return {
+                    success: true,
+                    status: modifiedResponse.status,
+                    data: responseData,
+                    headers: Object.fromEntries(modifiedResponse.headers.entries())
+                };
+                
+            } catch (error) {
+                this.requests[requestId].status = 'failed';
+                this.requests[requestId].error = error;
+                
+                if (!navigator.onLine) {
+                    throw new Error('Network connection lost. Please check your internet connection.');
+                }
+                
+                throw error;
+            } finally {
+                this.cleanupOldRequests();
+            }
+        }
+        
+        async handleError(response, data) {
+            const error = new Error(data?.message || `HTTP ${response.status}`);
+            error.status = response.status;
+            error.data = data;
+            
+            switch (response.status) {
+                case 401:
+                    error.message = 'Session expired. Please login again.';
+                    break;
+                case 403:
+                    error.message = 'You do not have permission to perform this action.';
+                    break;
+                case 404:
+                    error.message = 'The requested resource was not found.';
+                    break;
+                case 422:
+                    error.message = 'Validation failed. Please check your input.';
+                    error.errors = data?.errors || {};
+                    break;
+                case 429:
+                    error.message = 'Rate limit exceeded. Please try again later.';
+                    break;
+                case 500:
+                    error.message = 'Internal server error. Please try again later.';
+                    break;
+                case 502:
+                case 503:
+                case 504:
+                    error.message = 'Service temporarily unavailable. Please try again later.';
+                    break;
+            }
+            
+            throw error;
+        }
+        
+        handleRateLimitWarning(remaining, reset) {
+            const resetTime = new Date(reset * 1000);
+            const now = new Date();
+            const minutesLeft = Math.ceil((resetTime - now) / 60000);
+            
+            console.warn(`Rate limit warning: ${remaining} requests remaining. Resets in ${minutesLeft} minutes.`);
+            
+            if (window.neurixApp) {
+                window.neurixApp.showToast(
+                    `Rate limit: ${remaining} requests remaining`,
+                    'warning',
+                    { delay: 3000 }
+                );
+            }
+        }
+        
+        // Convenience methods
+        async get(endpoint, data = null, options = {}) {
+            return this.request('GET', endpoint, data, options);
+        }
+        
+        async post(endpoint, data = null, options = {}) {
+            return this.request('POST', endpoint, data, options);
+        }
+        
+        async put(endpoint, data = null, options = {}) {
+            return this.request('PUT', endpoint, data, options);
+        }
+        
+        async patch(endpoint, data = null, options = {}) {
+            return this.request('PATCH', endpoint, data, options);
+        }
+        
+        async delete(endpoint, data = null, options = {}) {
+            return this.request('DELETE', endpoint, data, options);
+        }
+        
+        // File upload
+        async upload(endpoint, file, fieldName = 'file', additionalData = {}) {
+            const formData = new FormData();
+            formData.append(fieldName, file);
+            
+            Object.keys(additionalData).forEach(key => {
+                formData.append(key, additionalData[key]);
+            });
+            
+            return this.request('POST', endpoint, null, {
+                headers: {
+                    ...this.defaultHeaders,
+                    'Content-Type': undefined
+                },
+                body: formData
+            });
+        }
+        
+        // Stream response
+        async stream(endpoint, data = null, onChunk, onComplete, onError) {
+            try {
+                const response = await fetch(`${this.baseUrl}${endpoint}`, {
+                    method: 'POST',
+                    headers: this.defaultHeaders,
+                    body: data ? JSON.stringify(data) : null
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                
+                while (true) {
+                    const { done, value } = await reader.read();
+                    
+                    if (done) {
+                        if (onComplete) onComplete();
+                        break;
+                    }
+                    
+                    const chunk = decoder.decode(value);
+                    if (onChunk) onChunk(chunk);
+                }
+            } catch (error) {
+                if (onError) onError(error);
+            }
+        }
+        
+        // WebSocket-like streaming for AI responses
+        async streamAIResponse(endpoint, data, onToken, onComplete, onError) {
+            return this.stream(endpoint, data, 
+                (chunk) => {
+                    try {
+                        const lines = chunk.split('\n').filter(line => line.trim());
+                        lines.forEach(line => {
+                            if (line.startsWith('data: ')) {
+                                const json = line.slice(6);
+                                if (json === '[DONE]') {
+                                    if (onComplete) onComplete();
+                                    return;
+                                }
+                                
+                                try {
+                                    const data = JSON.parse(json);
+                                    if (data.token && onToken) {
+                                        onToken(data.token);
+                                    }
+                                } catch (e) {
+                                    console.error('Failed to parse stream data:', e);
+                                }
+                            }
+                        });
+                    } catch (error) {
+                        console.error('Error processing stream chunk:', error);
+                    }
+                },
+                onComplete,
+                onError
+            );
+        }
+        
+        addRequestInterceptor(interceptor) {
+            this.interceptors.request.push(interceptor);
+        }
+        
+        addResponseInterceptor(interceptor) {
+            this.interceptors.response.push(interceptor);
+        }
+        
+        cleanupOldRequests() {
+            const now = Date.now();
+            const oneHour = 3600000;
+            
+            Object.keys(this.requests).forEach(id => {
+                if (now - this.requests[id].timestamp > oneHour) {
+                    delete this.requests[id];
+                }
+            });
+        }
+    }
+
+    // ===== UI COMPONENTS =====
+    class NeurixComponents {
+        constructor() {
+            this.components = new Map();
+            this.modals = new Map();
+            this.toasts = new Map();
+            this.tooltips = new Map();
+            this.charts = new Map();
+            this.editors = new Map();
+        }
+        
+        initialize() {
+            this.initializeTooltips();
+            this.initializePopovers();
+            this.initializeDropdowns();
+            this.initializeModals();
+            this.initializeAccordions();
+            this.initializeTabs();
+            this.initializeScrollSpy();
+            this.initializeCarousels();
+            this.initializeCharts();
+            this.initializeEditors();
+        }
+        
+        showToast(options = {}) {
+            const toastId = `toast-${Date.now()}`;
+            const type = options.type || 'info';
+            const delay = options.delay || 5000;
+            
+            const toastHTML = `
+                <div class="toast align-items-center text-bg-${type} border-0" id="${toastId}" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            ${options.message || ''}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            `;
+            
+            const container = document.querySelector('.toast-container') || document.body;
+            const toastEl = document.createElement('div');
+            toastEl.innerHTML = toastHTML;
+            container.appendChild(toastEl.firstElementChild);
+            
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement, {
+                autohide: true,
+                delay: delay
+            });
+            
+            toast.show();
+            
+            toastElement.addEventListener('hidden.bs.toast', () => {
+                toastElement.remove();
+                this.toasts.delete(toastId);
+            });
+            
+            this.toasts.set(toastId, toast);
+            
+            return {
+                id: toastId,
+                element: toastElement,
+                instance: toast,
+                hide: () => toast.hide()
+            };
+        }
+        
+        createModal(options = {}) {
+            const modalId = options.id || `modal-${Date.now()}`;
+            
+            const modalHTML = `
+                <div class="modal fade" id="${modalId}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog ${options.size ? `modal-${options.size}` : ''}">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">${options.title || ''}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ${options.content || ''}
+                            </div>
+                            ${options.footer ? `
+                            <div class="modal-footer">
+                                ${options.footer}
+                            </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            const container = document.getElementById('modal-container') || document.body;
+            const modalEl = document.createElement('div');
+            modalEl.innerHTML = modalHTML;
+            container.appendChild(modalEl.firstElementChild);
+            
+            const modal = new bootstrap.Modal(document.getElementById(modalId));
+            this.modals.set(modalId, modal);
+            
+            return {
+                id: modalId,
+                element: document.getElementById(modalId),
+                instance: modal,
+                show: () => modal.show(),
+                hide: () => modal.hide(),
+                dispose: () => {
+                    modal.dispose();
+                    modalEl.remove();
+                    this.modals.delete(modalId);
+                }
+            };
+        }
+        
+        createChart(canvasId, config) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) {
+                console.error(`Canvas element with id ${canvasId} not found`);
+                return null;
+            }
+            
+            const ctx = canvas.getContext('2d');
+            const chart = new Chart(ctx, {
+                type: config.type || 'line',
+                data: config.data || {},
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    ...config.options
+                }
+            });
+            
+            this.charts.set(canvasId, chart);
+            return chart;
+        }
+        
+        initializeTooltips(container = document) {
+            const tooltipTriggerList = container.querySelectorAll('[data-bs-toggle="tooltip"]');
+            [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+        }
+        
+        initializePopovers(container = document) {
+            const popoverTriggerList = container.querySelectorAll('[data-bs-toggle="popover"]');
+            [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+        }
+        
+        initializeDropdowns(container = document) {
+            const dropdownTriggerList = container.querySelectorAll('[data-bs-toggle="dropdown"]');
+            [...dropdownTriggerList].map(dropdownTriggerEl => new bootstrap.Dropdown(dropdownTriggerEl));
+        }
+        
+        initializeModals() {
+            const modalElements = document.querySelectorAll('.modal');
+            modalElements.forEach(modalEl => {
+                const modal = new bootstrap.Modal(modalEl);
+                const modalId = modalEl.id;
+                if (modalId) {
+                    this.modals.set(modalId, modal);
+                }
+            });
+        }
+        
+        initializeAccordions(container = document) {
+            const accordionElements = container.querySelectorAll('.accordion');
+            accordionElements.forEach(accordionEl => {
+                const accordion = new bootstrap.Collapse(accordionEl, {
+                    toggle: false
+                });
+            });
+        }
+        
+        initializeTabs(container = document) {
+            const tabElements = container.querySelectorAll('[data-bs-toggle="tab"]');
+            tabElements.forEach(tabEl => {
+                tabEl.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tab = new bootstrap.Tab(tabEl);
+                    tab.show();
+                });
+            });
+        }
+        
+        initializeScrollSpy(container = document) {
+            const scrollSpyElements = container.querySelectorAll('[data-bs-spy="scroll"]');
+            scrollSpyElements.forEach(el => {
+                new bootstrap.ScrollSpy(el);
+            });
+        }
+        
+        initializeCarousels(container = document) {
+            const carouselElements = container.querySelectorAll('.carousel');
+            carouselElements.forEach(carouselEl => {
+                new bootstrap.Carousel(carouselEl);
+            });
+        }
+        
+        initializeCharts(container = document) {
+            const chartElements = container.querySelectorAll('[data-chart]');
+            chartElements.forEach(chartEl => {
+                const chartId = chartEl.id || `chart-${Date.now()}`;
+                chartEl.id = chartId;
+                
+                const config = JSON.parse(chartEl.getAttribute('data-chart') || '{}');
+                this.createChart(chartId, config);
+            });
+        }
+    }
+
+    // ===== MAIN APPLICATION =====
+    class NeurixApp {
+        constructor() {
+            this.config = {
+                apiBaseUrl: window.location.origin + '/api/v2',
+                socketUrl: window.location.origin,
+                defaultTheme: 'dark',
+                enableAnimations: true,
+                enableSocket: true,
+                enableServiceWorker: true,
+                enableNotifications: true,
+                enableAnalytics: true,
+                enableOfflineMode: true,
+                enableModelCache: true,
+                enableAutoSave: true,
+                autoSaveInterval: 30000,
+                maxFileSize: 1024 * 1024 * 100,
+                maxImageSize: 4096,
+                maxVideoDuration: 300,
+                maxAudioDuration: 3600,
+                defaultModel: 'gpt-3.5-turbo',
+                defaultImageModel: 'stable-diffusion-v1.5',
+                defaultVideoModel: 'video-synthesis',
+                defaultAudioModel: 'tts-v1',
+                iotRefreshInterval: 10000,
+                analyticsRefreshInterval: 60000,
+                notificationCheckInterval: 30000,
+                sessionTimeout: 3600000,
+                idleTimeout: 300000,
+                rateLimit: {
+                    requests: 100,
+                    period: 60000
+                }
+            };
+
+            this.state = {
+                user: null,
+                token: localStorage.getItem('token'),
+                theme: localStorage.getItem('theme') || this.config.defaultTheme,
+                currentPage: 'dashboard',
+                previousPage: null,
+                isLoading: false,
+                isOnline: navigator.onLine,
+                isIdle: false,
+                isMobile: this.isMobile(),
+                isTablet: this.isTablet(),
+                isTouch: 'ontouchstart' in window,
+                models: {},
+                connections: {},
+                notifications: [],
+                unreadNotifications: 0,
+                iotDevices: [],
+                activeJobs: [],
+                completedJobs: [],
+                failedJobs: [],
+                usageStats: {},
+                systemHealth: {},
+                socket: null,
+                serviceWorker: null,
+                autoSaveTimer: null,
+                idleTimer: null,
+                sessionTimer: null,
+                lastActivity: Date.now()
+            };
+
+            this.components = {
+                router: null,
+                api: null,
+                socket: null,
+                storage: null,
+                notifications: null,
+                models: null,
+                iot: null,
+                automation: null,
+                payments: null,
+                admin: null,
+                analytics: null
+            };
+
+            this.cache = {
+                pages: {},
+                models: {},
+                images: {},
+                videos: {},
+                audio: {},
+                data: {}
+            };
+
+            this.events = {
+                onUserUpdate: [],
+                onThemeChange: [],
+                onPageChange: [],
+                onModelUpdate: [],
+                onIotUpdate: [],
+                onNotification: [],
+                onJobUpdate: [],
+                onConnectionChange: []
+            };
+        }
+
+        // Initialize the application
+        async init() {
+            try {
+                this.showLoadingScreen();
+                
+                await this.initializeCore();
+                await this.initializeUI();
+                
+                if (this.config.enableServiceWorker && 'serviceWorker' in navigator) {
+                    await this.initializeServiceWorker();
+                }
+                
+                if (this.config.enableSocket) {
+                    await this.initializeSocket();
+                }
+                
+                if (this.config.enableAnalytics) {
+                    await this.initializeAnalytics();
+                }
+                
+                if (this.config.enableNotifications && 'Notification' in window) {
+                    await this.initializeNotifications();
+                }
+                
+                await this.loadInitialData();
+                this.startBackgroundTasks();
+                this.hideLoadingScreen();
+                this.initializeRouter();
+                this.setupEventListeners();
+                
+                console.log('Neurix App initialized successfully');
+            } catch (error) {
+                console.error('Failed to initialize app:', error);
+                this.showError('Initialization failed', error.message);
+            }
+        }
+
+        // Initialize core components
+        async initializeCore() {
+            this.components.api = new NeurixAPI({
+                baseUrl: this.config.apiBaseUrl,
+                token: this.state.token,
+                onTokenExpired: this.handleTokenExpired.bind(this),
+                onRateLimitExceeded: this.handleRateLimit.bind(this)
+            });
+
+            this.components.ui = new NeurixComponents();
+        }
+
+        // Initialize UI components
+        async initializeUI() {
+            this.setTheme(this.state.theme);
+            this.updateUIForAuthState();
+            
+            const loadingBar = document.querySelector('.progress-bar');
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    return;
+                }
+                width += 10;
+                loadingBar.style.width = width + '%';
+            }, 100);
+        }
+
+        // Initialize service worker
+        async initializeServiceWorker() {
+            try {
+                const registration = await navigator.serviceWorker.register('/service-worker.js');
+                this.state.serviceWorker = registration;
+                
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            this.showToast('New version available', 'info', {
+                                action: 'Update',
+                                onClick: () => window.location.reload()
+                            });
+                        }
+                    });
+                });
+            } catch (error) {
+                console.warn('Service worker registration failed:', error);
+            }
+        }
+
+        // Initialize WebSocket connection
+        async initializeSocket() {
+            try {
+                this.state.socket = io(this.config.socketUrl, {
+                    auth: {
+                        token: this.state.token
+                    },
+                    transports: ['websocket', 'polling']
+                });
+
+                this.state.socket.on('connect', () => {
+                    console.log('WebSocket connected');
+                    this.showToast('Connected to server', 'success', { delay: 2000 });
+                });
+
+                this.state.socket.on('disconnect', () => {
+                    console.log('WebSocket disconnected');
+                    this.showToast('Disconnected from server', 'warning', { delay: 2000 });
+                });
+
+                this.state.socket.on('error', (error) => {
+                    console.error('WebSocket error:', error);
+                    this.showToast('Connection error', 'danger', { delay: 3000 });
+                });
+
+                this.state.socket.on('notification', (data) => {
+                    this.handleNotification(data);
+                });
+
+                this.state.socket.on('job_update', (data) => {
+                    this.handleJobUpdate(data);
+                });
+
+                this.state.socket.on('iot_update', (data) => {
+                    this.handleIotDeviceUpdate(data);
+                });
+
+            } catch (error) {
+                console.warn('WebSocket connection failed:', error);
+            }
+        }
+
+        // Initialize notifications
+        async initializeNotifications() {
+            if (Notification.permission === 'default') {
+                await Notification.requestPermission();
+            }
+        }
+
+        // Initialize analytics
+        async initializeAnalytics() {
+            this.trackPageView(this.state.currentPage);
+            this.setupAnalyticsTracking();
+        }
+
+        // Load initial data
+        async loadInitialData() {
+            try {
+                if (this.state.token) {
+                    await this.loadUserData();
+                }
+                
+                await this.loadSystemStatus();
+                await this.loadAvailableModels();
+                await this.loadRecentActivity();
+            } catch (error) {
+                console.error('Failed to load initial data:', error);
+            }
+        }
+
+        // Start background tasks
+        startBackgroundTasks() {
+            if (this.config.enableAutoSave) {
+                this.state.autoSaveTimer = setInterval(() => {
+                    this.autoSave();
+                }, this.config.autoSaveInterval);
+            }
+            
+            this.state.sessionTimer = setInterval(() => {
+                this.checkSession();
+            }, 60000);
+            
+            this.setupIdleDetection();
+            
+            window.addEventListener('online', () => {
+                this.state.isOnline = true;
+                this.handleOnlineStatusChange(true);
+            });
+            
+            window.addEventListener('offline', () => {
+                this.state.isOnline = false;
+                this.handleOnlineStatusChange(false);
+            });
+        }
+
+        // Initialize router
+        initializeRouter() {
+            const routes = {
+                'dashboard': this.loadDashboard.bind(this),
+                'models': this.loadModels.bind(this),
+                'models/text': this.loadTextModel.bind(this),
+                'models/image': this.loadImageModel.bind(this),
+                'models/video': this.loadVideoModel.bind(this),
+                'models/audio': this.loadAudioModel.bind(this),
+                'models/code': this.loadCodeModel.bind(this),
+                'automation': this.loadAutomation.bind(this),
+                'iot': this.loadIot.bind(this),
+                'scripts': this.loadScripts.bind(this),
+                'payments': this.loadPayments.bind(this),
+                'profile': this.loadProfile.bind(this),
+                'settings': this.loadSettings.bind(this),
+                'admin': this.loadAdmin.bind(this),
+                'notifications': this.loadNotifications.bind(this),
+                'create/image': this.createImage.bind(this),
+                'create/video': this.createVideo.bind(this),
+                'create/audio': this.createAudio.bind(this),
+                'create/automation': this.createAutomation.bind(this)
+            };
+
+            this.components.router = {
+                routes: routes,
+                navigateTo: (page, params = {}) => {
+                    window.location.hash = page;
+                    if (routes[page]) {
+                        routes[page](params);
+                    }
+                },
+                start: () => {
+                    window.addEventListener('hashchange', () => {
+                        const hash = window.location.hash.substring(1) || 'dashboard';
+                        const [page, ...rest] = hash.split('/');
+                        if (routes[page]) {
+                            routes[page]({ path: rest.join('/') });
+                        }
+                    });
+                    
+                    // Initial load
+                    const hash = window.location.hash.substring(1) || 'dashboard';
+                    const [page, ...rest] = hash.split('/');
+                    if (routes[page]) {
+                        routes[page]({ path: rest.join('/') });
+                    }
+                }
+            };
+            
+            this.components.router.start();
+        }
+
+        // Set up event listeners
+        setupEventListeners() {
+            document.getElementById('theme-toggle').addEventListener('click', () => {
+                this.toggleTheme();
+            });
+            
+            document.getElementById('logout-btn').addEventListener('click', (e) => {
+                e.preventDefault();
+                this.logout();
+            });
+            
+            document.addEventListener('click', () => {
+                this.updateLastActivity();
+            });
+            
+            document.addEventListener('keypress', () => {
+                this.updateLastActivity();
+            });
+            
+            document.addEventListener('scroll', () => {
+                this.updateLastActivity();
+            });
+            
+            window.addEventListener('beforeunload', (e) => {
+                if (this.hasUnsavedChanges()) {
+                    e.preventDefault();
+                    e.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
+                }
+            });
+        }
+
+        // Theme management
+        setTheme(theme) {
+            this.state.theme = theme;
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            const icon = document.querySelector('#theme-toggle i');
+            if (icon) {
+                icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+            }
+            
+            this.emitEvent('onThemeChange', theme);
+        }
+
+        toggleTheme() {
+            const newTheme = this.state.theme === 'dark' ? 'light' : 'dark';
+            this.setTheme(newTheme);
+        }
+
+        // Authentication
+        async login(credentials) {
+            try {
+                this.setLoading(true);
+                
+                const response = await this.components.api.post('/auth/login', credentials);
+                
+                if (response.success) {
+                    this.state.token = response.token;
+                    this.state.user = response.user;
+                    
+                    localStorage.setItem('token', response.token);
+                    this.components.api.setToken(response.token);
+                    
+                    this.updateUIForAuthState();
+                    await this.loadUserData();
+                    
+                    if (this.state.socket) {
+                        this.state.socket.auth.token = response.token;
+                        this.state.socket.connect();
+                    }
+                    
+                    this.showToast(`Welcome back, ${response.user.username}!`, 'success');
+                    this.navigateTo('dashboard');
+                    
+                    return { success: true };
+                }
+            } catch (error) {
+                console.error('Login failed:', error);
+                return { success: false, error: error.message };
+            } finally {
+                this.setLoading(false);
+            }
+        }
+
+        async logout() {
+            try {
+                this.setLoading(true);
+                
+                await this.components.api.post('/auth/logout');
+                
+                this.state.token = null;
+                this.state.user = null;
+                localStorage.removeItem('token');
+                
+                if (this.state.socket) {
+                    this.state.socket.disconnect();
+                }
+                
+                this.updateUIForAuthState();
+                this.clearCache();
+                this.navigateTo('dashboard');
+                
+                this.showToast('Logged out successfully', 'info');
+            } catch (error) {
+                console.error('Logout failed:', error);
+            } finally {
+                this.setLoading(false);
+            }
+        }
+
+        // Navigation
+        navigateTo(page, params = {}) {
+            if (this.components.router) {
+                this.components.router.navigateTo(page, params);
+            } else {
+                window.location.hash = page;
+            }
+        }
+
+        // Page loading methods
+        async loadDashboard(params = {}) {
+            try {
+                this.setLoading(true);
+                
+                const content = `
+                    <div class="dashboard-page animate-fade-in">
+                        <div class="dashboard-header mb-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h1 class="dashboard-title">Welcome to ChangeX Neurix!</h1>
+                                    <p class="dashboard-subtitle text-muted">
+                                        Advanced AI Platform for Media Generation and Automation
+                                    </p>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <div class="dashboard-actions">
+                                        <button class="btn btn-primary" onclick="window.neurixApp.navigateTo('create/image')">
+                                            <i class="fas fa-plus me-2"></i> Create New
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="neurix-card card-hover">
+                                    <div class="d-flex align-items-center">
+                                        <div class="stats-icon bg-primary bg-gradient me-3">
+                                            <i class="fas fa-brain"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="stats-number">1,248</h3>
+                                            <p class="stats-label">Total Requests</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="neurix-card card-hover">
+                                    <div class="d-flex align-items-center">
+                                        <div class="stats-icon bg-success bg-gradient me-3">
+                                            <i class="fas fa-image"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="stats-number">892</h3>
+                                            <p class="stats-label">Images Generated</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="neurix-card card-hover">
+                                    <div class="d-flex align-items-center">
+                                        <div class="stats-icon bg-warning bg-gradient me-3">
+                                            <i class="fas fa-video"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="stats-number">156</h3>
+                                            <p class="stats-label">Videos Created</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-3 col-md-6 mb-4">
+                                <div class="neurix-card card-hover">
+                                    <div class="d-flex align-items-center">
+                                        <div class="stats-icon bg-info bg-gradient me-3">
+                                            <i class="fas fa-music"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="stats-number">423</h3>
+                                            <p class="stats-label">Audio Processed</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="neurix-card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Quick Actions</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row g-3">
+                                            <div class="col-md-3 col-6">
+                                                <a href="#create/image" class="text-decoration-none">
+                                                    <div class="text-center p-3 border rounded">
+                                                        <div class="mb-2">
+                                                            <i class="fas fa-image fa-2x text-primary"></i>
+                                                        </div>
+                                                        <h6>Generate Image</h6>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3 col-6">
+                                                <a href="#create/video" class="text-decoration-none">
+                                                    <div class="text-center p-3 border rounded">
+                                                        <div class="mb-2">
+                                                            <i class="fas fa-video fa-2x text-success"></i>
+                                                        </div>
+                                                        <h6>Create Video</h6>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3 col-6">
+                                                <a href="#create/audio" class="text-decoration-none">
+                                                    <div class="text-center p-3 border rounded">
+                                                        <div class="mb-2">
+                                                            <i class="fas fa-music fa-2x text-warning"></i>
+                                                        </div>
+                                                        <h6>Generate Audio</h6>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3 col-6">
+                                                <a href="#automation" class="text-decoration-none">
+                                                    <div class="text-center p-3 border rounded">
+                                                        <div class="mb-2">
+                                                            <i class="fas fa-cogs fa-2x text-info"></i>
+                                                        </div>
+                                                        <h6>Automation</h6>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="neurix-card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Recent Activity</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="activity-timeline">
+                                            <div class="activity-item">
+                                                <div class="activity-icon">
+                                                    <i class="fas fa-image text-primary"></i>
+                                                </div>
+                                                <div class="activity-content">
+                                                    <h6>Image Generated</h6>
+                                                    <p class="text-muted">"A sunset over mountains" - Stable Diffusion</p>
+                                                    <small class="text-muted">2 minutes ago</small>
+                                                </div>
+                                            </div>
+                                            <div class="activity-item">
+                                                <div class="activity-icon">
+                                                    <i class="fas fa-video text-success"></i>
+                                                </div>
+                                                <div class="activity-content">
+                                                    <h6>Video Created</h6>
+                                                    <p class="text-muted">"City time-lapse" - Video Synthesis</p>
+                                                    <small class="text-muted">1 hour ago</small>
+                                                </div>
+                                            </div>
+                                            <div class="activity-item">
+                                                <div class="activity-icon">
+                                                    <i class="fas fa-cogs text-info"></i>
+                                                </div>
+                                                <div class="activity-content">
+                                                    <h6>Automation Triggered</h6>
+                                                    <p class="text-muted">Daily report generation</p>
+                                                    <small class="text-muted">3 hours ago</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="neurix-card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="card-title">System Health</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="health-status">
+                                            <div class="health-item mb-2">
+                                                <div class="health-service">
+                                                    <i class="fas fa-server me-2"></i>
+                                                    API Server
+                                                </div>
+                                                <span class="badge bg-success">Online</span>
+                                            </div>
+                                            <div class="health-item mb-2">
+                                                <div class="health-service">
+                                                    <i class="fas fa-database me-2"></i>
+                                                    Database
+                                                </div>
+                                                <span class="badge bg-success">Online</span>
+                                            </div>
+                                            <div class="health-item mb-2">
+                                                <div class="health-service">
+                                                    <i class="fas fa-robot me-2"></i>
+                                                    AI Models
+                                                </div>
+                                                <span class="badge bg-success">Online</span>
+                                            </div>
+                                            <div class="health-item">
+                                                <div class="health-service">
+                                                    <i class="fas fa-network-wired me-2"></i>
+                                                    Network
+                                                </div>
+                                                <span class="badge bg-success">Online</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="neurix-card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Quick Stats</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="quick-stats">
+                                            <div class="stat-item mb-3">
+                                                <div class="stat-icon">
+                                                    <i class="fas fa-clock"></i>
+                                                </div>
+                                                <div class="stat-info">
+                                                    <h6>Avg. Response Time</h6>
+                                                    <p class="stat-value">2.3s</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="stat-item mb-3">
+                                                <div class="stat-icon">
+                                                    <i class="fas fa-bolt"></i>
+                                                </div>
+                                                <div class="stat-info">
+                                                    <h6>Uptime</h6>
+                                                    <p class="stat-value">99.8%</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="stat-item">
+                                                <div class="stat-icon">
+                                                    <i class="fas fa-users"></i>
+                                                </div>
+                                                <div class="stat-info">
+                                                    <h6>Active Users</h6>
+                                                    <p class="stat-value">42</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                this.setContent(content);
+                
+                // Initialize dashboard charts
+                setTimeout(() => {
+                    this.initializeDashboardCharts();
+                }, 100);
+                
+            } catch (error) {
+                this.showError('Failed to load dashboard', error.message);
+            } finally {
+                this.setLoading(false);
+            }
+        }
+
+        async loadImageModel(params = {}) {
+            try {
+                this.setLoading(true);
+                
+                const content = `
+                    <div class="animate-fade-in">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <h2>Image Generation</h2>
+                                <p class="text-muted">Create stunning images with AI</p>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary" onclick="window.neurixApp.showImageHistory()">
+                                    <i class="fas fa-history me-2"></i> History
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="neurix-card mb-4">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Generate Image</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group mb-3">
+                                            <label class="form-label">Prompt</label>
+                                            <textarea class="form-control" id="image-prompt" rows="3" placeholder="Describe the image you want to generate..."></textarea>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Model</label>
+                                                    <select class="form-control" id="image-model">
+                                                        <option value="stable-diffusion">Stable Diffusion</option>
+                                                        <option value="dall-e">DALL-E 3</option>
+                                                        <option value="midjourney">Midjourney</option>
+                                                        <option value="custom">Custom Model</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Style</label>
+                                                    <select class="form-control" id="image-style">
+                                                        <option value="realistic">Realistic</option>
+                                                        <option value="artistic">Artistic</option>
+                                                        <option value="anime">Anime</option>
+                                                        <option value="digital-art">Digital Art</option>
+                                                        <option value="photographic">Photographic</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mb-4">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="form-label">Width</label>
+                                                    <input type="number" class="form-control" id="image-width" value="512" min="256" max="2048">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="form-label">Height</label>
+                                                    <input type="number" class="form-control" id="image-height" value="512" min="256" max="2048">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="form-label">Quality</label>
+                                                    <select class="form-control" id="image-quality">
+                                                        <option value="low">Low</option>
+                                                        <option value="medium" selected>Medium</option>
+                                                        <option value="high">High</option>
+                                                        <option value="ultra">Ultra</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="d-grid">
+                                            <button class="btn btn-primary btn-lg" onclick="window.neurixApp.generateImage()">
+                                                <i class="fas fa-magic me-2"></i> Generate Image
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4">
+                                <div class="neurix-card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Preview</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <div id="image-preview" class="mb-3" style="min-height: 200px; display: flex; align-items: center; justify-content: center; background: var(--bg-tertiary); border-radius: var(--radius-md);">
+                                                <div class="text-muted">
+                                                    <i class="fas fa-image fa-3x mb-2"></i>
+                                                    <p>Generated image will appear here</p>
+                                                </div>
+                                            </div>
+                                            <div id="image-info" class="small text-muted"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="neurix-card mt-4">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Recent Generations</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="recent-images">
+                                            <div class="row g-2">
+                                                <div class="col-4">
+                                                    <div class="recent-image" style="background: var(--bg-tertiary); height: 80px; border-radius: var(--radius-md);"></div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="recent-image" style="background: var(--bg-tertiary); height: 80px; border-radius: var(--radius-md);"></div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="recent-image" style="background: var(--bg-tertiary); height: 80px; border-radius: var(--radius-md);"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                this.setContent(content);
+                
+            } catch (error) {
+                this.showError('Failed to load image generator', error.message);
+            } finally {
+                this.setLoading(false);
+            }
+        }
+
+        // Image generation
+        async generateImage() {
+            try {
+                const prompt = document.getElementById('image-prompt')?.value;
+                if (!prompt) {
+                    this.showToast('Please enter a prompt', 'warning');
+                    return;
+                }
+                
+                this.setLoading(true, 'Generating image...');
+                
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // Show success
+                this.showToast('Image generated successfully!', 'success');
+                
+                // Update preview
+                const preview = document.getElementById('image-preview');
+                if (preview) {
+                    preview.innerHTML = `
+                        <img src="https://via.placeholder.com/512x512/6366f1/ffffff?text=AI+Generated+Image" 
+                             alt="Generated Image" 
+                             style="max-width: 100%; border-radius: var(--radius-md);">
+                    `;
+                }
+                
+                const info = document.getElementById('image-info');
+                if (info) {
+                    info.innerHTML = `
+                        <div>Prompt: ${prompt.substring(0, 50)}${prompt.length > 50 ? '...' : ''}</div>
+                        <div>Size: 512x512 • Time: 2.3s • Model: Stable Diffusion</div>
+                    `;
+                }
+                
+            } catch (error) {
+                this.showError('Image generation failed', error.message);
+            } finally {
+                this.setLoading(false);
+            }
+        }
+
+        // Video generation
+        async generateVideo(text, options = {}) {
+            try {
+                this.setLoading(true, 'Generating video...');
+                
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 3000));
+                
+                this.showToast('Video generated successfully!', 'success');
+                
+                return { url: 'https://example.com/generated-video.mp4', duration: 30 };
+            } catch (error) {
+                this.showError('Video generation failed', error.message);
+                throw error;
+            } finally {
+                this.setLoading(false);
+            }
+        }
+
+        // Audio processing
+        async processAudio(text, options = {}) {
+            try {
+                this.setLoading(true, 'Processing audio...');
+                
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                this.showToast('Audio processed successfully!', 'success');
+                
+                return { url: 'https://example.com/generated-audio.mp3', duration: 10 };
+            } catch (error) {
+                this.showError('Audio processing failed', error.message);
+                throw error;
+            } finally {
+                this.setLoading(false);
+            }
+        }
+
+        // IoT control
+        async controlIotDevice(deviceId, action, params = {}) {
+            try {
+                this.setLoading(true, 'Sending command...');
+                
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                this.showToast(`Device ${action} command sent`, 'success');
+                
+                return { success: true, deviceId, action };
+            } catch (error) {
+                this.showError('Device control failed', error.message);
+                throw error;
+            } finally {
+                this.setLoading(false);
+            }
+        }
+
+        // Utility methods
+        showLoading(show = true, message = 'Loading...') {
+            this.state.isLoading = show;
+            
+            const loadingEl = document.getElementById('loading-screen');
+            const messageEl = loadingEl?.querySelector('h3');
+            
+            if (loadingEl) {
+                if (show) {
+                    loadingEl.classList.remove('hidden');
+                    if (messageEl) messageEl.textContent = message;
+                } else {
+                    setTimeout(() => {
+                        loadingEl.classList.add('hidden');
+                    }, 300);
+                }
+            }
+        }
+
+        showLoadingScreen() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.classList.remove('hidden');
+            }
+        }
+
+        hideLoadingScreen() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                setTimeout(() => {
+                    loadingScreen.classList.add('hidden');
+                }, 500);
+            }
+        }
+
+        showToast(message, type = 'info', options = {}) {
+            if (this.components.ui) {
+                return this.components.ui.showToast({ message, type, ...options });
+            }
+            
+            // Fallback
+            const toastId = 'toast-' + Date.now();
+            const toast = document.createElement('div');
+            toast.className = `toast align-items-center text-bg-${type} border-0`;
+            toast.id = toastId;
+            
+            toast.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            `;
+            
+            const container = document.querySelector('.toast-container');
+            if (container) {
+                container.appendChild(toast);
+                const bsToast = new bootstrap.Toast(toast, {
+                    autohide: true,
+                    delay: options.delay || 5000
+                });
+                bsToast.show();
+                
+                toast.addEventListener('hidden.bs.toast', () => {
+                    toast.remove();
+                });
+            }
+            
+            return toastId;
+        }
+
+        showError(title, message) {
+            const modalHTML = `
+                <div class="modal fade" id="error-modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-danger">${title}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>${message}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Remove existing modal
+            const existingModal = document.getElementById('error-modal');
+            if (existingModal) {
+                existingModal.remove();
+            }
+            
+            // Create new modal
+            const modalContainer = document.createElement('div');
+            modalContainer.innerHTML = modalHTML;
+            document.body.appendChild(modalContainer.firstElementChild);
+            
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('error-modal'));
+            modal.show();
+        }
+
+        setContent(content) {
+            const contentArea = document.getElementById('content-area');
+            if (contentArea) {
+                contentArea.innerHTML = content;
+                window.scrollTo(0, 0);
+            }
+        }
+
+        updateUIForAuthState() {
+            const adminLink = document.getElementById('admin-link');
+            if (adminLink) {
+                adminLink.style.display = this.state.user?.isAdmin ? 'block' : 'none';
+            }
+        }
+
+        // Event handling
+        emitEvent(eventName, data) {
+            if (this.events[eventName]) {
+                this.events[eventName].forEach(callback => {
+                    try {
+                        callback(data);
+                    } catch (error) {
+                        console.error(`Error in ${eventName} callback:`, error);
+                    }
+                });
+            }
+        }
+
+        on(eventName, callback) {
+            if (this.events[eventName]) {
+                this.events[eventName].push(callback);
+            }
+        }
+
+        off(eventName, callback) {
+            if (this.events[eventName]) {
+                const index = this.events[eventName].indexOf(callback);
+                if (index > -1) {
+                    this.events[eventName].splice(index, 1);
+                }
+            }
+        }
+
+        // Device detection
+        isMobile() {
+            return window.matchMedia('(max-width: 767.98px)').matches;
+        }
+
+        isTablet() {
+            return window.matchMedia('(min-width: 768px) and (max-width: 1023.98px)').matches;
+        }
+
+        // Cleanup
+        destroy() {
+            if (this.state.autoSaveTimer) clearInterval(this.state.autoSaveTimer);
+            if (this.state.sessionTimer) clearInterval(this.state.sessionTimer);
+            if (this.state.idleTimer) clearTimeout(this.state.idleTimer);
+            
+            if (this.state.socket) {
+                this.state.socket.disconnect();
+            }
+            
+            console.log('Neurix App destroyed');
+        }
+
+        // Stub methods for other page loads
+        async loadModels(params) { this.loadDashboard(); }
+        async loadTextModel(params) { this.loadDashboard(); }
+        async loadVideoModel(params) { this.loadDashboard(); }
+        async loadAudioModel(params) { this.loadDashboard(); }
+        async loadCodeModel(params) { this.loadDashboard(); }
+        async loadAutomation(params) { this.loadDashboard(); }
+        async loadIot(params) { this.loadDashboard(); }
+        async loadScripts(params) { this.loadDashboard(); }
+        async loadPayments(params) { this.loadDashboard(); }
+        async loadProfile(params) { this.loadDashboard(); }
+        async loadSettings(params) { this.loadDashboard(); }
+        async loadAdmin(params) { this.loadDashboard(); }
+        async loadNotifications(params) { this.loadDashboard(); }
+        async createImage(params) { this.loadImageModel(); }
+        async createVideo(params) { this.loadDashboard(); }
+        async createAudio(params) { this.loadDashboard(); }
+        async createAutomation(params) { this.loadDashboard(); }
+
+        // Additional methods
+        async loadUserData() {
+            // Stub for user data loading
+            this.state.user = { username: 'Demo User', email: 'demo@changex.io', isAdmin: false };
+        }
+
+        async loadSystemStatus() {
+            // Stub for system status
+            this.state.systemHealth = { status: 'healthy', services: [] };
+        }
+
+        async loadAvailableModels() {
+            // Stub for models
+            this.state.models = {};
+        }
+
+        async loadRecentActivity() {
+            // Stub for activity
+            this.state.notifications = [];
+        }
+
+        hasUnsavedChanges() {
+            return false;
+        }
+
+        clearCache() {
+            this.cache = {
+                pages: {},
+                models: {},
+                images: {},
+                videos: {},
+                audio: {},
+                data: {}
+            };
+        }
+
+        updateLastActivity() {
+            this.state.lastActivity = Date.now();
+            this.state.isIdle = false;
+        }
+
+        setupIdleDetection() {
+            this.state.idleTimer = setTimeout(() => {
+                this.state.isIdle = true;
+                this.emitEvent('onIdle', true);
+            }, this.config.idleTimeout);
+        }
+
+        checkSession() {
+            const now = Date.now();
+            if (now - this.state.lastActivity > this.config.sessionTimeout) {
+                this.logout();
+            }
+        }
+
+        autoSave() {
+            // Auto-save functionality
+            console.log('Auto-saving...');
+        }
+
+        handleOnlineStatusChange(online) {
+            if (online) {
+                this.showToast('Back online', 'success', { delay: 2000 });
+            } else {
+                this.showToast('You are offline', 'warning', { delay: 3000 });
+            }
+        }
+
+        handleTokenExpired() {
+            this.showToast('Session expired. Please login again.', 'warning');
+            this.logout();
+        }
+
+        handleRateLimit() {
+            this.showToast('Rate limit exceeded. Please wait.', 'warning');
+        }
+
+        handleNotification(data) {
+            this.state.notifications.unshift(data);
+            this.state.unreadNotifications++;
+            
+            if (Notification.permission === 'granted') {
+                new Notification(data.title, {
+                    body: data.message,
+                    icon: '/assets/icons/notification-icon.png'
+                });
+            }
+            
+            this.showToast(data.message, 'info');
+            this.emitEvent('onNotification', data);
+        }
+
+        handleJobUpdate(data) {
+            this.emitEvent('onJobUpdate', data);
+        }
+
+        handleIotDeviceUpdate(data) {
+            this.emitEvent('onIotUpdate', data);
+        }
+
+        showImageHistory() {
+            this.components.ui?.showToast({
+                message: 'Image history feature coming soon!',
+                type: 'info'
+            });
+        }
+
+        initializeDashboardCharts() {
+            const ctx = document.createElement('canvas');
+            ctx.id = 'dashboard-chart';
+            document.querySelector('.dashboard-page').appendChild(ctx);
+            
+            this.components.ui?.createChart('dashboard-chart', {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [
+                        {
+                            label: 'Image Generation',
+                            data: [65, 59, 80, 81, 56, 55, 40],
+                            borderColor: 'rgb(99, 102, 241)',
+                            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                            tension: 0.4
+                        }
+                    ]
+                }
+            });
+        }
+
+        trackPageView(page) {
+            console.log('Page view:', page);
+        }
+
+        setupAnalyticsTracking() {
+            // Analytics tracking setup
+        }
+    }
+
+    // Initialize application when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        window.neurixApp = new NeurixApp();
+        window.neurixApp.init();
+    });
     </script>
 </body>
 </html>
