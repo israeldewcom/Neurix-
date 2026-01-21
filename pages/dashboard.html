@@ -1,0 +1,405 @@
+<!-- Dashboard Page -->
+<div class="dashboard-page animate-fade-in">
+    <!-- Header -->
+    <div class="dashboard-header mb-4">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="dashboard-title">Welcome back, {{user.username}}!</h1>
+                <p class="dashboard-subtitle text-muted">
+                    Here's what's happening with your AI platform today.
+                </p>
+            </div>
+            <div class="col-md-4 text-end">
+                <div class="dashboard-actions">
+                    <button class="btn btn-primary" onclick="window.neurixApp.navigateTo('create/image')">
+                        <i class="fas fa-plus me-2"></i> Create New
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="row mb-4">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="stats-card card-hover">
+                <div class="stats-icon bg-primary bg-gradient">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="stats-content">
+                    <h3 class="stats-number">{{stats.total_requests}}</h3>
+                    <p class="stats-label">Total Requests</p>
+                    <div class="stats-trend text-success">
+                        <i class="fas fa-arrow-up me-1"></i> 12% from last month
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="stats-card card-hover">
+                <div class="stats-icon bg-success bg-gradient">
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="stats-content">
+                    <h3 class="stats-number">{{stats.total_images}}</h3>
+                    <p class="stats-label">Images Generated</p>
+                    <div class="stats-trend text-success">
+                        <i class="fas fa-arrow-up me-1"></i> 24% from last month
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="stats-card card-hover">
+                <div class="stats-icon bg-warning bg-gradient">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="stats-content">
+                    <h3 class="stats-number">{{stats.total_videos}}</h3>
+                    <p class="stats-label">Videos Created</p>
+                    <div class="stats-trend text-success">
+                        <i class="fas fa-arrow-up me-1"></i> 18% from last month
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="stats-card card-hover">
+                <div class="stats-icon bg-info bg-gradient">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="stats-content">
+                    <h3 class="stats-number">{{stats.total_audio}}</h3>
+                    <p class="stats-label">Audio Processed</p>
+                    <div class="stats-trend text-danger">
+                        <i class="fas fa-arrow-down me-1"></i> 5% from last month
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="row">
+        <!-- Left Column -->
+        <div class="col-lg-8">
+            <!-- Quick Actions -->
+            <div class="card neurix-card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title">Quick Actions</h5>
+                    <div class="card-actions">
+                        <button class="btn btn-sm btn-outline-secondary">View All</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3 col-6">
+                            <a href="#create/image" class="quick-action-card">
+                                <div class="quick-action-icon bg-primary">
+                                    <i class="fas fa-image"></i>
+                                </div>
+                                <h6>Generate Image</h6>
+                                <p class="text-muted">AI image creation</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <a href="#create/video" class="quick-action-card">
+                                <div class="quick-action-icon bg-success">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <h6>Create Video</h6>
+                                <p class="text-muted">Text to video</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <a href="#create/audio" class="quick-action-card">
+                                <div class="quick-action-icon bg-warning">
+                                    <i class="fas fa-music"></i>
+                                </div>
+                                <h6>Generate Audio</h6>
+                                <p class="text-muted">Text to speech</p>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <a href="#automation" class="quick-action-card">
+                                <div class="quick-action-icon bg-info">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <h6>Automation</h6>
+                                <p class="text-muted">Create workflows</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card neurix-card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title">Recent Activity</h5>
+                    <div class="card-actions">
+                        <button class="btn btn-sm btn-outline-secondary" onclick="window.neurixApp.refreshActivity()">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="activity-timeline">
+                        {{#each activity}}
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-{{this.icon}}"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h6>{{this.title}}</h6>
+                                <p class="text-muted">{{this.description}}</p>
+                                <small class="text-muted">{{this.time}}</small>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="empty-state">
+                            <i class="fas fa-history empty-state-icon"></i>
+                            <h5 class="empty-state-title">No activity yet</h5>
+                            <p class="empty-state-description">
+                                Your recent activity will appear here.
+                            </p>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Performance -->
+            <div class="card neurix-card">
+                <div class="card-header">
+                    <h5 class="card-title">Model Performance</h5>
+                    <div class="card-actions">
+                        <select class="form-select form-select-sm" style="width: auto;">
+                            <option>Last 7 days</option>
+                            <option>Last 30 days</option>
+                            <option>Last 90 days</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="model-performance-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-lg-4">
+            <!-- System Health -->
+            <div class="card neurix-card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title">System Health</h5>
+                    <div class="card-actions">
+                        <span class="badge {{health.status_class}}">{{health.status}}</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="health-status">
+                        {{#each health.services}}
+                        <div class="health-item">
+                            <div class="health-service">
+                                <i class="fas fa-{{this.icon}} me-2"></i>
+                                {{this.name}}
+                            </div>
+                            <div class="health-status">
+                                <span class="badge bg-{{this.status_class}}">{{this.status}}</span>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                    
+                    <!-- Resource Usage -->
+                    <div class="resource-usage mt-4">
+                        <h6 class="mb-3">Resource Usage</h6>
+                        
+                        <div class="usage-item mb-3">
+                            <div class="usage-header">
+                                <span>CPU Usage</span>
+                                <span>{{health.system.cpu}}</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: {{health.system.cpu_value}}%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="usage-item mb-3">
+                            <div class="usage-header">
+                                <span>Memory Usage</span>
+                                <span>{{health.system.memory}}</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" style="width: {{health.system.memory_value}}%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="usage-item">
+                            <div class="usage-header">
+                                <span>Disk Usage</span>
+                                <span>{{health.system.disk}}</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" style="width: {{health.system.disk_value}}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="card neurix-card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title">Quick Stats</h5>
+                </div>
+                <div class="card-body">
+                    <div class="quick-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h6>Avg. Response Time</h6>
+                                <p class="stat-value">{{health.response_time}}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h6>Uptime</h6>
+                                <p class="stat-value">{{health.uptime}}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h6>Active Users</h6>
+                                <p class="stat-value">{{health.active_users}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Notifications -->
+            <div class="card neurix-card">
+                <div class="card-header">
+                    <h5 class="card-title">Notifications</h5>
+                    <div class="card-actions">
+                        <button class="btn btn-sm btn-outline-secondary">Mark All Read</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="notifications-list">
+                        {{#if notifications.length}}
+                            {{#each notifications}}
+                            <div class="notification-item {{#unless this.read}}unread{{/unless}}">
+                                <div class="notification-icon">
+                                    <i class="fas fa-{{this.icon}}"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <h6>{{this.title}}</h6>
+                                    <p class="text-muted">{{this.message}}</p>
+                                    <small class="text-muted">{{this.time}}</small>
+                                </div>
+                            </div>
+                            {{/each}}
+                        {{else}}
+                            <div class="empty-state">
+                                <i class="fas fa-bell empty-state-icon"></i>
+                                <p class="empty-state-description">No new notifications</p>
+                            </div>
+                        {{/if}}
+                    </div>
+                    
+                    <div class="text-center mt-3">
+                        <a href="#notifications" class="btn btn-sm btn-outline-primary">View All Notifications</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Initialize dashboard components
+function initializeDashboardComponents() {
+    // Initialize model performance chart
+    const ctx = document.getElementById('model-performance-chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [
+                {
+                    label: 'Image Generation',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    borderColor: 'rgb(99, 102, 241)',
+                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                    tension: 0.4
+                },
+                {
+                    label: 'Text Generation',
+                    data: [28, 48, 40, 19, 86, 27, 90],
+                    borderColor: 'rgb(16, 185, 129)',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    tension: 0.4
+                },
+                {
+                    label: 'Audio Processing',
+                    data: [18, 38, 50, 29, 46, 77, 60],
+                    borderColor: 'rgb(245, 158, 11)',
+                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                    tension: 0.4
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        drawBorder: false
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+    
+    // Refresh activity
+    window.neurixApp.refreshActivity = async function() {
+        try {
+            const response = await window.neurixApp.components.api.get('/activity/recent');
+            // Update activity list
+            console.log('Activity refreshed', response.data);
+        } catch (error) {
+            console.error('Failed to refresh activity:', error);
+        }
+    };
+}
+</script>
