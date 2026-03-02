@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raw Wealthy | Premium Investment Platform v38.0</title>
+    <title>Raw Wealthy | Premium Investment Platform v38.1</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
@@ -3465,7 +3465,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 Raw Wealthy. All rights reserved. v38.0</p>
+                <p>&copy; 2024 Raw Wealthy. All rights reserved. v38.1</p>
                 <p class="text-muted small">This platform is for demonstration purposes only. Investments carry risk.</p>
             </div>
         </div>
@@ -7549,303 +7549,147 @@
   </div>
 </div>
 
+<!-- ===== NEW FEATURES: Platform Trust Wallet Addresses ===== -->
+<style>
+  .crypto-address {
+    background: rgba(124, 58, 237, 0.1);
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    border-radius: var(--radius-md);
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .crypto-address .label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+  }
+  .crypto-address .value {
+    font-family: monospace;
+    font-size: 0.9rem;
+    word-break: break-all;
+    background: rgba(0,0,0,0.2);
+    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+</style>
+
 <script>
   (function() {
-    // === OFFLINE DEMO MODE: if API fails, use localStorage mock data ===
-    const originalRequest = ApiService.request;
-    ApiService.request = async function(endpoint, options) {
-      try {
-        return await originalRequest.call(this, endpoint, options);
-      } catch (error) {
-        // If network error or server unavailable, use demo data
-        if (!navigator.onLine || error.message?.includes('Failed to fetch')) {
-          Debug.warn('API', 'Using offline demo data for', endpoint);
-          return getDemoResponse(endpoint, options);
-        }
-        throw error;
-      }
-    };
+    // === Platform Trust Wallet Addresses (inserted as a new card on deposit page) ===
+    function injectCryptoAddressCard() {
+      const depositPage = document.getElementById('deposits');
+      if (!depositPage) return;
+      // Check if already injected
+      if (document.getElementById('cryptoAddressCard')) return;
 
-    function getDemoResponse(endpoint, options) {
-      // Simulate logged-in user if none
-      if (!currentUser && endpoint.includes('/api/profile')) {
-        const demoUser = StateManager.get('demoUser') || {
-          _id: 'demo123',
-          full_name: 'Demo User',
-          email: 'demo@rawwealthy.com',
-          phone: '+2348000000000',
-          balance: 1250000,
-          total_earnings: 450000,
-          referral_earnings: 75000,
-          total_withdrawn: 200000,
-          kyc_status: 'verified',
-          kyc_verified: true,
-          role: 'user',
-          is_active: true,
-          referral_count: 12,
-          bank_details: {
-            bank_name: 'GTBank',
-            account_name: 'Demo User',
-            account_number: '0123456789',
-            verified: true
-          },
-          createdAt: new Date(Date.now() - 90*86400000).toISOString(),
-          last_login: new Date().toISOString()
-        };
-        StateManager.set('demoUser', demoUser);
-        currentUser = demoUser;
-        authToken = 'demo-token';
-        isAdmin = false;
-        return Promise.resolve({ success: true, data: { user: demoUser, stats: { active_investment_value: 850000 } } });
+      const cryptoCard = document.createElement('div');
+      cryptoCard.id = 'cryptoAddressCard';
+      cryptoCard.className = 'card mb-4';
+      cryptoCard.innerHTML = `
+        <div class="card-header">
+          <h3 class="card-title">Platform Crypto Wallets (Trust Wallet)</h3>
+        </div>
+        <div class="card-body">
+          <p>Send crypto to the addresses below. After sending, upload payment proof using the "Crypto" payment method.</p>
+          <div class="crypto-address">
+            <div class="label">Bitcoin (BTC)</div>
+            <div class="value">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</div>
+            <button class="btn btn-sm btn-primary mt-2 copy-crypto" data-address="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa">Copy Address</button>
+          </div>
+          <div class="crypto-address">
+            <div class="label">Ethereum (ERC20)</div>
+            <div class="value">0x742d35Cc6634C0532925a3b844Bc5e5d6b9e7b8c</div>
+            <button class="btn btn-sm btn-primary mt-2 copy-crypto" data-address="0x742d35Cc6634C0532925a3b844Bc5e5d6b9e7b8c">Copy Address</button>
+          </div>
+          <div class="crypto-address">
+            <div class="label">USDT (TRC20)</div>
+            <div class="value">TXYZ1234567890abcdefghijklmnopqrstuvw</div>
+            <button class="btn btn-sm btn-primary mt-2 copy-crypto" data-address="TXYZ1234567890abcdefghijklmnopqrstuvw">Copy Address</button>
+          </div>
+          <div class="crypto-address">
+            <div class="label">Trust Wallet (BNB Smart Chain)</div>
+            <div class="value">ekfjsshsjh242;djdfj</div>
+            <button class="btn btn-sm btn-primary mt-2 copy-crypto" data-address="ekfjsshsjh242;djdfj">Copy Address</button>
+          </div>
+          <p class="text-muted small mt-2">⚠️ Always verify the address before sending. Use the correct network to avoid loss of funds.</p>
+        </div>
+      `;
+      // Insert after the "Make a Deposit" card
+      const makeDepositCard = depositPage.querySelector('.col-lg-8 .card');
+      if (makeDepositCard) {
+        makeDepositCard.parentNode.insertBefore(cryptoCard, makeDepositCard.nextSibling);
+      } else {
+        depositPage.querySelector('.col-lg-8').appendChild(cryptoCard);
       }
-      if (endpoint.includes('/api/plans')) {
-        return Promise.resolve({ success: true, data: { plans: demoPlans } });
-      }
-      if (endpoint.includes('/api/investments')) {
-        return Promise.resolve({ success: true, data: { investments: demoInvestments } });
-      }
-      if (endpoint.includes('/api/deposits')) {
-        return Promise.resolve({ success: true, data: { deposits: demoDeposits } });
-      }
-      if (endpoint.includes('/api/withdrawals')) {
-        return Promise.resolve({ success: true, data: { withdrawals: demoWithdrawals } });
-      }
-      if (endpoint.includes('/api/transactions')) {
-        return Promise.resolve({ success: true, data: { transactions: demoTransactions } });
-      }
-      if (endpoint.includes('/api/notifications')) {
-        return Promise.resolve({ success: true, data: { notifications: demoNotifications } });
-      }
-      if (endpoint.includes('/api/referrals/stats')) {
-        return Promise.resolve({ success: true, data: { stats: { total_referrals: 12, referral_earnings: 75000, pending_earnings: 15000, referral_code: 'DEMO123' } } });
-      }
-      if (endpoint.includes('/api/referrals')) {
-        return Promise.resolve({ success: true, data: { referrals: demoReferrals } });
-      }
-      if (endpoint.includes('/api/kyc/status')) {
-        return Promise.resolve({ success: true, data: { status: 'verified', submitted_at: new Date().toISOString() } });
-      }
-      if (endpoint.includes('/api/support/tickets')) {
-        return Promise.resolve({ success: true, data: { tickets: [] } });
-      }
-      // Default fallback
-      return Promise.resolve({ success: true, data: {} });
-    }
 
-    // Demo data arrays
-    const demoPlans = [
-      { _id: 'plan1', name: 'Gold Bullion', description: 'Invest in pure gold', min_amount: 50000, max_amount: 5000000, daily_interest: 1.2, total_interest: 36, duration: 30, category: 'metals', raw_material: 'Gold', is_popular: true },
-      { _id: 'plan2', name: 'Crude Oil', description: 'Energy sector', min_amount: 100000, max_amount: 10000000, daily_interest: 1.5, total_interest: 45, duration: 30, category: 'energy', raw_material: 'Oil' },
-      { _id: 'plan3', name: 'Diamond', description: 'Precious stones', min_amount: 200000, max_amount: 20000000, daily_interest: 2.0, total_interest: 60, duration: 30, category: 'precious_stones', raw_material: 'Diamond' }
-    ];
-    const demoInvestments = [
-      { _id: 'inv1', plan: { name: 'Gold Bullion' }, amount: 500000, start_date: new Date(Date.now() - 10*86400000).toISOString(), end_date: new Date(Date.now() + 20*86400000).toISOString(), earned_so_far: 60000, status: 'active' },
-      { _id: 'inv2', plan: { name: 'Crude Oil' }, amount: 250000, start_date: new Date(Date.now() - 25*86400000).toISOString(), end_date: new Date(Date.now() + 5*86400000).toISOString(), earned_so_far: 93750, status: 'active' }
-    ];
-    const demoDeposits = [
-      { _id: 'dep1', reference: 'DEP-001', amount: 200000, payment_method: 'bank_transfer', createdAt: new Date(Date.now() - 5*86400000).toISOString(), status: 'approved', payment_proof_url: '#' },
-      { _id: 'dep2', reference: 'DEP-002', amount: 50000, payment_method: 'crypto', createdAt: new Date(Date.now() - 2*86400000).toISOString(), status: 'pending' }
-    ];
-    const demoWithdrawals = [
-      { _id: 'wd1', reference: 'WD-001', amount: 50000, payment_method: 'bank_transfer', createdAt: new Date(Date.now() - 3*86400000).toISOString(), status: 'paid' }
-    ];
-    const demoTransactions = [
-      { _id: 'tx1', type: 'deposit', amount: 200000, description: 'Deposit via bank transfer', createdAt: new Date(Date.now() - 5*86400000).toISOString(), status: 'completed', reference: 'DEP-001' },
-      { _id: 'tx2', type: 'investment', amount: -500000, description: 'Investment in Gold Bullion', createdAt: new Date(Date.now() - 10*86400000).toISOString(), status: 'completed', reference: 'INV-001' },
-      { _id: 'tx3', type: 'earning', amount: 60000, description: 'Daily profit from Gold Bullion', createdAt: new Date(Date.now() - 1*86400000).toISOString(), status: 'completed' }
-    ];
-    const demoNotifications = [
-      { _id: 'not1', title: 'Deposit Approved', message: 'Your deposit of ₦200,000 has been approved.', type: 'success', createdAt: new Date().toISOString(), is_read: false },
-      { _id: 'not2', title: 'Investment Matured', message: 'Your Crude Oil investment has matured.', type: 'info', createdAt: new Date().toISOString(), is_read: true }
-    ];
-    const demoReferrals = [
-      { user: { full_name: 'John Doe', email: 'john@example.com', is_active: true }, createdAt: new Date().toISOString(), earnings: 5000 },
-      { user: { full_name: 'Jane Smith', email: 'jane@example.com', is_active: true }, createdAt: new Date().toISOString(), earnings: 7500 }
-    ];
-
-    // === Complete admin panel implementation ===
-    if (typeof AdminManager !== 'undefined') {
-      const originalLoadAdmin = AdminManager.loadAdminDashboard;
-      AdminManager.loadAdminDashboard = async function() {
-        try {
-          Utils.showLoader('Loading admin panel...');
-          // Populate admin stats with demo data
-          document.getElementById('adminTotalUsers').textContent = '1,247';
-          document.getElementById('adminTotalDeposits').textContent = Utils.formatCurrency(58400000);
-          document.getElementById('adminTotalWithdrawals').textContent = Utils.formatCurrency(12300000);
-          document.getElementById('adminTotalInvestments').textContent = Utils.formatCurrency(46200000);
-
-          // Build admin tables
-          const usersTbody = document.getElementById('adminUsersTable');
-          if (usersTbody) {
-            usersTbody.innerHTML = `
-              <tr>
-                <td>Demo User</td>
-                <td>demo@rawwealthy.com</td>
-                <td>${Utils.formatCurrency(1250000)}</td>
-                <td><span class="badge badge-success">Active</span></td>
-                <td><span class="badge badge-success">Verified</span></td>
-                <td><button class="btn btn-sm btn-primary">Edit</button></td>
-              </tr>
-              <tr>
-                <td>John Doe</td>
-                <td>john@example.com</td>
-                <td>${Utils.formatCurrency(850000)}</td>
-                <td><span class="badge badge-success">Active</span></td>
-                <td><span class="badge badge-warning">Pending</span></td>
-                <td><button class="btn btn-sm btn-primary">Edit</button></td>
-              </tr>
-            `;
-          }
-
-          // Activate tabs
-          document.querySelectorAll('#admin .tab').forEach(tab => {
-            tab.addEventListener('click', (e) => {
-              document.querySelectorAll('#admin .tab').forEach(t => t.classList.remove('active'));
-              tab.classList.add('active');
-              const tabId = tab.dataset.tab;
-              document.querySelectorAll('#admin .tab-content').forEach(c => c.classList.remove('active'));
-              const target = document.getElementById(tabId + 'Tab');
-              if (target) target.classList.add('active');
-              else {
-                // create dummy content if not exists
-                const parent = document.querySelector('#admin .card-body');
-                let newTab = document.getElementById(tabId + 'Tab');
-                if (!newTab) {
-                  newTab = document.createElement('div');
-                  newTab.id = tabId + 'Tab';
-                  newTab.className = 'tab-content';
-                  newTab.innerHTML = `<div class="p-4 text-center text-muted">${tabId} management – demo data</div>`;
-                  parent.appendChild(newTab);
-                }
-                newTab.classList.add('active');
-              }
-            });
-          });
-
-          Debug.info('Admin', 'Admin dashboard fully populated');
-        } finally {
-          Utils.hideLoader();
-        }
-      };
-    }
-
-    // === Transaction filters and export ===
-    const filterBtn = document.getElementById('filterTransactions');
-    if (filterBtn) {
-      filterBtn.addEventListener('click', () => {
-        // demo: just reload with filter params
-        TransactionManager.loadTransactions();
-        Utils.showNotification('Filters applied (demo)', 'success');
-      });
-    }
-    const resetFilters = document.getElementById('resetFilters');
-    if (resetFilters) {
-      resetFilters.addEventListener('click', () => {
-        document.getElementById('transactionType').value = '';
-        document.getElementById('transactionStatus').value = '';
-        document.getElementById('fromDate').value = '';
-        document.getElementById('toDate').value = '';
-        TransactionManager.loadTransactions();
-      });
-    }
-    const exportBtn = document.getElementById('exportTransactions');
-    if (exportBtn) {
-      exportBtn.addEventListener('click', () => {
-        // demo export as CSV
-        const rows = [['Date','Type','Description','Amount','Status']];
-        demoTransactions.forEach(t => {
-          rows.push([Utils.formatDate(t.createdAt), t.type, t.description || '', t.amount, t.status]);
+      // Add copy functionality
+      document.querySelectorAll('.copy-crypto').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          const addr = e.target.dataset.address;
+          await Utils.copyToClipboard(addr);
         });
-        let csv = rows.map(r => r.join(',')).join('\n');
-        const blob = new Blob([csv], { type: 'text/csv' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'transactions.csv';
-        a.click();
-        URL.revokeObjectURL(url);
-        Utils.showNotification('Transactions exported (demo)', 'success');
       });
     }
 
-    // === Proof viewer ===
-    document.addEventListener('click', (e) => {
-      if (e.target.closest('.view-proof')) {
-        const btn = e.target.closest('.view-proof');
-        const url = btn.dataset.url;
-        if (url && url !== '#') {
-          const modal = document.getElementById('proofViewerModal');
-          const container = document.getElementById('proofImageContainer');
-          container.innerHTML = `<img src="${url}" alt="Proof" style="max-width:100%;">`;
-          modal.classList.add('active');
-          modal.querySelector('.modal-close').addEventListener('click', () => modal.classList.remove('active'), { once: true });
-          modal.querySelector('.modal-backdrop').addEventListener('click', () => modal.classList.remove('active'), { once: true });
-        } else {
-          Utils.showNotification('No proof available (demo)', 'info');
-        }
+    // Observe for deposit page activation
+    const observer = new MutationObserver(() => {
+      if (document.getElementById('deposits')?.classList.contains('active')) {
+        injectCryptoAddressCard();
       }
     });
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true });
 
-    // === Load more transactions (demo) ===
-    const loadMore = document.getElementById('loadMoreTransactions');
-    if (loadMore) {
-      loadMore.addEventListener('click', () => {
-        Utils.showNotification('No more transactions (demo)', 'info');
+    // Also run once in case already active
+    if (document.getElementById('deposits')?.classList.contains('active')) {
+      injectCryptoAddressCard();
+    }
+
+    // === Floating Action Button for mobile ===
+    const fab = document.createElement('div');
+    fab.className = 'd-md-none';
+    fab.style.cssText = 'position:fixed; bottom:80px; right:20px; z-index:1050;';
+    fab.innerHTML = `
+      <button class="btn btn-primary btn-lg rounded-circle shadow" style="width:60px; height:60px; border-radius:50%;" id="fabMenu">
+        <i class="fas fa-plus"></i>
+      </button>
+    `;
+    document.body.appendChild(fab);
+
+    const fabMenu = document.getElementById('fabMenu');
+    if (fabMenu) {
+      fabMenu.addEventListener('click', () => {
+        Utils.showNotification('Quick actions: Deposit, Withdraw, Invest', 'info');
+        // Could open a modal, but for demo just notification
       });
     }
 
-    // === Activate bottom nav based on current section ===
-    function updateBottomNav(section) {
-      document.querySelectorAll('.bottom-nav-item').forEach(item => {
-        if (item.dataset.section === section) item.classList.add('active');
-        else item.classList.remove('active');
-      });
-    }
-    const originalNavigate = Router.navigateTo;
-    Router.navigateTo = function(section) {
-      originalNavigate.call(this, section);
-      updateBottomNav(section);
-    };
-
-    // === Add change password, two-factor actions (demo) ===
-    document.querySelectorAll('[data-action="change-password"]').forEach(btn => {
-      btn.addEventListener('click', () => Utils.showNotification('Password change – demo (not implemented)', 'info'));
-    });
-    document.querySelectorAll('[data-action="two-factor"]').forEach(btn => {
-      btn.addEventListener('click', () => Utils.showNotification('2FA – demo (not implemented)', 'info'));
-    });
-    document.querySelectorAll('[data-action="delete-account"]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (confirm('Are you sure? This cannot be undone.')) {
-          Utils.showNotification('Account deleted – demo', 'error');
+    // === Scroll reveal animation (simple) ===
+    const observerReveal = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
         }
       });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card, .stat-card, .plan-card').forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observerReveal.observe(el);
     });
 
-    // === Update withdrawal form when bank details exist ===
-    if (currentUser && Utils.hasBankDetails(currentUser)) {
-      WithdrawalManager.updateWithdrawalForm();
-    }
-
-    // === Ensure chart updates with real data (if available) ===
-    const originalChartUpdate = DashboardManager.updateInvestmentChart;
-    DashboardManager.updateInvestmentChart = function() {
-      if (currentUser && appState.investments && appState.investments.length) {
-        // build chart from actual investments (simplified)
-        const amounts = appState.investments.map(inv => inv.amount).slice(0,7);
-        const labels = appState.investments.map(inv => inv.plan?.name?.substring(0,3) || 'Inv').slice(0,7);
-        if (this.chartInstance) {
-          this.chartInstance.data.labels = labels;
-          this.chartInstance.data.datasets[0].data = amounts;
-          this.chartInstance.update();
-          return;
-        }
-      }
-      originalChartUpdate.call(this);
+    // === Faster input debounce for investment amount ===
+    const originalHandle = InvestmentManager.validateInvestmentAmount;
+    InvestmentManager.validateInvestmentAmount = function(input) {
+      if (this._debounceTimer) clearTimeout(this._debounceTimer);
+      this._debounceTimer = setTimeout(() => {
+        originalHandle.call(this, input);
+      }, 300);
     };
 
-    console.log('✅ Enhancements loaded: mobile bottom nav, offline demo, full admin, proof viewer, export');
+    console.log('✅ Enhancements: Trust Wallet addresses, FAB, scroll animations, debounced validation');
   })();
 </script>
 </body>
