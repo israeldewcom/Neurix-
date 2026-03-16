@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>APC Private Connect · Biometric NIN · Advanced Groups</title>
-<!-- Original styles preserved, new ones added at the end -->
+<!-- Original styles preserved, new ones added throughout -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -1102,13 +1102,30 @@ body.offline .offline-indicator {
     display: none; /* hide on desktop */
   }
 }
+
+/* ===== APC CUSTOM BRANDING ===== */
+.apc-broom-logo {
+  background: linear-gradient(135deg, #00843E, #00C896);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.broom-icon {
+  color: #00843E;
+  filter: drop-shadow(0 0 5px rgba(0,200,150,0.5));
+}
+.apc-green-white-green {
+  background: linear-gradient(90deg, #00843E 0%, #ffffff 50%, #00843E 100%);
+  height: 4px;
+  width: 100%;
+}
 </style>
 </head>
 <body>
 
 <!-- SPLASH (unchanged) -->
 <div id="splash">
-  <div class="splash-logo"><i class="fas fa-shield-halved"></i></div>
+  <div class="splash-logo"><i class="fas fa-broom broom-icon"></i></div>
   <div class="splash-title">APC <span>Private</span> Connect</div>
   <div style="font-size:0.82rem;color:var(--text-muted)">Biometric NIN • Secure Groups</div>
   <div class="splash-loader"><div class="splash-loader-bar"></div></div>
@@ -1118,7 +1135,7 @@ body.offline .offline-indicator {
 <div id="auth-screen">
   <!-- LOGIN PANEL -->
   <div id="login-panel" class="auth-card">
-    <div class="auth-logo"><i class="fas fa-shield-halved"></i></div>
+    <div class="auth-logo"><i class="fas fa-broom broom-icon"></i></div>
     <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:4px">Welcome back</h2>
     <p style="font-size:0.83rem;color:var(--text-muted);margin-bottom:24px">Sign in to APC Private Connect</p>
     <div class="auth-tabs">
@@ -1179,7 +1196,7 @@ body.offline .offline-indicator {
 
   <!-- REGISTER PANEL (enhanced with NIN & fingerprint) -->
   <div id="register-panel" class="auth-card" style="display:none">
-    <div class="auth-logo" style="background:linear-gradient(135deg,var(--info),var(--accent2))"><i class="fas fa-user-plus"></i></div>
+    <div class="auth-logo" style="background:linear-gradient(135deg,var(--info),var(--accent2))"><i class="fas fa-broom broom-icon"></i></div>
     <h2 style="font-size:1.35rem;font-weight:800;margin-bottom:24px">NIN Verification</h2>
     <div class="form-group">
       <label class="form-label">Full Name (as on NIN)</label>
@@ -1256,7 +1273,7 @@ body.offline .offline-indicator {
   <!-- SIDEBAR (unchanged, but we'll add new nav items for missing pages) -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
-      <div class="brand-logo"><i class="fas fa-shield-halved"></i></div>
+      <div class="brand-logo"><i class="fas fa-broom broom-icon"></i></div>
       <div>
         <div class="brand-name">APC <span>Connect</span></div>
         <div style="font-size:0.7rem;color:var(--text-muted)">Biometric Secure</div>
@@ -1276,6 +1293,13 @@ body.offline .offline-indicator {
     <a class="nav-item active" onclick="navigate('feed')">
       <span class="nav-icon"><i class="fas fa-newspaper"></i></span> Feed
     </a>
+    <a class="nav-item" onclick="navigate('stories')">
+      <span class="nav-icon"><i class="fas fa-history"></i></span> Stories
+      <span class="nav-badge" id="stories-badge">3</span>
+    </a>
+    <a class="nav-item" onclick="navigate('reels')">
+      <span class="nav-icon"><i class="fas fa-film"></i></span> Reels
+    </a>
     <a class="nav-item" onclick="navigate('groups')">
       <span class="nav-icon"><i class="fas fa-users"></i></span> Groups
       <span class="nav-badge" id="groups-badge">4</span>
@@ -1286,6 +1310,15 @@ body.offline .offline-indicator {
     </a>
     <a class="nav-item" onclick="navigate('meetings')">
       <span class="nav-icon"><i class="fas fa-video"></i></span> Meetings
+    </a>
+    <a class="nav-item" onclick="navigate('streams')">
+      <span class="nav-icon"><i class="fas fa-tv"></i></span> Live Streams
+    </a>
+    <a class="nav-item" onclick="navigate('marketplace')">
+      <span class="nav-icon"><i class="fas fa-store"></i></span> Marketplace
+    </a>
+    <a class="nav-item" onclick="navigate('events')">
+      <span class="nav-icon"><i class="fas fa-calendar-alt"></i></span> Events
     </a>
     <a class="nav-item" onclick="navigate('notifications')">
       <span class="nav-icon"><i class="fas fa-bell"></i></span> Notifications
@@ -1357,7 +1390,7 @@ body.offline .offline-indicator {
     <!-- CONTENT AREA (all pages) -->
     <div class="content-area">
 
-      <!-- FEED PAGE -->
+      <!-- FEED PAGE (original) -->
       <div class="page active" id="page-feed">
         <div class="feed-layout">
           <div>
@@ -1430,6 +1463,60 @@ body.offline .offline-indicator {
               <div class="widget-title"><i class="fas fa-circle" style="color:var(--primary);font-size:0.6rem"></i> Online Now</div>
               <div id="online-members-list"></div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STORIES PAGE (new) -->
+      <div class="page" id="page-stories">
+        <div class="section-header">
+          <div class="section-title">Stories</div>
+          <span class="section-action" onclick="showToast('New story coming soon!')">Add Story</span>
+        </div>
+        <div class="stories-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px;margin-bottom:20px;">
+          <div class="story-card" style="background:linear-gradient(135deg,var(--primary),var(--accent2));border-radius:16px;padding:16px;text-align:center;color:#fff;cursor:pointer;" onclick="showToast('View story')">
+            <i class="fas fa-plus-circle" style="font-size:2rem;"></i>
+            <div style="margin-top:8px;font-size:0.8rem;">Create Story</div>
+          </div>
+          <div class="story-card" style="background:linear-gradient(135deg,#f093fb,#f5576c);border-radius:16px;padding:16px;text-align:center;color:#fff;cursor:pointer;" onclick="showToast('Emeka\'s story')">
+            <div class="user-avatar" style="width:48px;height:48px;margin:0 auto;border:2px solid #fff;">EC</div>
+            <div style="margin-top:8px;font-size:0.8rem;">Emeka Chukwu</div>
+            <div style="font-size:0.7rem;opacity:0.8;">2h ago</div>
+          </div>
+          <div class="story-card" style="background:linear-gradient(135deg,#4facfe,#00f2fe);border-radius:16px;padding:16px;text-align:center;color:#fff;cursor:pointer;" onclick="showToast('Fatima\'s story')">
+            <div class="user-avatar" style="width:48px;height:48px;margin:0 auto;border:2px solid #fff;">FA</div>
+            <div style="margin-top:8px;font-size:0.8rem;">Fatima Aliyu</div>
+            <div style="font-size:0.7rem;opacity:0.8;">4h ago</div>
+          </div>
+          <div class="story-card" style="background:linear-gradient(135deg,#43e97b,#38f9d7);border-radius:16px;padding:16px;text-align:center;color:#fff;cursor:pointer;" onclick="showToast('Babatunde\'s story')">
+            <div class="user-avatar" style="width:48px;height:48px;margin:0 auto;border:2px solid #fff;">BO</div>
+            <div style="margin-top:8px;font-size:0.8rem;">Babatunde Ojo</div>
+            <div style="font-size:0.7rem;opacity:0.8;">6h ago</div>
+          </div>
+        </div>
+        <div class="card-apc card-body-apc">
+          <p class="text-muted">Stories disappear after 24 hours. Tap to view.</p>
+        </div>
+      </div>
+
+      <!-- REELS PAGE (new) -->
+      <div class="page" id="page-reels">
+        <div class="section-header">
+          <div class="section-title">Reels</div>
+          <span class="section-action" onclick="showToast('Upload reel coming soon!')">Upload</span>
+        </div>
+        <div class="reels-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">
+          <div class="reel-card" style="background:var(--bg-card);border-radius:var(--radius);overflow:hidden;cursor:pointer;" onclick="showToast('Playing reel...')">
+            <div style="height:300px;background:linear-gradient(135deg,#f093fb,#f5576c);display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;"><i class="fas fa-play-circle"></i></div>
+            <div style="padding:12px;"><strong>Campaign Highlights</strong><div style="font-size:0.75rem;color:var(--text-muted)">Emeka Chukwu · 2.4k views</div></div>
+          </div>
+          <div class="reel-card" style="background:var(--bg-card);border-radius:var(--radius);overflow:hidden;cursor:pointer;" onclick="showToast('Playing reel...')">
+            <div style="height:300px;background:linear-gradient(135deg,#4facfe,#00f2fe);display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;"><i class="fas fa-play-circle"></i></div>
+            <div style="padding:12px;"><strong>FCT Rally</strong><div style="font-size:0.75rem;color:var(--text-muted)">Aisha Okafor · 1.8k views</div></div>
+          </div>
+          <div class="reel-card" style="background:var(--bg-card);border-radius:var(--radius);overflow:hidden;cursor:pointer;" onclick="showToast('Playing reel...')">
+            <div style="height:300px;background:linear-gradient(135deg,#43e97b,#38f9d7);display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;"><i class="fas fa-play-circle"></i></div>
+            <div style="padding:12px;"><strong>Policy Debate</strong><div style="font-size:0.75rem;color:var(--text-muted)">Ngozi Eze · 3.2k views</div></div>
           </div>
         </div>
       </div>
@@ -1517,6 +1604,108 @@ body.offline .offline-indicator {
           <button class="post-action-btn" onclick="filterMeetings('ended',this)">Past</button>
         </div>
         <div class="meetings-grid" id="meetings-grid"></div>
+      </div>
+
+      <!-- STREAMS PAGE (new) -->
+      <div class="page" id="page-streams">
+        <div class="section-header">
+          <div class="section-title">Live Streams</div>
+          <span class="section-action" onclick="openVideoCall('New Stream')">Go Live</span>
+        </div>
+        <div class="streams-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;">
+          <div class="stream-card" style="background:var(--bg-card);border-radius:var(--radius);overflow:hidden;cursor:pointer;" onclick="openVideoCall('NEC Live')">
+            <div style="height:180px;background:linear-gradient(135deg,var(--danger),var(--warning));position:relative;">
+              <span style="position:absolute;top:10px;left:10px;background:var(--danger);color:#fff;padding:4px 8px;border-radius:4px;font-size:0.7rem;font-weight:700;"><i class="fas fa-circle" style="font-size:0.5rem;"></i> LIVE</span>
+              <span style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,0.6);color:#fff;padding:2px 6px;border-radius:4px;font-size:0.7rem;">1.2k watching</span>
+            </div>
+            <div style="padding:14px;">
+              <div style="font-weight:700;">NEC Plenary Session</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Emeka Chukwu · Started 10 min ago</div>
+            </div>
+          </div>
+          <div class="stream-card" style="background:var(--bg-card);border-radius:var(--radius);overflow:hidden;cursor:pointer;" onclick="openVideoCall('FCT Townhall')">
+            <div style="height:180px;background:linear-gradient(135deg,var(--primary),var(--accent2));position:relative;">
+              <span style="position:absolute;top:10px;left:10px;background:var(--danger);color:#fff;padding:4px 8px;border-radius:4px;font-size:0.7rem;font-weight:700;"><i class="fas fa-circle" style="font-size:0.5rem;"></i> LIVE</span>
+              <span style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,0.6);color:#fff;padding:2px 6px;border-radius:4px;font-size:0.7rem;">876 watching</span>
+            </div>
+            <div style="padding:14px;">
+              <div style="font-weight:700;">FCT Townhall</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Aisha Okafor · Started 25 min ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MARKETPLACE PAGE (new) -->
+      <div class="page" id="page-marketplace">
+        <div class="section-header">
+          <div class="section-title">APC Marketplace</div>
+          <span class="section-action" onclick="showToast('List item coming soon!')">Sell</span>
+        </div>
+        <div class="marketplace-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">
+          <div class="market-item" style="background:var(--bg-card);border-radius:var(--radius);overflow:hidden;">
+            <div style="height:150px;background:var(--bg-card2);display:flex;align-items:center;justify-content:center;color:var(--text-muted);"><i class="fas fa-tshirt fa-3x"></i></div>
+            <div style="padding:12px;">
+              <div style="font-weight:700;">APC Cap</div>
+              <div style="color:var(--primary);font-weight:600;">₦3,500</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">by Delegate Store</div>
+            </div>
+          </div>
+          <div class="market-item" style="background:var(--bg-card);border-radius:var(--radius);overflow:hidden;">
+            <div style="height:150px;background:var(--bg-card2);display:flex;align-items:center;justify-content:center;color:var(--text-muted);"><i class="fas fa-mug-hot fa-3x"></i></div>
+            <div style="padding:12px;">
+              <div style="font-weight:700;">Campaign Mug</div>
+              <div style="color:var(--primary);font-weight:600;">₦2,200</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">by APC Merch</div>
+            </div>
+          </div>
+          <div class="market-item" style="background:var(--bg-card);border-radius:var(--radius);overflow:hidden;">
+            <div style="height:150px;background:var(--bg-card2);display:flex;align-items:center;justify-content:center;color:var(--text-muted);"><i class="fas fa-flag fa-3x"></i></div>
+            <div style="padding:12px;">
+              <div style="font-weight:700;">Party Flag</div>
+              <div style="color:var(--primary);font-weight:600;">₦5,000</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">by Zone Supplies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENTS PAGE (new) -->
+      <div class="page" id="page-events">
+        <div class="section-header">
+          <div class="section-title">Upcoming Events</div>
+          <span class="section-action" onclick="openModal('create-event-modal')">Create Event</span>
+        </div>
+        <div class="events-list">
+          <div class="event-card" style="background:var(--bg-card);border-radius:var(--radius);padding:18px;margin-bottom:12px;">
+            <div style="display:flex;gap:16px;">
+              <div style="background:var(--primary-glow);border-radius:12px;padding:10px;text-align:center;min-width:60px;">
+                <div style="font-size:1.4rem;font-weight:800;">15</div>
+                <div style="font-size:0.7rem;">DEC</div>
+              </div>
+              <div>
+                <div style="font-weight:700;">National Convention</div>
+                <div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;"><i class="fas fa-map-marker-alt" style="margin-right:6px;"></i> Eagle Square, Abuja</div>
+                <div style="font-size:0.8rem;color:var(--text-muted);"><i class="fas fa-clock" style="margin-right:6px;"></i> 10:00 AM – 4:00 PM</div>
+                <div style="margin-top:8px;"><span class="badge-green">1.2k attending</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="event-card" style="background:var(--bg-card);border-radius:var(--radius);padding:18px;margin-bottom:12px;">
+            <div style="display:flex;gap:16px;">
+              <div style="background:var(--primary-glow);border-radius:12px;padding:10px;text-align:center;min-width:60px;">
+                <div style="font-size:1.4rem;font-weight:800;">20</div>
+                <div style="font-size:0.7rem;">DEC</div>
+              </div>
+              <div>
+                <div style="font-weight:700;">FCT Zonal Meeting</div>
+                <div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;"><i class="fas fa-map-marker-alt" style="margin-right:6px;"></i> Party Secretariat, Abuja</div>
+                <div style="font-size:0.8rem;color:var(--text-muted);"><i class="fas fa-clock" style="margin-right:6px;"></i> 2:00 PM – 5:00 PM</div>
+                <div style="margin-top:8px;"><span class="badge-green">78 attending</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- NOTIFICATIONS PAGE (unchanged) -->
@@ -1719,9 +1908,18 @@ body.offline .offline-indicator {
     <i class="fas fa-home"></i>
     <span>Feed</span>
   </a>
+  <a class="mobile-nav-item" onclick="navigateMobile('stories', event)">
+    <i class="fas fa-history"></i>
+    <span>Stories</span>
+  </a>
+  <a class="mobile-nav-item" onclick="navigateMobile('reels', event)">
+    <i class="fas fa-film"></i>
+    <span>Reels</span>
+  </a>
   <a class="mobile-nav-item" onclick="navigateMobile('groups', event)">
     <i class="fas fa-users"></i>
     <span>Groups</span>
+    <span class="nav-badge mobile-badge" id="mobile-groups-badge">4</span>
   </a>
   <a class="mobile-nav-item" onclick="navigateMobile('chat', event)">
     <i class="fas fa-comment"></i>
@@ -1919,6 +2117,27 @@ body.offline .offline-indicator {
     <div class="modal-footer">
       <button class="btn-modal-cancel" onclick="closeModal('create-group-modal')">Cancel</button>
       <button class="btn-modal-submit" onclick="createGroup()">Create Group</button>
+    </div>
+  </div>
+</div>
+
+<!-- Create Event Modal (new) -->
+<div class="modal-overlay" id="create-event-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Create Event</div>
+      <button class="modal-close" onclick="closeModal('create-event-modal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label">Event Title</label><input class="form-control-apc" id="new-event-title" placeholder="e.g. Zonal Rally"></div>
+      <div class="form-group"><label class="form-label">Date</label><input class="form-control-apc" type="date" id="new-event-date"></div>
+      <div class="form-group"><label class="form-label">Time</label><input class="form-control-apc" type="time" id="new-event-time"></div>
+      <div class="form-group"><label class="form-label">Location</label><input class="form-control-apc" id="new-event-location" placeholder="Venue address"></div>
+      <div class="form-group"><label class="form-label">Description</label><textarea class="form-control-apc" rows="3" placeholder="Event details…"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-modal-cancel" onclick="closeModal('create-event-modal')">Cancel</button>
+      <button class="btn-modal-submit" onclick="createEvent()">Create Event</button>
     </div>
   </div>
 </div>
@@ -2311,7 +2530,7 @@ function renderNewPages() {
 }
 
 // --- NAVIGATION (unchanged) ---
-const PAGE_TITLES = { feed:'News Feed', groups:'Groups', chat:'Messages', meetings:'Meetings', notifications:'Notifications', profile:'My Profile', admin:'Admin Dashboard', search:'Search', directory:'Directory', recordings:'Recordings', settings:'Settings', help:'Help', about:'About' };
+const PAGE_TITLES = { feed:'News Feed', stories:'Stories', reels:'Reels', groups:'Groups', chat:'Messages', meetings:'Meetings', streams:'Live Streams', marketplace:'Marketplace', events:'Events', notifications:'Notifications', profile:'My Profile', admin:'Admin Dashboard', search:'Search', directory:'Directory', recordings:'Recordings', settings:'Settings', help:'Help', about:'About' };
 function navigate(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -3078,6 +3297,16 @@ document.addEventListener('click', e => {
     e.target.classList.remove('open');
   }
 });
+
+// Create Event function
+function createEvent() {
+  const title = document.getElementById('new-event-title')?.value.trim();
+  const date = document.getElementById('new-event-date')?.value;
+  const time = document.getElementById('new-event-time')?.value;
+  if (!title || !date || !time) { showToast('Please fill all fields','error'); return; }
+  showToast(`Event "${title}" created!`,'success');
+  closeModal('create-event-modal');
+}
 
 // --- TOAST (unchanged) ---
 let toastId = 0;
