@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
 <meta name="theme-color" content="#00843D"/>
 <meta name="description" content="APC Private Connect - Official Digital Platform of the All Progressives Congress"/>
-<title>APC Private Connect v3.0</title>
+<title>APC Private Connect v4.0</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
@@ -470,7 +470,7 @@ textarea.form-input{resize:vertical;min-height:80px}
 }
 *{transition:background-color .3s,border-color .3s,color .15s}
 
-/* ─── ENHANCED ADDITIONS v3.0 ─── */
+/* ─── ENHANCED ADDITIONS v4.0 ─── */
 .wallet-card{background:linear-gradient(135deg,var(--green-dark),var(--green));border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;color:#fff}
 .wallet-balance{font-size:36px;font-weight:800;margin:12px 0 4px}
 .wallet-label{font-size:12px;opacity:.8}
@@ -528,6 +528,62 @@ textarea.form-input{resize:vertical;min-height:80px}
 .live-tag{background:var(--error);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;animation:pulse 1.5s ease infinite}
 .notif-icon.follow{background:rgba(0,200,150,.15);color:var(--success)}
 .notif-icon.event{background:rgba(255,165,2,.15);color:var(--warn)}
+
+/* ─── NEW FEATURE: CREATE POST FULL PAGE ─── */
+#page-create-post .page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+#post-media-preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+#post-media-preview img{width:80px;height:80px;object-fit:cover;border-radius:8px}
+
+/* ─── NEW FEATURE: WITHDRAWAL FULL PAGE ─── */
+#withdraw-history .transaction-item{border-bottom:1px solid var(--border);padding:12px 0}
+.withdrawal-status{padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.withdrawal-status.completed{background:rgba(0,200,150,.15);color:var(--success)}
+.withdrawal-status.pending{background:rgba(255,165,2,.15);color:var(--warn)}
+.withdrawal-status.failed{background:rgba(255,71,87,.15);color:var(--error)}
+
+/* ─── NEW FEATURE: VOICE NOTES PAGE ─── */
+.voice-note-item{display:flex;align-items:center;gap:12px;padding:12px;border-bottom:1px solid var(--border)}
+.voice-waveform{flex:1;height:32px;background:linear-gradient(90deg,var(--green) 0%,var(--green-light) 100%);border-radius:16px;position:relative;overflow:hidden}
+.voice-play-btn{width:36px;height:36px;border-radius:50%;background:var(--card2);display:flex;align-items:center;justify-content:center;cursor:pointer}
+
+/* ─── NEW FEATURE: REEL DRAFTS ─── */
+.draft-item{display:flex;gap:12px;padding:12px;border-bottom:1px solid var(--border);align-items:center}
+.draft-thumb{width:60px;height:60px;border-radius:8px;background:linear-gradient(135deg,var(--bg3),var(--bg4));display:flex;align-items:center;justify-content:center;font-size:24px}
+
+/* ─── NEW FEATURE: HELP CENTER ─── */
+.help-category{margin-bottom:16px}
+.help-category-title{font-size:14px;font-weight:700;margin-bottom:8px;color:var(--green)}
+.help-article{padding:12px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .2s}
+.help-article:hover{background:var(--card2)}
+.help-article-title{font-weight:600;font-size:13px}
+.help-article-excerpt{font-size:12px;color:var(--text3);margin-top:4px}
+
+/* ─── NEW FEATURE: PRIVACY & SECURITY CHECKUP ─── */
+.security-checkup-item{display:flex;align-items:center;justify-content:space-between;padding:12px;border-bottom:1px solid var(--border)}
+.security-status{font-size:12px;padding:4px 10px;border-radius:20px}
+.security-status.good{background:rgba(0,200,150,.15);color:var(--success)}
+.security-status.warning{background:rgba(255,165,2,.15);color:var(--warn)}
+.security-status.critical{background:rgba(255,71,87,.15);color:var(--error)}
+
+/* ─── NEW FEATURE: MY GROUPS PAGE ─── */
+.my-group-filter{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto}
+.my-group-filter-btn{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border2);background:none;white-space:nowrap}
+.my-group-filter-btn.active{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* ─── NEW FEATURE: MY EVENTS PAGE ─── */
+.my-events-tabs{display:flex;gap:8px;margin-bottom:16px;border-bottom:1px solid var(--border)}
+.my-events-tab{flex:1;text-align:center;padding:10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text3);border-bottom:2px solid transparent}
+.my-events-tab.active{color:var(--green);border-bottom-color:var(--green)}
+
+/* ─── NEW FEATURE: MARKETPLACE ORDERS PAGE ─── */
+.order-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.order-header{display:flex;justify-content:space-between;margin-bottom:12px}
+.order-id{font-size:12px;font-family:var(--mono);color:var(--text3)}
+.order-status{font-size:12px;font-weight:600}
+.order-status.delivered{color:var(--success)}
+.order-status.shipped{color:var(--info)}
+.order-status.processing{color:var(--warn)}
+.order-tracking{font-size:12px;color:var(--text3);margin-top:8px}
 </style>
 </head>
 <body>
@@ -698,6 +754,10 @@ textarea.form-input{resize:vertical;min-height:80px}
       <div class="nav-item" onclick="navigate('marketplace')"><i class="fas fa-store"></i> Marketplace</div>
       <div class="nav-item" onclick="navigate('events')"><i class="fas fa-calendar-alt"></i> Events</div>
       <div class="nav-item" onclick="navigate('recordings')"><i class="fas fa-play-circle"></i> Recordings</div>
+      <div class="nav-item" onclick="navigate('reels')"><i class="fas fa-film"></i> Reels</div>
+      <div class="nav-item" onclick="navigate('broadcast')"><i class="fas fa-bullhorn"></i> Broadcasts</div>
+      <div class="nav-item" onclick="navigate('wallet')"><i class="fas fa-wallet"></i> Wallet</div>
+      <div class="nav-item" onclick="navigate('analytics')"><i class="fas fa-chart-line"></i> Analytics</div>
       <div class="nav-section-title">Admin</div>
       <div class="nav-item" onclick="navigate('admin')"><i class="fas fa-shield-alt"></i> Admin Panel</div>
       <div class="nav-section-title">Account</div>
@@ -751,19 +811,54 @@ textarea.form-input{resize:vertical;min-height:80px}
         <div class="card mb-3" style="padding:14px 16px">
           <div style="display:flex;gap:10px;align-items:center">
             <div class="av av-40 av-green" style="display:flex;align-items:center;justify-content:center;border-radius:50%">AB</div>
-            <div style="flex:1;background:var(--bg3);border-radius:24px;padding:11px 16px;cursor:pointer;color:var(--text3);font-size:14px" onclick="openModal('post-modal')">
+            <div style="flex:1;background:var(--bg3);border-radius:24px;padding:11px 16px;cursor:pointer;color:var(--text3);font-size:14px" onclick="navigate('create-post')">
               What's on your mind, Ahmed?
             </div>
           </div>
           <div style="display:flex;gap:8px;margin-top:10px;border-top:1px solid var(--border);padding-top:10px">
-            <button class="post-action" onclick="openModal('post-modal')"><i class="fas fa-image" style="color:#1E90FF"></i> Photo</button>
-            <button class="post-action" onclick="openModal('post-modal')"><i class="fas fa-video" style="color:var(--error)"></i> Video</button>
+            <button class="post-action" onclick="navigate('create-post')"><i class="fas fa-image" style="color:#1E90FF"></i> Photo</button>
+            <button class="post-action" onclick="navigate('create-post')"><i class="fas fa-video" style="color:var(--error)"></i> Video</button>
             <button class="post-action" onclick="openPollModal()"><i class="fas fa-poll-h" style="color:var(--warn)"></i> Poll</button>
           </div>
         </div>
         <div id="feed-posts"></div>
         <div style="text-align:center;padding:24px 0" id="load-more-container">
           <button class="btn-outline btn-sm" onclick="loadMorePosts()"><i class="fas fa-sync me-2"></i>Load More</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CREATE POST FULL PAGE (NEW) ── -->
+    <div id="page-create-post" class="page">
+      <div style="max-width:680px;margin:0 auto;padding:0 16px 80px">
+        <div class="page-header">
+          <div class="page-title">Create Post</div>
+          <button class="btn-outline btn-sm" onclick="navigate('feed')">Cancel</button>
+        </div>
+        <div class="card">
+          <div class="form-group">
+            <label class="form-label">What's on your mind?</label>
+            <div contenteditable="true" id="post-full-content" style="min-height:120px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px;"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Visibility</label>
+            <select id="post-full-visibility" class="form-input">
+              <option>Public</option><option>Followers only</option><option>Close friends</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Schedule (optional)</label>
+            <input type="datetime-local" class="form-input" id="post-schedule" />
+          </div>
+          <div class="form-group">
+            <label>Media</label>
+            <input type="file" multiple id="post-full-media" style="display:none" accept="image/*,video/*"/>
+            <button class="btn-outline btn-sm" onclick="document.getElementById('post-full-media').click()">
+              <i class="fas fa-image"></i> Add Photos/Videos
+            </button>
+            <div id="post-full-preview" style="display:flex;gap:8px;margin-top:8px;"></div>
+          </div>
+          <button class="btn-green w-100" onclick="publishPostFromPage()">Publish</button>
         </div>
       </div>
     </div>
@@ -810,11 +905,12 @@ textarea.form-input{resize:vertical;min-height:80px}
           <div><div class="page-title">Groups</div><div class="page-subtitle">Party groups and committees</div></div>
           <button class="btn-green btn-sm" onclick="openModal('create-group-modal')"><i class="fas fa-plus me-2"></i>Create Group</button>
         </div>
-        <div style="display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none">
-          <button class="btn-green btn-sm" style="white-space:nowrap">All Groups</button>
-          <button class="btn-outline btn-sm" style="white-space:nowrap" onclick="filterGroups('my')">My Groups</button>
-          <button class="btn-outline btn-sm" style="white-space:nowrap" onclick="filterGroups('zonal')">Zonal</button>
-          <button class="btn-outline btn-sm" style="white-space:nowrap" onclick="filterGroups('national')">National</button>
+        <div class="my-group-filter">
+          <button class="my-group-filter-btn active" onclick="filterMyGroups('all',this)">All</button>
+          <button class="my-group-filter-btn" onclick="filterMyGroups('joined',this)">My Groups</button>
+          <button class="my-group-filter-btn" onclick="filterMyGroups('zonal',this)">Zonal</button>
+          <button class="my-group-filter-btn" onclick="filterMyGroups('national',this)">National</button>
+          <button class="my-group-filter-btn" onclick="filterMyGroups('committee',this)">Committees</button>
         </div>
         <div class="grid-3" id="groups-grid"></div>
       </div>
@@ -955,6 +1051,19 @@ textarea.form-input{resize:vertical;min-height:80px}
       </div>
     </div>
 
+    <!-- ── MARKETPLACE ORDERS PAGE (NEW) ── -->
+    <div id="page-orders" class="page">
+      <div style="max-width:700px;margin:0 auto;padding:0 16px 80px">
+        <div class="page-header" style="padding:24px 0 16px">
+          <div><div class="page-title">My Orders</div><div class="page-subtitle">Track your marketplace purchases</div></div>
+          <select class="form-input" style="width:auto;padding:6px 12px;font-size:12px" onchange="filterOrders(this.value)">
+            <option value="all">All Orders</option><option value="delivered">Delivered</option><option value="shipped">Shipped</option><option value="processing">Processing</option>
+          </select>
+        </div>
+        <div id="orders-list"></div>
+      </div>
+    </div>
+
     <!-- ── EVENTS PAGE (preserved) ── -->
     <div id="page-events" class="page">
       <div style="max-width:640px;margin:0 auto;padding:0 16px 80px">
@@ -966,6 +1075,21 @@ textarea.form-input{resize:vertical;min-height:80px}
       </div>
     </div>
 
+    <!-- ── MY EVENTS PAGE (NEW) ── -->
+    <div id="page-my-events" class="page">
+      <div style="max-width:640px;margin:0 auto;padding:0 16px 80px">
+        <div class="page-header" style="padding:24px 0 16px">
+          <div><div class="page-title">My Events</div><div class="page-subtitle">Events you're attending</div></div>
+        </div>
+        <div class="my-events-tabs">
+          <div class="my-events-tab active" onclick="filterMyEvents('upcoming',this)">Upcoming</div>
+          <div class="my-events-tab" onclick="filterMyEvents('past',this)">Past</div>
+          <div class="my-events-tab" onclick="filterMyEvents('saved',this)">Saved</div>
+        </div>
+        <div id="my-events-list"></div>
+      </div>
+    </div>
+
     <!-- ── RECORDINGS PAGE (preserved) ── -->
     <div id="page-recordings" class="page">
       <div style="max-width:700px;margin:0 auto;padding:0 16px 80px">
@@ -974,122 +1098,39 @@ textarea.form-input{resize:vertical;min-height:80px}
       </div>
     </div>
 
-    <!-- ── SETTINGS PAGE with 2FA and session management ── -->
-    <div id="page-settings" class="page">
-      <div style="max-width:600px;margin:0 auto;padding:0 16px 80px">
-        <div class="page-header" style="padding:24px 0 20px"><div class="page-title">Settings</div></div>
-        <div class="settings-section">
-          <div class="settings-title">Security</div>
-          <div class="settings-item" onclick="show2FASetup()">
-            <div class="settings-icon blue"><i class="fas fa-shield-alt"></i></div>
-            <div class="text"><div class="main">Two-Factor Authentication</div><div class="sub">Secure your account with 2FA</div></div>
-            <span class="badge-role" id="2fa-status">Disabled</span>
-          </div>
-          <div class="settings-item" onclick="showSessions()">
-            <div class="settings-icon purple"><i class="fas fa-laptop"></i></div>
-            <div class="text"><div class="main">Active Sessions</div><div class="sub">Manage devices where you're logged in</div></div>
-            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
-          </div>
-          <div class="settings-item">
-            <div class="settings-icon green"><i class="fas fa-fingerprint"></i></div>
-            <div class="text"><div class="main">Biometric Auth</div><div class="sub">Fingerprint login enabled</div></div>
-            <button class="toggle on" id="biometric-toggle" onclick="toggleBiometric(this)"></button>
-          </div>
-        </div>
-        <div class="settings-section">
-          <div class="settings-title">Account</div>
-          <div class="settings-item" onclick="openModal('edit-profile-modal')">
-            <div class="settings-icon green"><i class="fas fa-user-edit"></i></div>
-            <div class="text"><div class="main">Edit Profile</div><div class="sub">Update name, bio, photo</div></div>
-            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
-          </div>
-          <div class="settings-item" onclick="openModal('change-password-modal')">
-            <div class="settings-icon blue"><i class="fas fa-lock"></i></div>
-            <div class="text"><div class="main">Change Password</div><div class="sub">Update your password</div></div>
-            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
-          </div>
-          <div class="settings-item" onclick="openModal('blocked-users-modal')">
-            <div class="settings-icon orange"><i class="fas fa-user-slash"></i></div>
-            <div class="text"><div class="main">Blocked Users</div><div class="sub">Manage blocked members</div></div>
-            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
-          </div>
-        </div>
-        <div class="settings-section">
-          <div class="settings-title">Appearance</div>
-          <div class="settings-item" onclick="openModal('theme-settings-modal')">
-            <div class="settings-icon orange"><i class="fas fa-palette"></i></div>
-            <div class="text"><div class="main">Theme & Colors</div><div class="sub">Dark mode, accent colors</div></div>
-            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
-          </div>
-          <div class="settings-item" onclick="openModal('language-modal')">
-            <div class="settings-icon blue"><i class="fas fa-language"></i></div>
-            <div class="text"><div class="main">Language</div><div class="sub">English (Nigeria)</div></div>
-            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
-          </div>
-          <div class="settings-item" onclick="openModal('notif-settings-modal')">
-            <div class="settings-icon purple"><i class="fas fa-bell"></i></div>
-            <div class="text"><div class="main">Notifications</div><div class="sub">Manage alert preferences</div></div>
-            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
-          </div>
-        </div>
-        <div class="settings-section">
-          <div class="settings-title">Data & Privacy</div>
-          <div class="settings-item" onclick="downloadMyData()">
-            <div class="settings-icon green"><i class="fas fa-download"></i></div>
-            <div class="text"><div class="main">Export My Data</div><div class="sub">Download account data</div></div>
-            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
-          </div>
-          <div class="settings-item" onclick="openModal('delete-account-modal')">
-            <div class="settings-icon red"><i class="fas fa-trash-alt"></i></div>
-            <div class="text"><div class="main">Delete Account</div><div class="sub">Permanently remove account</div></div>
-            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
-          </div>
-        </div>
-        <div class="settings-section">
-          <div class="settings-title">App Info</div>
-          <div class="settings-item">
-            <div class="settings-icon blue"><i class="fas fa-info-circle"></i></div>
-            <div class="text"><div class="main">Version</div><div class="sub" style="font-family:var(--mono)">v3.0.0 (Build 1500)</div></div>
-          </div>
-        </div>
-        <div style="text-align:center;padding:16px 0">
-          <button class="btn-danger" onclick="doLogout()"><i class="fas fa-sign-out-alt me-2"></i>Sign Out</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── HELP PAGE (preserved) ── -->
-    <div id="page-help" class="page">
-      <div style="max-width:600px;margin:0 auto;padding:0 16px 80px">
-        <div class="page-header" style="padding:24px 0 20px"><div class="page-title">Help & About</div></div>
-        <div class="card mb-3" style="text-align:center;padding:28px">
-          <div style="font-size:48px;margin-bottom:12px">🌿</div>
-          <div style="font-size:18px;font-weight:800;margin-bottom:6px">APC Private Connect</div>
-          <div style="font-size:13px;color:var(--text3)">The Official Digital Platform of the All Progressives Congress of Nigeria</div>
-          <div style="font-size:12px;color:var(--text3);margin-top:8px;font-family:var(--mono)">Version 3.0.0 · Build 1500</div>
-        </div>
-        <div id="faq-list"></div>
-        <div class="card mt-3" style="padding:20px">
-          <div class="section-title mb-3">Contact Support</div>
-          <div class="form-group"><label class="form-label">Subject</label><input class="form-input" type="text" placeholder="Brief description of issue"/></div>
-          <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" rows="4" placeholder="Describe your issue..."></textarea></div>
-          <button class="btn-green" onclick="submitSupportTicket()"><i class="fas fa-paper-plane me-2"></i>Send Message</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── BROADCAST CHANNELS PAGE ── -->
-    <div id="page-broadcast" class="page">
-      <div style="max-width:680px;margin:0 auto;padding:0 16px 80px">
+    <!-- ── VOICE NOTES PAGE (NEW) ── -->
+    <div id="page-voice-notes" class="page">
+      <div style="max-width:700px;margin:0 auto;padding:0 16px 80px">
         <div class="page-header" style="padding:24px 0 16px">
-          <div><div class="page-title">Broadcasts</div><div class="page-subtitle">Official announcements</div></div>
-          <button class="btn-green btn-sm" onclick="openModal('create-broadcast-modal')"><i class="fas fa-plus me-2"></i>New Channel</button>
+          <div><div class="page-title">Voice Notes</div><div class="page-subtitle">Recorded voice messages</div></div>
+          <button class="btn-green btn-sm" onclick="startVoiceRecordingFull()"><i class="fas fa-microphone"></i> New Recording</button>
         </div>
-        <div id="broadcast-list"></div>
+        <div id="voice-notes-list"></div>
       </div>
     </div>
 
-    <!-- ── WALLET PAGE ── -->
+    <!-- ── REELS PAGE (preserved) ── -->
+    <div id="page-reels" class="page">
+      <div style="padding:0 16px 80px">
+        <div class="page-header" style="padding:24px 0 16px">
+          <div><div class="page-title">Reels</div><div class="page-subtitle">Short videos from the APC community</div></div>
+          <button class="btn-green btn-sm" onclick="navigate('create-post')"><i class="fas fa-plus me-2"></i>Create Reel</button>
+        </div>
+        <div class="grid-3" id="reels-grid"></div>
+      </div>
+    </div>
+
+    <!-- ── REEL DRAFTS PAGE (NEW) ── -->
+    <div id="page-reel-drafts" class="page">
+      <div style="max-width:700px;margin:0 auto;padding:0 16px 80px">
+        <div class="page-header" style="padding:24px 0 16px">
+          <div><div class="page-title">Reel Drafts</div><div class="page-subtitle">Continue editing your drafts</div></div>
+        </div>
+        <div id="reel-drafts-list"></div>
+      </div>
+    </div>
+
+    <!-- ── WALLET PAGE (preserved) ── -->
     <div id="page-wallet" class="page">
       <div style="max-width:600px;margin:0 auto;padding:0 16px 80px">
         <div class="page-header" style="padding:24px 0 16px">
@@ -1102,7 +1143,7 @@ textarea.form-input{resize:vertical;min-height:80px}
           <div class="wallet-actions">
             <button class="wallet-btn" onclick="openModal('topup-modal')"><i class="fas fa-plus-circle me-1"></i>Top Up</button>
             <button class="wallet-btn" onclick="openModal('send-money-modal')"><i class="fas fa-paper-plane me-1"></i>Send</button>
-            <button class="wallet-btn" onclick="openModal('withdraw-modal')"><i class="fas fa-university me-1"></i>Withdraw</button>
+            <button class="wallet-btn" onclick="navigate('withdraw')"><i class="fas fa-university me-1"></i>Withdraw</button>
           </div>
         </div>
         <div class="grid-2 mb-4">
@@ -1124,7 +1165,50 @@ textarea.form-input{resize:vertical;min-height:80px}
       </div>
     </div>
 
-    <!-- ── ANALYTICS PAGE ── -->
+    <!-- ── WITHDRAWAL PAGE (NEW) ── -->
+    <div id="page-withdraw" class="page">
+      <div style="max-width:600px;margin:0 auto;padding:0 16px 80px">
+        <div class="page-header">
+          <div class="page-title">Withdraw Funds</div>
+          <button class="btn-outline btn-sm" onclick="navigate('wallet')">Back</button>
+        </div>
+        <div class="wallet-card mb-4" style="background:linear-gradient(135deg,var(--bg3),var(--bg4));color:var(--text);">
+          <div class="wallet-label">Available Balance</div>
+          <div class="wallet-balance">₦24,500.00</div>
+        </div>
+        <div class="card">
+          <div class="form-group"><label class="form-label">Bank</label>
+            <select class="form-input" id="withdraw-bank">
+              <option>First Bank</option><option>GTBank</option><option>Access Bank</option><option>Zenith Bank</option><option>UBA</option><option>Kuda Bank</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Account Number</label>
+            <input class="form-input" type="text" placeholder="10-digit account number" id="withdraw-account" style="font-family:var(--mono)"/>
+          </div>
+          <div class="form-group"><label class="form-label">Amount</label>
+            <input class="form-input" type="number" placeholder="Minimum ₦1000" id="withdraw-amount" />
+          </div>
+          <button class="btn-green w-100" onclick="submitWithdrawal()">Request Withdrawal</button>
+        </div>
+        <div class="mt-4">
+          <div class="section-title mb-2">Withdrawal History</div>
+          <div class="card" style="padding:0" id="withdraw-history"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BROADCAST PAGE (preserved) ── -->
+    <div id="page-broadcast" class="page">
+      <div style="max-width:680px;margin:0 auto;padding:0 16px 80px">
+        <div class="page-header" style="padding:24px 0 16px">
+          <div><div class="page-title">Broadcasts</div><div class="page-subtitle">Official announcements</div></div>
+          <button class="btn-green btn-sm" onclick="openModal('create-broadcast-modal')"><i class="fas fa-plus me-2"></i>New Channel</button>
+        </div>
+        <div id="broadcast-list"></div>
+      </div>
+    </div>
+
+    <!-- ── ANALYTICS PAGE (preserved) ── -->
     <div id="page-analytics" class="page">
       <div style="max-width:700px;margin:0 auto;padding:0 16px 80px">
         <div class="page-header" style="padding:24px 0 16px">
@@ -1150,18 +1234,167 @@ textarea.form-input{resize:vertical;min-height:80px}
       </div>
     </div>
 
-    <!-- ── REELS PAGE ── -->
-    <div id="page-reels" class="page">
-      <div style="padding:0 16px 80px">
-        <div class="page-header" style="padding:24px 0 16px">
-          <div><div class="page-title">Reels</div><div class="page-subtitle">Short videos from the APC community</div></div>
-          <button class="btn-green btn-sm" onclick="openModal('post-modal')"><i class="fas fa-plus me-2"></i>Create Reel</button>
+    <!-- ── SETTINGS PAGE with 2FA and session management ── -->
+    <div id="page-settings" class="page">
+      <div style="max-width:600px;margin:0 auto;padding:0 16px 80px">
+        <div class="page-header" style="padding:24px 0 20px"><div class="page-title">Settings</div></div>
+        <div class="settings-section">
+          <div class="settings-title">Security</div>
+          <div class="settings-item" onclick="show2FASetup()">
+            <div class="settings-icon blue"><i class="fas fa-shield-alt"></i></div>
+            <div class="text"><div class="main">Two-Factor Authentication</div><div class="sub">Secure your account with 2FA</div></div>
+            <span class="badge-role" id="2fa-status">Disabled</span>
+          </div>
+          <div class="settings-item" onclick="showSessions()">
+            <div class="settings-icon purple"><i class="fas fa-laptop"></i></div>
+            <div class="text"><div class="main">Active Sessions</div><div class="sub">Manage devices where you're logged in</div></div>
+            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
+          </div>
+          <div class="settings-item">
+            <div class="settings-icon green"><i class="fas fa-fingerprint"></i></div>
+            <div class="text"><div class="main">Biometric Auth</div><div class="sub">Fingerprint login enabled</div></div>
+            <button class="toggle on" id="biometric-toggle" onclick="toggleBiometric(this)"></button>
+          </div>
+          <div class="settings-item" onclick="navigate('privacy-checkup')">
+            <div class="settings-icon orange"><i class="fas fa-shield-virus"></i></div>
+            <div class="text"><div class="main">Privacy & Security Checkup</div><div class="sub">Review your security settings</div></div>
+            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
+          </div>
         </div>
-        <div class="grid-3" id="reels-grid"></div>
+        <div class="settings-section">
+          <div class="settings-title">Account</div>
+          <div class="settings-item" onclick="openModal('edit-profile-modal')">
+            <div class="settings-icon green"><i class="fas fa-user-edit"></i></div>
+            <div class="text"><div class="main">Edit Profile</div><div class="sub">Update name, bio, photo</div></div>
+            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
+          </div>
+          <div class="settings-item" onclick="openModal('change-password-modal')">
+            <div class="settings-icon blue"><i class="fas fa-lock"></i></div>
+            <div class="text"><div class="main">Change Password</div><div class="sub">Update your password</div></div>
+            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
+          </div>
+          <div class="settings-item" onclick="openModal('blocked-users-modal')">
+            <div class="settings-icon orange"><i class="fas fa-user-slash"></i></div>
+            <div class="text"><div class="main">Blocked Users</div><div class="sub">Manage blocked members</div></div>
+            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
+          </div>
+        </div>
+        <div class="settings-section">
+          <div class="settings-title">Data & Privacy</div>
+          <div class="settings-item" onclick="navigate('data-export')">
+            <div class="settings-icon green"><i class="fas fa-download"></i></div>
+            <div class="text"><div class="main">Export My Data</div><div class="sub">Download your account data</div></div>
+            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
+          </div>
+          <div class="settings-item" onclick="openModal('delete-account-modal')">
+            <div class="settings-icon red"><i class="fas fa-trash-alt"></i></div>
+            <div class="text"><div class="main">Delete Account</div><div class="sub">Permanently remove account</div></div>
+            <i class="fas fa-chevron-right" style="color:var(--text3)"></i>
+          </div>
+        </div>
+        <div class="settings-section">
+          <div class="settings-title">App Info</div>
+          <div class="settings-item">
+            <div class="settings-icon blue"><i class="fas fa-info-circle"></i></div>
+            <div class="text"><div class="main">Version</div><div class="sub" style="font-family:var(--mono)">v4.0.0 (Build 1600)</div></div>
+          </div>
+        </div>
+        <div style="text-align:center;padding:16px 0">
+          <button class="btn-danger" onclick="doLogout()"><i class="fas fa-sign-out-alt me-2"></i>Sign Out</button>
+        </div>
       </div>
     </div>
 
-    <!-- ── GROUP DETAIL PAGE ── -->
+    <!-- ── PRIVACY & SECURITY CHECKUP PAGE (NEW) ── -->
+    <div id="page-privacy-checkup" class="page">
+      <div style="max-width:600px;margin:0 auto;padding:0 16px 80px">
+        <div class="page-header" style="padding:24px 0 20px"><div class="page-title">Privacy & Security Checkup</div></div>
+        <div class="card">
+          <div class="security-checkup-item">
+            <div><i class="fas fa-fingerprint" style="color:var(--green);margin-right:8px"></i> Biometric Authentication</div>
+            <span class="security-status good">Enabled</span>
+          </div>
+          <div class="security-checkup-item">
+            <div><i class="fas fa-shield-alt" style="color:var(--green);margin-right:8px"></i> Two-Factor Authentication</div>
+            <span class="security-status warning" id="checkup-2fa-status">Not Enabled</span>
+          </div>
+          <div class="security-checkup-item">
+            <div><i class="fas fa-id-card" style="color:var(--green);margin-right:8px"></i> NIN Verification</div>
+            <span class="security-status good">Verified</span>
+          </div>
+          <div class="security-checkup-item">
+            <div><i class="fas fa-laptop" style="color:var(--green);margin-right:8px"></i> Active Sessions</div>
+            <span class="security-status good">1 Active Session</span>
+          </div>
+          <div class="security-checkup-item">
+            <div><i class="fas fa-key" style="color:var(--green);margin-right:8px"></i> Password Strength</div>
+            <span class="security-status good">Strong</span>
+          </div>
+          <div class="security-checkup-item">
+            <div><i class="fas fa-user-secret" style="color:var(--green);margin-right:8px"></i> Profile Visibility</div>
+            <span class="security-status warning">Public</span>
+          </div>
+        </div>
+        <button class="btn-green w-100 mt-4" onclick="runSecurityCheckup()"><i class="fas fa-shield-alt me-2"></i>Run Full Security Scan</button>
+      </div>
+    </div>
+
+    <!-- ── DATA EXPORT PAGE (NEW) ── -->
+    <div id="page-data-export" class="page">
+      <div style="max-width:600px;margin:0 auto;padding:0 16px 80px">
+        <div class="page-header" style="padding:24px 0 20px"><div class="page-title">Data Export</div></div>
+        <div class="card text-center">
+          <div style="font-size:48px;margin-bottom:12px"><i class="fas fa-database"></i></div>
+          <div style="font-size:16px;font-weight:600;margin-bottom:8px">Download Your Data</div>
+          <div style="font-size:13px;color:var(--text3);margin-bottom:16px">Get a copy of your posts, messages, profile info, and more</div>
+          <div class="form-group">
+            <label class="form-label">Data Format</label>
+            <select class="form-input" id="export-format">
+              <option>JSON</option><option>CSV</option><option>HTML Archive</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Date Range</label>
+            <select class="form-input" id="export-date-range">
+              <option>All time</option><option>Last 30 days</option><option>Last 90 days</option><option>This year</option>
+            </select>
+          </div>
+          <button class="btn-green w-100" onclick="requestDataExport()"><i class="fas fa-file-export me-2"></i>Request Export</button>
+          <div class="mt-4 pt-3 border-top">
+            <div class="section-title mb-2">Previous Exports</div>
+            <div id="export-history"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── HELP & ABOUT PAGE with searchable knowledge base (NEW) ── -->
+    <div id="page-help" class="page">
+      <div style="max-width:600px;margin:0 auto;padding:0 16px 80px">
+        <div class="page-header" style="padding:24px 0 20px"><div class="page-title">Help Center</div></div>
+        <div class="card mb-3" style="text-align:center;padding:28px">
+          <div style="font-size:48px;margin-bottom:12px">🌿</div>
+          <div style="font-size:18px;font-weight:800;margin-bottom:6px">APC Private Connect</div>
+          <div style="font-size:13px;color:var(--text3)">The Official Digital Platform of the All Progressives Congress of Nigeria</div>
+          <div style="font-size:12px;color:var(--text3);margin-top:8px;font-family:var(--mono)">Version 4.0.0 · Build 1600</div>
+        </div>
+        <div class="form-group">
+          <div style="position:relative">
+            <i class="fas fa-search" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text3)"></i>
+            <input class="form-input" style="padding-left:36px" type="text" id="help-search" placeholder="Search help articles..." oninput="searchHelpArticles(this.value)">
+          </div>
+        </div>
+        <div class="help-categories" id="help-categories"></div>
+        <div class="card mt-3" style="padding:20px">
+          <div class="section-title mb-3">Contact Support</div>
+          <div class="form-group"><label class="form-label">Subject</label><input class="form-input" type="text" id="support-subject" placeholder="Brief description of issue"/></div>
+          <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" id="support-message" rows="4" placeholder="Describe your issue..."></textarea></div>
+          <button class="btn-green" onclick="submitSupportTicket()"><i class="fas fa-paper-plane me-2"></i>Send Message</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── GROUP DETAIL PAGE (preserved) ── -->
     <div id="page-group-detail" class="page">
       <div style="padding-bottom:80px">
         <div class="group-detail-banner" id="gd-banner">🏛</div>
@@ -1211,7 +1444,7 @@ textarea.form-input{resize:vertical;min-height:80px}
     </div>
   </nav>
 
-  <button id="fab" onclick="openModal('post-modal')" title="Create Post"><i class="fas fa-plus"></i></button>
+  <button id="fab" onclick="navigate('create-post')" title="Create Post"><i class="fas fa-plus"></i></button>
 
 </div>
 
@@ -1567,24 +1800,6 @@ textarea.form-input{resize:vertical;min-height:80px}
   </div>
 </div>
 
-<!-- WITHDRAW MODAL -->
-<div class="modal-overlay" id="withdraw-modal">
-  <div class="modal" style="max-height:520px">
-    <div class="modal-header">
-      <div class="modal-title">Withdraw to Bank</div>
-      <button class="modal-close" onclick="closeModal('withdraw-modal')"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="modal-body">
-      <div class="form-group"><label class="form-label">Bank</label>
-        <select class="form-input"><option>First Bank</option><option>GTBank</option><option>Access Bank</option><option>Zenith Bank</option><option>UBA</option><option>Kuda Bank</option></select>
-      </div>
-      <div class="form-group"><label class="form-label">Account Number</label><input class="form-input" type="text" placeholder="10-digit account number" style="font-family:var(--mono)"/></div>
-      <div class="form-group"><label class="form-label">Amount (₦)</label><input class="form-input" type="number" placeholder="Enter amount"/></div>
-      <button class="btn-green" style="width:100%;justify-content:center" onclick="processWithdraw()"><i class="fas fa-university me-2"></i>Withdraw</button>
-    </div>
-  </div>
-</div>
-
 <!-- CREATE BROADCAST MODAL -->
 <div class="modal-overlay" id="create-broadcast-modal">
   <div class="modal">
@@ -1720,7 +1935,7 @@ textarea.form-input{resize:vertical;min-height:80px}
 
 <script>
 // ══════════════════════════════════════════════
-//  APC PRIVATE CONNECT v3.0 — ENHANCED APP LOGIC
+//  APC PRIVATE CONNECT v4.0 — ENHANCED APP LOGIC
 // ══════════════════════════════════════════════
 
 // ── ENHANCED STATE ──
@@ -1750,7 +1965,26 @@ const STATE = {
   currentStoryIdx: 0,
   storyAutoTimer: null,
   currentGroupId: null,
-  chatFilter: 'all'
+  chatFilter: 'all',
+  myGroupFilter: 'all',
+  myEventsFilter: 'upcoming',
+  orderFilter: 'all',
+  reelDrafts: [],
+  voiceNotes: [],
+  withdrawalHistory: [],
+  dataExportRequests: [],
+  helpArticles: [
+    { category: 'Getting Started', title: 'How to create an account', excerpt: 'Step-by-step guide to joining APC Connect', content: 'Follow these steps to create your account...' },
+    { category: 'Getting Started', title: 'Verifying your NIN', excerpt: 'Why NIN verification is required and how to do it', content: 'NIN verification ensures the integrity of our platform...' },
+    { category: 'Groups & Communities', title: 'How to join a group', excerpt: 'Find and join groups that match your interests', content: 'Browse groups from the Groups page and click Join...' },
+    { category: 'Groups & Communities', title: 'Creating a new group', excerpt: 'Start your own group for your community', content: 'Click Create Group and fill in the details...' },
+    { category: 'Meetings & Events', title: 'Scheduling a meeting', excerpt: 'How to create and schedule meetings', content: 'Go to Meetings and click Schedule...' },
+    { category: 'Meetings & Events', title: 'Joining a live meeting', excerpt: 'How to join video meetings', content: 'Click Join Now on any live meeting card...' },
+    { category: 'Wallet & Payments', title: 'Adding funds to wallet', excerpt: 'Top up your wallet for transactions', content: 'Go to Wallet and click Top Up...' },
+    { category: 'Wallet & Payments', title: 'Withdrawing funds', excerpt: 'How to withdraw money to your bank account', content: 'Navigate to Wallet and select Withdraw...' },
+    { category: 'Privacy & Security', title: 'Two-Factor Authentication', excerpt: 'Secure your account with 2FA', content: 'Go to Settings > Security to enable 2FA...' },
+    { category: 'Privacy & Security', title: 'Data export', excerpt: 'Download a copy of your data', content: 'Request data export from Settings...' }
+  ]
 };
 
 // ── SEED DATA (preserved with enhancements) ──
@@ -1810,11 +2044,11 @@ const NOTIF_DATA = [
 ];
 
 const EVENT_DATA = [
-  {day:22,mon:'MAR',title:'Lagos State Grand Rally',location:'Tafawa Balewa Square, Lagos',time:'10:00 AM',rsvp:true,emoji:'🏟'},
-  {day:25,mon:'MAR',title:'National Youth Congress',location:'International Conference Centre, Abuja',time:'9:00 AM',rsvp:false,emoji:'⚡'},
-  {day:1,mon:'APR',title:'APC 10th Anniversary Gala',location:'Eko Hotel, Lagos',time:'6:00 PM',rsvp:false,emoji:'🎉'},
-  {day:5,mon:'APR',title:'North-East Zonal Meeting',location:'Bauchi State Secretariat',time:'11:00 AM',rsvp:false,emoji:'🌅'},
-  {day:10,mon:'APR',title:'Women\'s Leadership Summit',location:'Abuja International Conference Centre',time:'9:00 AM',rsvp:true,emoji:'👩‍💼'},
+  {id:1,day:22,mon:'MAR',title:'Lagos State Grand Rally',location:'Tafawa Balewa Square, Lagos',time:'10:00 AM',rsvp:true,emoji:'🏟',date:'2025-03-22'},
+  {id:2,day:25,mon:'MAR',title:'National Youth Congress',location:'International Conference Centre, Abuja',time:'9:00 AM',rsvp:false,emoji:'⚡',date:'2025-03-25'},
+  {id:3,day:1,mon:'APR',title:'APC 10th Anniversary Gala',location:'Eko Hotel, Lagos',time:'6:00 PM',rsvp:false,emoji:'🎉',date:'2025-04-01'},
+  {id:4,day:5,mon:'APR',title:'North-East Zonal Meeting',location:'Bauchi State Secretariat',time:'11:00 AM',rsvp:false,emoji:'🌅',date:'2025-04-05'},
+  {id:5,day:10,mon:'APR',title:'Women\'s Leadership Summit',location:'Abuja International Conference Centre',time:'9:00 AM',rsvp:true,emoji:'👩‍💼',date:'2025-04-10'},
 ];
 
 const MARKET_DATA = [
@@ -1826,11 +2060,36 @@ const MARKET_DATA = [
   {id:6,emoji:'🏅',title:'APC Membership Pin',price:'₦800',seller:'Halima Bako',color:'#3a2a1a'},
 ];
 
+const ORDERS_DATA = [
+  {id:'ORD-001',item:'APC Campaign Manifesto',price:'₦2,500',status:'delivered',tracking:'TRK123456',date:'Mar 15, 2025'},
+  {id:'ORD-002',item:'APC Green Polo Shirt',price:'₦5,000',status:'shipped',tracking:'TRK123457',date:'Mar 18, 2025'},
+  {id:'ORD-003',item:'APC Membership Pin',price:'₦800',status:'processing',tracking:'Pending',date:'Mar 20, 2025'},
+  {id:'ORD-004',item:'APC Branded Baseball Cap',price:'₦1,500',status:'delivered',tracking:'TRK123458',date:'Mar 10, 2025'},
+];
+
 const RECORDING_DATA = [
   {title:'National Executive Committee – March 2025',date:'Mar 15, 2025',duration:'2h 14m',views:347,emoji:'🏛'},
   {title:'Lagos State Strategy Meeting',date:'Mar 12, 2025',duration:'58m',views:124,emoji:'🌊'},
   {title:'Youth Wing National Convention',date:'Mar 8, 2025',duration:'3h 42m',views:892,emoji:'⚡'},
   {title:'APC 10th Anniversary Speech',date:'Mar 1, 2025',duration:'45m',views:2450,emoji:'🎉'},
+];
+
+const VOICE_NOTES_DATA = [
+  {id:1,author:'Ngozi Kalu',duration:'0:32',date:'Mar 20, 2025',transcript:'Thanks for the update, I will review and get back to you.'},
+  {id:2,author:'Tunde Musa',duration:'1:15',date:'Mar 19, 2025',transcript:'The meeting is rescheduled to 3pm tomorrow.'},
+  {id:3,author:'Fatima Okafor',duration:'0:45',date:'Mar 18, 2025',transcript:'Please send me the financial report when ready.'},
+];
+
+const REEL_DRAFTS_DATA = [
+  {id:1,title:'Campaign Highlights',thumbnail:'🎥',lastEdited:'Mar 19, 2025',duration:'0:30'},
+  {id:2,title:'Youth Empowerment',thumbnail:'⚡',lastEdited:'Mar 17, 2025',duration:'0:45'},
+  {id:3,title:'Women for APC',thumbnail:'👩‍💼',lastEdited:'Mar 15, 2025',duration:'0:25'},
+];
+
+const WITHDRAWAL_HISTORY = [
+  {amount:5000,bank:'First Bank',account:'****1234',date:'Mar 15, 2025',status:'Completed'},
+  {amount:2000,bank:'GTBank',account:'****5678',date:'Mar 10, 2025',status:'Pending'},
+  {amount:10000,bank:'Access Bank',account:'****9012',date:'Mar 5, 2025',status:'Completed'},
 ];
 
 const FAQ_DATA = [
@@ -1911,13 +2170,19 @@ function init(){
   renderAdminStats();
   renderAdminTab('approvals');
   renderProfilePosts();
-  renderFAQ();
+  renderHelpCenter();
   renderReelsStrip();
   renderReelsGrid();
   renderBroadcasts();
   renderWallet();
   renderAnalytics();
   renderTrendingTags();
+  renderOrders();
+  renderMyEvents();
+  renderVoiceNotes();
+  renderReelDrafts();
+  renderWithdrawHistory();
+  renderExportHistory();
   populateFollowerLists();
   addEnhancedSidebarItems();
   initChatMessages(1);
@@ -1981,18 +2246,35 @@ function setAccentColor(color){
 function addEnhancedSidebarItems(){
   const nav=document.querySelector('.sidebar-nav');
   if(!nav) return;
-  const pages=['broadcast','wallet','analytics','reels'];
-  const icons=['fa-bullhorn','fa-wallet','fa-chart-line','fa-film'];
-  const labels=['Broadcasts','Wallet','Analytics','Reels'];
-  const exploreTitle=[...nav.querySelectorAll('.nav-section-title')].find(t=>t.textContent.includes('Explore'));
-  pages.forEach((page,i)=>{
-    if(!document.querySelector(`.nav-item[onclick*="'${page}'"]`)){
+  const newPages=[
+    {page:'create-post',icon:'fa-plus-circle',label:'Create Post',section:'Main'},
+    {page:'orders',icon:'fa-shopping-cart',label:'Orders',section:'Explore'},
+    {page:'my-events',icon:'fa-calendar-check',label:'My Events',section:'Explore'},
+    {page:'voice-notes',icon:'fa-microphone-alt',label:'Voice Notes',section:'Explore'},
+    {page:'reel-drafts',icon:'fa-save',label:'Reel Drafts',section:'Explore'},
+    {page:'withdraw',icon:'fa-university',label:'Withdraw',section:'Account'},
+    {page:'privacy-checkup',icon:'fa-shield-alt',label:'Privacy Checkup',section:'Account'},
+    {page:'data-export',icon:'fa-download',label:'Data Export',section:'Account'}
+  ];
+  newPages.forEach((item)=>{
+    if(!document.querySelector(`.nav-item[onclick*="'${item.page}'"]`)){
       const div=document.createElement('div');
       div.className='nav-item';
-      div.setAttribute('onclick',`navigate('${page}')`);
-      div.innerHTML=`<i class="fas ${icons[i]}"></i> ${labels[i]}`;
-      if(exploreTitle && exploreTitle.nextSibling) nav.insertBefore(div,exploreTitle.nextSibling);
-      else nav.appendChild(div);
+      div.setAttribute('onclick',`navigate('${item.page}')`);
+      div.innerHTML=`<i class="fas ${item.icon}"></i> ${item.label}`;
+      const sections=nav.querySelectorAll('.nav-section-title');
+      let targetSection=null;
+      for(let s of sections){
+        if(s.textContent.includes(item.section)){
+          targetSection=s;
+          break;
+        }
+      }
+      if(targetSection && targetSection.nextSibling){
+        nav.insertBefore(div,targetSection.nextSibling);
+      } else {
+        nav.appendChild(div);
+      }
     }
   });
 }
@@ -2104,7 +2386,13 @@ function verify2FASetup(){
   const code = document.getElementById('totp-code').value;
   if(code === '123456'){
     STATE.user.twoFAEnabled = true;
-    document.getElementById('2fa-status').textContent = 'Enabled';
+    const statusSpan = document.getElementById('2fa-status');
+    if(statusSpan) statusSpan.textContent = 'Enabled';
+    const checkupSpan = document.getElementById('checkup-2fa-status');
+    if(checkupSpan){
+      checkupSpan.textContent = 'Enabled';
+      checkupSpan.className = 'security-status good';
+    }
     toast('Two-Factor Authentication enabled!','success');
     closeModal('2fa-modal');
   } else {
@@ -2215,8 +2503,10 @@ function navigate(page){
   STATE.currentPage=page;
   const titles={feed:'Feed',chat:'Messages',groups:'Groups',meetings:'Meetings',notifications:'Notifications',
     profile:'My Profile',admin:'Admin Panel',search:'Search',directory:'Member Directory',
-    marketplace:'Marketplace',events:'Events',recordings:'Recordings',settings:'Settings',help:'Help & About',
-    broadcast:'Broadcasts',wallet:'Wallet',analytics:'Analytics',reels:'Reels','group-detail':'Group'};
+    marketplace:'Marketplace',events:'Events',recordings:'Recordings',settings:'Settings',help:'Help Center',
+    broadcast:'Broadcasts',wallet:'Wallet',analytics:'Analytics',reels:'Reels','group-detail':'Group',
+    'create-post':'Create Post','withdraw':'Withdraw Funds','orders':'My Orders','my-events':'My Events',
+    'voice-notes':'Voice Notes','reel-drafts':'Reel Drafts','privacy-checkup':'Privacy & Security','data-export':'Data Export'};
   document.getElementById('topbar-title').textContent=titles[page]||page;
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>{
@@ -2233,6 +2523,14 @@ function navigate(page){
   if(page==='analytics') renderAnalytics();
   if(page==='broadcast') renderBroadcasts();
   if(page==='reels') renderReelsGrid();
+  if(page==='orders') renderOrders();
+  if(page==='my-events') renderMyEvents();
+  if(page==='voice-notes') renderVoiceNotes();
+  if(page==='reel-drafts') renderReelDrafts();
+  if(page==='withdraw') renderWithdrawHistory();
+  if(page==='data-export') renderExportHistory();
+  if(page==='help') renderHelpCenter();
+  if(page==='privacy-checkup') runSecurityCheckup();
 }
 
 function toggleSidebar(){
@@ -2444,6 +2742,86 @@ function sharePost(postId){
   } else {
     toast('Share feature coming soon','info');
   }
+}
+
+// ── CREATE POST FULL PAGE (NEW) ──
+document.getElementById('post-full-media')?.addEventListener('change', function(e) {
+  const preview = document.getElementById('post-full-preview');
+  if(preview){
+    preview.innerHTML = '';
+    Array.from(e.target.files).forEach(file => {
+      if(file.type.startsWith('image/')){
+        const reader = new FileReader();
+        reader.onload = ev => {
+          const img = document.createElement('img');
+          img.src = ev.target.result;
+          img.style.width = '80px';
+          img.style.height = '80px';
+          img.style.objectFit = 'cover';
+          img.style.borderRadius = '8px';
+          preview.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        const videoIcon = document.createElement('div');
+        videoIcon.innerHTML = `<i class="fas fa-video" style="font-size:40px;color:var(--green)"></i>`;
+        videoIcon.style.width = '80px';
+        videoIcon.style.height = '80px';
+        videoIcon.style.display = 'flex';
+        videoIcon.style.alignItems = 'center';
+        videoIcon.style.justifyContent = 'center';
+        videoIcon.style.backgroundColor = 'var(--bg3)';
+        videoIcon.style.borderRadius = '8px';
+        preview.appendChild(videoIcon);
+      }
+    });
+  }
+});
+
+function publishPostFromPage() {
+  const content = document.getElementById('post-full-content')?.innerText;
+  if (!content || content.trim() === '') { toast('Please write something', 'error'); return; }
+  
+  const visibility = document.getElementById('post-full-visibility')?.value || 'Public';
+  
+  const newPost = {
+    author: 'Ahmed Bello',
+    authorId: 1,
+    text: content,
+    time: 'Just now',
+    likes: 0,
+    comments: 0
+  };
+  
+  const container = document.getElementById('feed-posts');
+  const members = MEMBERS;
+  const m = members[0];
+  const newPostHtml = `<div class="post-card">
+    <div class="post-header">
+      <div class="av av-40 av-green" style="display:flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0;cursor:pointer" onclick="openMemberProfile(1)">AB</div>
+      <div class="info">
+        <div class="post-author" onclick="openMemberProfile(1)" style="cursor:pointer">Ahmed Bello <span class="badge-role" style="font-size:10px;padding:1px 7px"><i class="fas fa-check-circle"></i></span></div>
+        <div class="post-meta">National Chairman <span>·</span> Just now <span>·</span> <i class="fas ${visibility === 'Public' ? 'fa-globe-africa' : 'fa-lock'}"></i> ${visibility}</div>
+      </div>
+      <button class="icon-btn" style="flex-shrink:0"><i class="fas fa-ellipsis-h"></i></button>
+    </div>
+    <div class="post-body">${content}</div>
+    <div style="display:flex;align-items:center;gap:12px;padding:4px 16px 10px;font-size:12px;color:var(--text3)">
+      <span><i class="fas fa-heart" style="color:var(--error)"></i> 0</span>
+      <span>0 comments</span>
+    </div>
+    <div class="post-actions">
+      <button class="post-action"><i class="fas fa-thumbs-up"></i> Like</button>
+      <button class="post-action"><i class="fas fa-comment"></i> Comment</button>
+      <button class="post-action"><i class="fas fa-share"></i> Share</button>
+    </div>
+  </div>`;
+  
+  if(container) container.insertAdjacentHTML('afterbegin', newPostHtml);
+  document.getElementById('post-full-content').innerHTML = '';
+  document.getElementById('post-full-preview').innerHTML = '';
+  toast('Post published!', 'success');
+  navigate('feed');
 }
 
 function submitPostRich(){
@@ -2683,6 +3061,33 @@ function startVoiceRecording(){
       reaction: '👍'
     });
     initChatMessages(chatId);
+    // Also add to voice notes storage
+    STATE.voiceNotes.unshift({
+      id: Date.now(),
+      author: 'Ahmed Bello',
+      duration: '0:15',
+      date: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}),
+      transcript: 'Voice note recorded in chat'
+    });
+    if(document.getElementById('page-voice-notes').classList.contains('active')) renderVoiceNotes();
+  },3000);
+}
+
+function startVoiceRecordingFull(){
+  toast('Voice recording started...','info');
+  setTimeout(()=>{
+    const duration = Math.floor(Math.random() * 60) + 10;
+    const minutes = Math.floor(duration / 60);
+    const seconds = duration % 60;
+    STATE.voiceNotes.unshift({
+      id: Date.now(),
+      author: 'Ahmed Bello',
+      duration: `${minutes}:${seconds.toString().padStart(2,'0')}`,
+      date: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}),
+      transcript: 'New voice recording'
+    });
+    toast('Voice note saved!','success');
+    if(document.getElementById('page-voice-notes').classList.contains('active')) renderVoiceNotes();
   },3000);
 }
 
@@ -2727,11 +3132,15 @@ function sendMessage(){
 function handleChatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}}
 function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,120)+'px';}
 
-// ── GROUPS (preserved) ──
+// ── GROUPS with filtering (preserved) ──
 function renderGroups(filter){
   const grid=document.getElementById('groups-grid');
   if(!grid) return;
-  const data=filter?GROUP_DATA.filter(g=>g.type.toLowerCase()===filter||filter==='my'&&g.joined):GROUP_DATA;
+  let data = GROUP_DATA;
+  if(filter === 'joined') data = GROUP_DATA.filter(g=>g.joined);
+  else if(filter === 'zonal') data = GROUP_DATA.filter(g=>g.type === 'Zonal');
+  else if(filter === 'national') data = GROUP_DATA.filter(g=>g.type === 'National');
+  else if(filter === 'committee') data = GROUP_DATA.filter(g=>g.type === 'Committee');
   grid.innerHTML=data.map(g=>`
     <div class="group-card" onclick="openGroupDetail(${g.id})">
       <div class="group-cover"><span>${g.emoji}</span>
@@ -2749,6 +3158,13 @@ function renderGroups(filter){
         </div>
       </div>
     </div>`).join('');
+}
+
+function filterMyGroups(type,btn){
+  document.querySelectorAll('.my-group-filter-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  STATE.myGroupFilter = type;
+  renderGroups(type);
 }
 
 function openGroupDetail(groupId){
@@ -2777,7 +3193,7 @@ function toggleGroupDetailJoin(){
   const btn=document.getElementById('gd-join-btn');
   if(btn){btn.textContent=g.joined?'✓ Joined':'Join Group';btn.className=g.joined?'btn-outline btn-sm':'btn-green btn-sm';}
   toast(g.joined?`Joined ${g.name}!`:`Left ${g.name}`,'success');
-  renderGroups();
+  renderGroups(STATE.myGroupFilter);
 }
 
 function switchGroupTab(tab,el){
@@ -2799,9 +3215,8 @@ function switchGroupTab(tab,el){
   }
 }
 
-function filterGroups(f){renderGroups(f);}
-function toggleJoinGroup(btn,id){const joined=btn.textContent.trim()==='Leave';btn.textContent=joined?'Join':'Leave';btn.className=joined?'btn-green btn-sm':'btn-outline btn-sm';toast(joined?'Left group':'Joined group!',joined?'info':'success');renderGroups();}
-function createGroup(){closeModal('create-group-modal');toast('Group created!','success');renderGroups();}
+function toggleJoinGroup(btn,id){const joined=btn.textContent.trim()==='Leave';btn.textContent=joined?'Join':'Leave';btn.className=joined?'btn-green btn-sm':'btn-outline btn-sm';toast(joined?'Left group':'Joined group!',joined?'info':'success');const g=GROUP_DATA.find(x=>x.id===id);if(g) g.joined=!joined;renderGroups(STATE.myGroupFilter);}
+function createGroup(){closeModal('create-group-modal');toast('Group created!','success');renderGroups(STATE.myGroupFilter);}
 
 // ── MEETINGS (preserved with enhancements) ──
 function renderMeetings(filter){
@@ -2832,7 +3247,38 @@ function renderMeetings(filter){
 function filterMeetings(f){renderMeetings(f);}
 function scheduleMeeting(){closeModal('schedule-modal');toast('Meeting scheduled!','success');renderMeetings();}
 function addToCalendar(title, date){
-  toast(`Added "${title}" to calendar`, 'success');
+  // Enhanced calendar integration using Web API
+  const event = {
+    title: title,
+    description: 'APC Party Meeting',
+    startTime: new Date().toISOString(),
+    endTime: new Date(Date.now() + 3600000).toISOString()
+  };
+  if('calendar' in navigator && navigator.calendar){
+    navigator.calendar.addEvent(event).then(() => {
+      toast(`Added "${title}" to calendar`, 'success');
+    }).catch(() => {
+      toast(`Added "${title}" to calendar`, 'success');
+    });
+  } else {
+    // Create .ics file for download
+    const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:${title}
+DTSTART:${new Date().toISOString().replace(/[-:]/g,'').split('.')[0]}Z
+DTEND:${new Date(Date.now()+3600000).toISOString().replace(/[-:]/g,'').split('.')[0]}Z
+DESCRIPTION:APC Party Meeting
+END:VEVENT
+END:VCALENDAR`;
+    const blob = new Blob([icsContent], {type: 'text/calendar'});
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${title.replace(/\s/g,'_')}.ics`;
+    link.click();
+    URL.revokeObjectURL(link.href);
+    toast(`Calendar file downloaded for "${title}"`, 'success');
+  }
 }
 
 // ── ENHANCED VIDEO CALL ──
@@ -3006,20 +3452,456 @@ function filterDirectory(v){renderDirectory(v);}
 function filterDirectoryZone(v){renderDirectory(null,v||undefined);}
 
 // ── MARKETPLACE (preserved) ──
-function renderMarketplace(){const grid=document.getElementById('market-grid');if(!grid) return;grid.innerHTML=MARKET_DATA.map(m=>`<div class="market-card" onclick="openModal('create-listing-modal')"><div class="market-thumb" style="background:linear-gradient(135deg,${m.color},var(--bg3))"><span>${m.emoji}</span></div><div class="market-body"><div class="market-price">${m.price}</div><div class="market-title">${m.title}</div><div class="market-seller"><div class="av av-32 av-green" style="display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:11px;font-weight:700">${m.seller[0]}</div>${m.seller}</div><button class="btn-green btn-sm mt-2" style="width:100%;justify-content:center" onclick="event.stopPropagation();toast('Processing payment...','info')">${m.price==='Free'?'Get Free':'Buy Now'}</button></div></div>`).join('');}
+function renderMarketplace(){const grid=document.getElementById('market-grid');if(!grid) return;grid.innerHTML=MARKET_DATA.map(m=>`<div class="market-card" onclick="openModal('create-listing-modal')"><div class="market-thumb" style="background:linear-gradient(135deg,${m.color},var(--bg3))"><span>${m.emoji}</span></div><div class="market-body"><div class="market-price">${m.price}</div><div class="market-title">${m.title}</div><div class="market-seller"><div class="av av-32 av-green" style="display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:11px;font-weight:700">${m.seller[0]}</div>${m.seller}</div><button class="btn-green btn-sm mt-2" style="width:100%;justify-content:center" onclick="event.stopPropagation();processOrder('${m.title}','${m.price}')">${m.price==='Free'?'Get Free':'Buy Now'}</button></div></div>`).join('');}
+
+function processOrder(item, price){
+  toast(`Processing order for ${item} - ${price}`, 'info');
+  setTimeout(()=>{
+    const newOrder = {
+      id: 'ORD-' + Math.floor(Math.random()*1000),
+      item: item,
+      price: price,
+      status: 'processing',
+      tracking: 'Pending',
+      date: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})
+    };
+    ORDERS_DATA.unshift(newOrder);
+    toast(`Order placed for ${item}! Check My Orders.`,'success');
+    if(document.getElementById('page-orders').classList.contains('active')) renderOrders();
+  },1500);
+}
+
 function createListing(){closeModal('create-listing-modal');toast('Listing published!','success');renderMarketplace();}
 
+// ── ORDERS PAGE (NEW) ──
+function renderOrders(){
+  const container = document.getElementById('orders-list');
+  if(!container) return;
+  let data = ORDERS_DATA;
+  if(STATE.orderFilter !== 'all'){
+    data = ORDERS_DATA.filter(o => o.status === STATE.orderFilter);
+  }
+  if(data.length === 0){
+    container.innerHTML = `<div class="empty-state"><i class="fas fa-shopping-cart"></i><h3>No orders found</h3><p>Start shopping in the marketplace!</p></div>`;
+    return;
+  }
+  container.innerHTML = data.map(order => `
+    <div class="order-card">
+      <div class="order-header">
+        <span class="order-id">${order.id}</span>
+        <span class="order-status ${order.status}">${order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>
+      </div>
+      <div style="font-size:14px;font-weight:600;margin-bottom:8px">${order.item}</div>
+      <div style="font-size:13px;color:var(--green);font-weight:700">${order.price}</div>
+      <div style="font-size:12px;color:var(--text3);margin-top:4px">Ordered: ${order.date}</div>
+      <div class="order-tracking"><i class="fas fa-truck"></i> Tracking: ${order.tracking}</div>
+      <button class="btn-outline btn-sm mt-2" onclick="trackOrder('${order.id}')">Track Order</button>
+    </div>
+  `).join('');
+}
+
+function filterOrders(status, btn){
+  if(btn){
+    document.querySelectorAll('#page-orders select')?.forEach(s=>{if(s!==btn) s.value='all';});
+  }
+  STATE.orderFilter = status;
+  renderOrders();
+}
+
+function trackOrder(orderId){
+  toast(`Tracking order ${orderId}...`, 'info');
+  setTimeout(()=>toast(`Your order is on the way!`, 'success'), 1000);
+}
+
 // ── EVENTS (preserved) ──
-function renderEvents(){const list=document.getElementById('events-list');if(!list) return;list.innerHTML=EVENT_DATA.map(e=>`<div class="event-card"><div class="event-date-box"><div class="day">${e.day}</div><div class="mon">${e.mon}</div></div><div style="flex:1"><div style="font-size:14px;font-weight:700">${e.emoji} ${e.title}</div><div style="font-size:12px;color:var(--text3);margin-top:4px"><i class="fas fa-map-marker-alt" style="color:var(--green);margin-right:4px"></i>${e.location}</div><div style="font-size:12px;color:var(--text3);margin-top:2px"><i class="fas fa-clock" style="color:var(--green);margin-right:4px"></i>${e.time}</div></div><button class="btn-${e.rsvp?'outline':'green'} btn-sm" onclick="toggleRSVP(this)">${e.rsvp?'✓ Going':'RSVP'}</button></div>`).join('');}
-function toggleRSVP(btn){const going=btn.textContent.trim()==='✓ Going';btn.textContent=going?'RSVP':'✓ Going';btn.className=going?'btn-green btn-sm':'btn-outline btn-sm';toast(going?'RSVP cancelled':'You\'re going! 🎉','success');}
+function renderEvents(){const list=document.getElementById('events-list');if(!list) return;list.innerHTML=EVENT_DATA.map(e=>`<div class="event-card"><div class="event-date-box"><div class="day">${e.day}</div><div class="mon">${e.mon}</div></div><div style="flex:1"><div style="font-size:14px;font-weight:700">${e.emoji} ${e.title}</div><div style="font-size:12px;color:var(--text3);margin-top:4px"><i class="fas fa-map-marker-alt" style="color:var(--green);margin-right:4px"></i>${e.location}</div><div style="font-size:12px;color:var(--text3);margin-top:2px"><i class="fas fa-clock" style="color:var(--green);margin-right:4px"></i>${e.time}</div></div><button class="btn-${e.rsvp?'outline':'green'} btn-sm" onclick="toggleRSVP(this,${e.id})">${e.rsvp?'✓ Going':'RSVP'}</button></div>`).join('');}
+
+function toggleRSVP(btn, eventId){
+  const going=btn.textContent.trim()==='✓ Going';
+  btn.textContent=going?'RSVP':'✓ Going';
+  btn.className=going?'btn-green btn-sm':'btn-outline btn-sm';
+  const event = EVENT_DATA.find(e=>e.id===eventId);
+  if(event) event.rsvp = !going;
+  toast(going?'RSVP cancelled':'You\'re going! 🎉','success');
+  renderMyEvents();
+}
+
 function createEvent(){closeModal('create-event-modal');toast('Event created!','success');renderEvents();}
+
+// ── MY EVENTS PAGE (NEW) ──
+function renderMyEvents(){
+  const container = document.getElementById('my-events-list');
+  if(!container) return;
+  let events = EVENT_DATA.filter(e => e.rsvp === true);
+  if(STATE.myEventsFilter === 'upcoming'){
+    events = events.filter(e => new Date(e.date) > new Date());
+  } else if(STATE.myEventsFilter === 'past'){
+    events = events.filter(e => new Date(e.date) < new Date());
+  }
+  if(events.length === 0){
+    container.innerHTML = `<div class="empty-state"><i class="fas fa-calendar-times"></i><h3>No events found</h3><p>RSVP to events to see them here.</p></div>`;
+    return;
+  }
+  container.innerHTML = events.map(e => `
+    <div class="event-card">
+      <div class="event-date-box">
+        <div class="day">${e.day}</div>
+        <div class="mon">${e.mon}</div>
+      </div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:700">${e.emoji} ${e.title}</div>
+        <div style="font-size:12px;color:var(--text3);margin-top:4px"><i class="fas fa-map-marker-alt"></i> ${e.location}</div>
+        <div style="font-size:12px;color:var(--text3);margin-top:2px"><i class="fas fa-clock"></i> ${e.time}</div>
+      </div>
+      <button class="btn-outline btn-sm" onclick="toggleRSVP(this,${e.id})">Cancel RSVP</button>
+      <button class="btn-icon" onclick="addToCalendar('${e.title}','${e.date} ${e.time}')"><i class="fas fa-calendar-plus"></i></button>
+    </div>
+  `).join('');
+}
+
+function filterMyEvents(type, btn){
+  document.querySelectorAll('.my-events-tab').forEach(t=>t.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  STATE.myEventsFilter = type;
+  renderMyEvents();
+}
 
 // ── RECORDINGS (preserved) ──
 function renderRecordings(){const list=document.getElementById('recordings-list');if(!list) return;list.innerHTML=RECORDING_DATA.map(r=>`<div class="card mb-2" style="display:flex;gap:14px;align-items:center;padding:16px"><div style="width:80px;height:56px;background:linear-gradient(135deg,var(--green-dark),var(--bg3));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;cursor:pointer;position:relative" onclick="toast('Playing recording...','info')">${r.emoji}<div style="position:absolute;width:28px;height:28px;background:rgba(0,0,0,.5);border-radius:50%;display:flex;align-items:center;justify-content:center"><i class="fas fa-play" style="color:#fff;font-size:10px;margin-left:2px"></i></div></div><div style="flex:1"><div style="font-size:14px;font-weight:700">${r.title}</div><div style="font-size:12px;color:var(--text3);margin-top:4px"><i class="fas fa-calendar" style="color:var(--green);margin-right:4px"></i>${r.date}<i class="fas fa-clock" style="color:var(--green);margin:0 4px 0 10px"></i>${r.duration}<i class="fas fa-eye" style="color:var(--green);margin:0 4px 0 10px"></i>${r.views.toLocaleString()}</div></div><button class="btn-icon" onclick="toast('Downloading...','info')" title="Download"><i class="fas fa-download"></i></button></div>`).join('');}
 
-// ── FAQ (preserved) ──
-function renderFAQ(){const el=document.getElementById('faq-list');if(!el) return;el.innerHTML=`<div class="card" style="padding:0">${FAQ_DATA.map((f,i)=>`<div style="border-bottom:1px solid var(--border)"><div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;font-size:14px;font-weight:600" onclick="toggleFAQ(${i})">${f.q}<i class="fas fa-chevron-down" id="faq-icon-${i}" style="color:var(--green);transition:transform .2s;font-size:12px"></i></div><div id="faq-body-${i}" style="display:none;padding:0 16px 14px;font-size:14px;color:var(--text2);line-height:1.6">${f.a}</div></div>`).join('')}</div>`;}
-function toggleFAQ(i){const body=document.getElementById('faq-body-'+i);const icon=document.getElementById('faq-icon-'+i);const open=body.style.display==='none';body.style.display=open?'block':'none';icon.style.transform=open?'rotate(180deg)':'';}
+// ── VOICE NOTES PAGE (NEW) ──
+function renderVoiceNotes(){
+  const container = document.getElementById('voice-notes-list');
+  if(!container) return;
+  if(STATE.voiceNotes.length === 0){
+    STATE.voiceNotes = VOICE_NOTES_DATA;
+  }
+  container.innerHTML = STATE.voiceNotes.map(v => `
+    <div class="voice-note-item">
+      <div class="voice-play-btn" onclick="playVoiceNote('${v.id}')">
+        <i class="fas fa-play"></i>
+      </div>
+      <div class="voice-waveform" onclick="playVoiceNote('${v.id}')"></div>
+      <div style="min-width:60px;text-align:center;font-family:var(--mono);font-size:12px">${v.duration}</div>
+      <div style="flex:1">
+        <div style="font-size:13px;font-weight:600">${v.author}</div>
+        <div style="font-size:11px;color:var(--text3)">${v.date}</div>
+      </div>
+      <button class="btn-icon" onclick="showVoiceTranscript('${v.id}')" title="Transcript"><i class="fas fa-file-alt"></i></button>
+      <button class="btn-icon" onclick="shareVoiceNote('${v.id}')" title="Share"><i class="fas fa-share"></i></button>
+    </div>
+  `).join('');
+}
+
+function playVoiceNote(id){
+  toast('Playing voice note...', 'info');
+  setTimeout(()=>toast('Voice note finished', 'info'), 3000);
+}
+
+function showVoiceTranscript(id){
+  const note = STATE.voiceNotes.find(v => v.id == id);
+  if(note && note.transcript){
+    toast(note.transcript, 'info');
+  } else {
+    toast('No transcript available', 'info');
+  }
+}
+
+function shareVoiceNote(id){
+  toast('Voice note shared to chat', 'success');
+}
+
+// ── REELS ──
+function renderReelsStrip(){
+  const container=document.getElementById('reels-strip');
+  if(!container){
+    const feedPage=document.getElementById('page-feed');
+    if(feedPage){
+      const strip=document.createElement('div');
+      strip.innerHTML=`<div style="margin:0 16px 12px"><div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0 8px"><div style="font-size:14px;font-weight:700">Reels</div><button class="see-all" onclick="navigate('reels')">See all</button></div><div class="reels-container" id="reels-strip"></div></div>`;
+      const storiesRow=document.getElementById('stories-row');
+      if(storiesRow && storiesRow.parentNode) storiesRow.parentNode.insertBefore(strip, storiesRow.nextSibling);
+    }
+    const newContainer=document.getElementById('reels-strip');
+    if(!newContainer) return;
+  }
+  const container2=document.getElementById('reels-strip');
+  if(container2) container2.innerHTML=REELS_DATA.slice(0,5).map(r=>`<div class="reel-card" onclick="toast('Playing reel...','info')"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,var(--bg3),var(--bg4))">${r.emoji}</div><div class="reel-overlay"><div style="font-size:11px;color:#fff;font-weight:600;margin-bottom:4px">${r.caption.substring(0,30)}...</div><div style="font-size:10px;color:rgba(255,255,255,.7)">${r.author} · ❤️ ${r.likes}</div></div><div class="reel-play"><i class="fas fa-play" style="color:rgba(255,255,255,.8);font-size:24px"></i></div></div>`).join('');
+}
+function renderReelsGrid(){
+  const grid=document.getElementById('reels-grid');
+  if(!grid) return;
+  grid.innerHTML=REELS_DATA.map(r=>`<div class="reel-card" style="width:100%;aspect-ratio:9/16" onclick="toast('Playing reel...','info')"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,var(--bg3),var(--bg4))">${r.emoji}</div><div class="reel-overlay"><div style="font-size:11px;color:#fff;font-weight:600;margin-bottom:2px">${r.caption.substring(0,35)}...</div><div style="font-size:10px;color:rgba(255,255,255,.7)">${r.author} · ❤️ ${r.likes} · 👁 ${r.views}</div></div><div class="reel-play"><i class="fas fa-play" style="color:rgba(255,255,255,.8);font-size:20px"></i></div></div>`).join('');
+}
+
+// ── REEL DRAFTS PAGE (NEW) ──
+function renderReelDrafts(){
+  const container = document.getElementById('reel-drafts-list');
+  if(!container) return;
+  if(STATE.reelDrafts.length === 0){
+    STATE.reelDrafts = REEL_DRAFTS_DATA;
+  }
+  container.innerHTML = STATE.reelDrafts.map(d => `
+    <div class="draft-item">
+      <div class="draft-thumb">${d.thumbnail}</div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:600">${d.title}</div>
+        <div style="font-size:12px;color:var(--text3)">Last edited: ${d.lastEdited} · ${d.duration}</div>
+      </div>
+      <button class="btn-green btn-sm" onclick="editReelDraft('${d.id}')">Edit</button>
+      <button class="btn-outline btn-sm" onclick="deleteReelDraft('${d.id}')">Delete</button>
+    </div>
+  `).join('');
+}
+
+function editReelDraft(id){
+  toast('Opening draft editor...', 'info');
+  setTimeout(()=>navigate('create-post'), 500);
+}
+
+function deleteReelDraft(id){
+  STATE.reelDrafts = STATE.reelDrafts.filter(d => d.id != id);
+  renderReelDrafts();
+  toast('Draft deleted', 'info');
+}
+
+// ── BROADCASTS ──
+function renderBroadcasts(){
+  const list=document.getElementById('broadcast-list');
+  if(!list) return;
+  list.innerHTML=BROADCAST_DATA.map(b=>`<div class="broadcast-card"><div class="broadcast-header"><div style="width:44px;height:44px;background:linear-gradient(135deg,var(--green),var(--green-light));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">${b.emoji}</div><div style="flex:1"><div style="font-size:15px;font-weight:700">${b.name}</div><div style="font-size:12px;color:var(--text3)">${b.subscribers.toLocaleString()} subscribers</div></div><button class="btn-outline btn-sm" onclick="toast('Subscribed!','success')"><i class="fas fa-bell me-1"></i>Subscribe</button></div>${b.messages.map(msg=>`<div class="broadcast-msg">${msg.text}</div><div class="broadcast-footer"><span><i class="fas fa-eye me-1"></i>${msg.opens?.toLocaleString()||0}</span><span><i class="fas fa-mouse-pointer me-1"></i>${msg.clicks?.toLocaleString()||0}</span><span>${msg.time}</span></div>`).join('')}</div>`).join('');
+}
+function createBroadcastChannel(){closeModal('create-broadcast-modal');toast('Broadcast channel created!','success');renderBroadcasts();}
+
+// ── WALLET ──
+function renderWallet(){
+  const list=document.getElementById('transaction-list');
+  if(!list) return;
+  list.innerHTML=TRANSACTIONS.map(t=>`<div class="transaction-item"><div class="txn-icon ${t.type}"><i class="fas ${t.icon}"></i></div><div style="flex:1"><div style="font-size:14px;font-weight:600">${t.label}</div><div style="font-size:12px;color:var(--text3)">${t.sub} · ${t.date}</div></div><div class="txn-amount ${t.type}">${t.amount}</div></div>`).join('');
+}
+function setTopupAmount(a){const el=document.getElementById('topup-amount');if(el)el.value=a;}
+function processTopup(){closeModal('topup-modal');toast('Redirecting to payment gateway...','info');setTimeout(()=>toast('₦5,000 added to wallet! ✓','success'),2000);}
+function processSendMoney(){const r=document.getElementById('send-recipient')?.value;const a=document.getElementById('send-amount')?.value;if(!r||!a){toast('Please fill all fields','error');return;}closeModal('send-money-modal');toast(`₦${Number(a).toLocaleString()} sent to ${r}! ✓`,'success');}
+
+// ── WITHDRAWAL PAGE (NEW) ──
+function submitWithdrawal(){
+  const bank = document.getElementById('withdraw-bank')?.value;
+  const account = document.getElementById('withdraw-account')?.value;
+  const amount = document.getElementById('withdraw-amount')?.value;
+  if(!bank || !account || !amount){
+    toast('Please fill all fields','error');
+    return;
+  }
+  if(amount < 1000){
+    toast('Minimum withdrawal amount is ₦1,000','error');
+    return;
+  }
+  if(amount > 24500){
+    toast('Insufficient balance','error');
+    return;
+  }
+  const newWithdrawal = {
+    amount: amount,
+    bank: bank,
+    account: account,
+    date: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}),
+    status: 'Pending'
+  };
+  STATE.withdrawalHistory.unshift(newWithdrawal);
+  renderWithdrawHistory();
+  toast(`Withdrawal request of ₦${amount} submitted!`, 'success');
+  document.getElementById('withdraw-account').value = '';
+  document.getElementById('withdraw-amount').value = '';
+}
+
+function renderWithdrawHistory(){
+  const container = document.getElementById('withdraw-history');
+  if(!container) return;
+  if(STATE.withdrawalHistory.length === 0){
+    STATE.withdrawalHistory = WITHDRAWAL_HISTORY;
+  }
+  container.innerHTML = STATE.withdrawalHistory.map(h => `
+    <div class="transaction-item">
+      <div class="txn-icon debit"><i class="fas fa-arrow-up"></i></div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:600">₦${h.amount}</div>
+        <div style="font-size:12px;color:var(--text3)">${h.bank} · ${h.date}</div>
+      </div>
+      <span class="withdrawal-status ${h.status.toLowerCase()}">${h.status}</span>
+    </div>
+  `).join('');
+}
+
+// ── ANALYTICS ──
+function renderAnalytics(){
+  const statsEl=document.getElementById('analytics-stats');
+  if(!statsEl) return;
+  const stats=[{label:'Post Reach',value:'142K',change:'+12%',up:true,icon:'fa-eye'},{label:'Engagement Rate',value:'8.4%',change:'+2.1%',up:true,icon:'fa-heart'},{label:'New Followers',value:'284',change:'+48',up:true,icon:'fa-user-plus'},{label:'Profile Views',value:'3.2K',change:'-5%',up:false,icon:'fa-user-circle'}];
+  statsEl.innerHTML=stats.map(s=>`<div class="stat-card"><div class="icon"><i class="fas ${s.icon}"></i></div><div class="value" style="font-size:22px">${s.value}</div><div class="label">${s.label}</div><div class="change ${s.up?'up':'down'}"><i class="fas fa-arrow-${s.up?'up':'down'}"></i>${s.change}</div></div>`).join('');
+  renderReachChart();renderEngagementBreakdown();renderTopPostsAnalytics();
+}
+function changeAnalyticsPeriod(v){toast(`Analytics: ${v}`,'info');renderAnalytics();}
+function renderReachChart(){
+  const chart=document.getElementById('reach-chart');const labels=document.getElementById('reach-labels');
+  if(!chart) return;
+  const vals=[8200,12400,9800,15600,18200,13400,21000];const days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];const max=Math.max(...vals);
+  chart.innerHTML=vals.map((v,i)=>`<div class="chart-bar" style="height:${Math.round(v/max*100)}%" title="${days[i]}: ${v.toLocaleString()}"></div>`).join('');
+  if(labels) labels.innerHTML=days.map(d=>`<div class="chart-label">${d}</div>`).join('');
+}
+function renderEngagementBreakdown(){
+  const el=document.getElementById('engagement-breakdown');if(!el) return;
+  const items=[{label:'Likes',value:4280,icon:'fa-heart',color:'var(--error)'},{label:'Comments',value:892,icon:'fa-comment',color:'var(--info)'},{label:'Shares',value:347,icon:'fa-share',color:'var(--success)'},{label:'Saves',value:215,icon:'fa-bookmark',color:'var(--warn)'}];
+  const total=items.reduce((a,b)=>a+b.value,0);
+  el.innerHTML=items.map(item=>`<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><div style="width:32px;height:32px;border-radius:8px;background:rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:${item.color}"><i class="fas ${item.icon}"></i></div><div style="flex:1"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:13px;font-weight:600">${item.label}</span><span style="font-size:12px;color:var(--text3)">${item.value.toLocaleString()} (${Math.round(item.value/total*100)}%)</span></div><div style="height:6px;background:var(--bg3);border-radius:3px;overflow:hidden"><div style="height:100%;width:${Math.round(item.value/total*100)}%;background:${item.color};border-radius:3px"></div></div></div></div>`).join('');
+}
+function renderTopPostsAnalytics(){
+  const el=document.getElementById('top-posts-list');if(!el) return;
+  el.innerHTML=POST_TEXTS.slice(0,3).map((text,i)=>{const reach=[42000,28500,19800][i];return `<div style="padding:12px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center"><div style="flex:1"><div style="font-size:13px;font-weight:600;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${text.substring(0,80)}...</div><div style="font-size:11px;color:var(--text3);margin-top:4px"><i class="fas fa-eye me-1"></i>${reach.toLocaleString()} reach</div></div><div style="text-align:center;flex-shrink:0"><div style="font-size:16px;font-weight:800;color:var(--green)">#${i+1}</div></div></div>`;}).join('');
+}
+
+// ── HELP CENTER with searchable knowledge base (NEW) ──
+function renderHelpCenter(){
+  const container = document.getElementById('help-categories');
+  if(!container) return;
+  const categories = [...new Set(STATE.helpArticles.map(a => a.category))];
+  container.innerHTML = categories.map(cat => `
+    <div class="help-category">
+      <div class="help-category-title">${cat}</div>
+      ${STATE.helpArticles.filter(a => a.category === cat).map(article => `
+        <div class="help-article" onclick="showHelpArticle('${article.title}')">
+          <div class="help-article-title">${article.title}</div>
+          <div class="help-article-excerpt">${article.excerpt}</div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+
+function searchHelpArticles(query){
+  const container = document.getElementById('help-categories');
+  if(!container) return;
+  if(!query || query.trim() === ''){
+    renderHelpCenter();
+    return;
+  }
+  const filtered = STATE.helpArticles.filter(a => 
+    a.title.toLowerCase().includes(query.toLowerCase()) || 
+    a.content.toLowerCase().includes(query.toLowerCase())
+  );
+  if(filtered.length === 0){
+    container.innerHTML = `<div class="empty-state"><i class="fas fa-search"></i><h3>No articles found</h3><p>Try different keywords</p></div>`;
+    return;
+  }
+  container.innerHTML = filtered.map(article => `
+    <div class="help-article" onclick="showHelpArticle('${article.title}')">
+      <div class="help-article-title">${article.title}</div>
+      <div class="help-article-excerpt">${article.excerpt}</div>
+    </div>
+  `).join('');
+}
+
+function showHelpArticle(title){
+  const article = STATE.helpArticles.find(a => a.title === title);
+  if(article){
+    toast(article.content.substring(0, 100) + '...', 'info');
+  }
+}
+
+// ── PRIVACY & SECURITY CHECKUP (NEW) ──
+function runSecurityCheckup(){
+  toast('Running security scan...', 'info');
+  setTimeout(() => {
+    const warnings = [];
+    if(!STATE.user.twoFAEnabled) warnings.push('Enable 2FA for better security');
+    if(warnings.length > 0){
+      toast(`⚠️ ${warnings.join(', ')}`, 'warn');
+    } else {
+      toast('✓ Your account security looks good!', 'success');
+    }
+  }, 1500);
+}
+
+// ── DATA EXPORT (NEW) ──
+function requestDataExport(){
+  const format = document.getElementById('export-format')?.value || 'JSON';
+  const dateRange = document.getElementById('export-date-range')?.value || 'All time';
+  toast(`Data export requested (${format}, ${dateRange}). You'll receive an email when ready.`, 'info');
+  const newRequest = {
+    id: 'EXP-' + Math.floor(Math.random()*1000),
+    format: format,
+    dateRange: dateRange,
+    requested: new Date().toLocaleDateString(),
+    status: 'Processing'
+  };
+  STATE.dataExportRequests.unshift(newRequest);
+  renderExportHistory();
+}
+
+function renderExportHistory(){
+  const container = document.getElementById('export-history');
+  if(!container) return;
+  if(STATE.dataExportRequests.length === 0){
+    container.innerHTML = '<div style="font-size:12px;color:var(--text3);text-align:center;padding:16px">No previous exports</div>';
+    return;
+  }
+  container.innerHTML = STATE.dataExportRequests.map(r => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+      <div>
+        <div style="font-size:12px">${r.format} · ${r.dateRange}</div>
+        <div style="font-size:11px;color:var(--text3)">${r.requested}</div>
+      </div>
+      <span class="badge-role ${r.status === 'Ready' ? 'green' : 'orange'}">${r.status}</span>
+    </div>
+  `).join('');
+}
+
+// ── TRENDING ──
+function renderTrendingTags(){
+  const el=document.getElementById('trending-tags');
+  if(!el) return;
+  el.innerHTML=TRENDING_TAGS.map(tag=>`<span style="background:rgba(0,132,61,.1);border:1px solid rgba(0,132,61,.2);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;color:var(--green);cursor:pointer" onclick="const si=document.getElementById('search-input');if(si){si.value='${tag}';doSearch('${tag}');navigate('search');}">${tag}</span>`).join('');
+}
+
+// ── MEMBER PROFILE MODAL ──
+function openMemberProfile(memberId){
+  const m=MEMBERS.find(x=>x.id===memberId);if(!m) return;
+  const nameEl=document.getElementById('mp-name');const bodyEl=document.getElementById('mp-body');
+  if(nameEl) nameEl.textContent=m.name;
+  if(bodyEl) bodyEl.innerHTML=`<div style="text-align:center;padding:20px 0 10px"><div class="av av-80 ${m.color} av-ring" style="display:inline-flex;align-items:center;justify-content:center;font-size:28px">${m.av}</div><div style="font-size:18px;font-weight:800;margin-top:10px">${m.name} ${m.verified?'<span class="badge-role" style="font-size:11px"><i class="fas fa-check-circle"></i></span>':''}</div><div style="font-size:13px;color:var(--text3)">@${m.handle} · ${m.role}</div><div style="font-size:12px;color:var(--text3);margin-top:4px"><i class="fas fa-map-marker-alt me-1"></i>${m.zone}</div><p style="font-size:14px;color:var(--text2);margin-top:10px;line-height:1.6">${m.bio||'Dedicated APC member committed to party ideals and community development.'}</p><div style="display:flex;justify-content:center;gap:24px;margin:14px 0"><div style="text-align:center"><div style="font-size:18px;font-weight:800">${(m.followers||0).toLocaleString()}</div><div style="font-size:12px;color:var(--text3)">Followers</div></div><div style="text-align:center"><div style="font-size:18px;font-weight:800">${Math.floor(Math.random()*500+100)}</div><div style="font-size:12px;color:var(--text3)">Posts</div></div></div></div><div style="display:flex;gap:10px;padding:0 0 16px"><button class="btn-green" style="flex:1;justify-content:center" onclick="toast('Message sent','success')"><i class="fas fa-comment me-2"></i>Message</button><button class="btn-outline" style="flex:1;justify-content:center" onclick="toast('Following!','success')"><i class="fas fa-user-plus me-2"></i>Follow</button></div>`;
+  openModal('member-profile-modal');
+}
+
+// ── FOLLOWER LISTS ──
+function populateFollowerLists(){
+  const html=MEMBERS.slice(0,8).map(m=>`<div class="dir-item" onclick="openMemberProfile(${m.id})"><div class="av av-48 ${m.color}" style="display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:16px;font-weight:700">${m.av}</div><div class="dir-info"><div class="dir-name">${m.name}</div><div class="dir-zone">${m.role}</div></div><button class="btn-green btn-sm" onclick="event.stopPropagation();toast('Following','success')">Follow</button></div>`).join('');
+  const fl=document.getElementById('followers-list');const fgl=document.getElementById('following-list');
+  if(fl) fl.innerHTML=html;if(fgl) fgl.innerHTML=html;
+}
+
+// ── SETTINGS EXTRAS ──
+function changePassword(){closeModal('change-password-modal');toast('Password updated successfully! ✓','success');}
+function downloadMyData(){navigate('data-export');}
+function changeLanguage(v){toast(`Language changed to ${v}`,'success');}
+function deleteAccount(){const input=document.getElementById('delete-confirm-input')?.value;if(input!=='DELETE'){toast('Please type DELETE to confirm','error');return;}closeModal('delete-account-modal');toast('Account deletion scheduled. You have 30 days to cancel.','warn');}
+function submitSupportTicket(){
+  const subject = document.getElementById('support-subject')?.value;
+  const message = document.getElementById('support-message')?.value;
+  if(!subject || !message){
+    toast('Please fill all fields','error');
+    return;
+  }
+  toast("Support ticket submitted! We'll respond within 24 hours.",'success');
+  document.getElementById('support-subject').value = '';
+  document.getElementById('support-message').value = '';
+}
+
+// ── NOTIFICATION HELPER ──
+function sendNotification(message){
+  if('Notification' in window && Notification.permission === 'granted'){
+    new Notification('APC Connect', { body: message, icon: '/favicon.ico' });
+  }
+  toast(message, 'info');
+}
 
 // ── STORY FUNCTIONS ──
 function renderStories(){
@@ -3069,113 +3951,6 @@ function prevStory(){
 function closeStoryViewer(){const v=document.getElementById('story-viewer');if(v)v.classList.remove('active');if(STATE.storyAutoTimer)clearInterval(STATE.storyAutoTimer);}
 function sendStoryReply(){const input=document.getElementById('story-reply-input');if(!input||!input.value.trim())return;toast('Story reply sent!','success');input.value='';}
 function reactToStory(){toast('Reacted with ❤️','success');}
-
-// ── REELS ──
-function renderReelsStrip(){
-  const container=document.getElementById('reels-strip');
-  if(!container){
-    const feedPage=document.getElementById('page-feed');
-    if(feedPage){
-      const strip=document.createElement('div');
-      strip.innerHTML=`<div style="margin:0 16px 12px"><div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0 8px"><div style="font-size:14px;font-weight:700">Reels</div><button class="see-all" onclick="navigate('reels')">See all</button></div><div class="reels-container" id="reels-strip"></div></div>`;
-      const storiesRow=document.getElementById('stories-row');
-      if(storiesRow && storiesRow.parentNode) storiesRow.parentNode.insertBefore(strip, storiesRow.nextSibling);
-    }
-    const newContainer=document.getElementById('reels-strip');
-    if(!newContainer) return;
-  }
-  const container2=document.getElementById('reels-strip');
-  if(container2) container2.innerHTML=REELS_DATA.slice(0,5).map(r=>`<div class="reel-card" onclick="toast('Playing reel...','info')"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,var(--bg3),var(--bg4))">${r.emoji}</div><div class="reel-overlay"><div style="font-size:11px;color:#fff;font-weight:600;margin-bottom:4px">${r.caption.substring(0,30)}...</div><div style="font-size:10px;color:rgba(255,255,255,.7)">${r.author} · ❤️ ${r.likes}</div></div><div class="reel-play"><i class="fas fa-play" style="color:rgba(255,255,255,.8);font-size:24px"></i></div></div>`).join('');
-}
-function renderReelsGrid(){
-  const grid=document.getElementById('reels-grid');
-  if(!grid) return;
-  grid.innerHTML=REELS_DATA.map(r=>`<div class="reel-card" style="width:100%;aspect-ratio:9/16" onclick="toast('Playing reel...','info')"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,var(--bg3),var(--bg4))">${r.emoji}</div><div class="reel-overlay"><div style="font-size:11px;color:#fff;font-weight:600;margin-bottom:2px">${r.caption.substring(0,35)}...</div><div style="font-size:10px;color:rgba(255,255,255,.7)">${r.author} · ❤️ ${r.likes} · 👁 ${r.views}</div></div><div class="reel-play"><i class="fas fa-play" style="color:rgba(255,255,255,.8);font-size:20px"></i></div></div>`).join('');
-}
-
-// ── BROADCASTS ──
-function renderBroadcasts(){
-  const list=document.getElementById('broadcast-list');
-  if(!list) return;
-  list.innerHTML=BROADCAST_DATA.map(b=>`<div class="broadcast-card"><div class="broadcast-header"><div style="width:44px;height:44px;background:linear-gradient(135deg,var(--green),var(--green-light));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">${b.emoji}</div><div style="flex:1"><div style="font-size:15px;font-weight:700">${b.name}</div><div style="font-size:12px;color:var(--text3)">${b.subscribers.toLocaleString()} subscribers</div></div><button class="btn-outline btn-sm" onclick="toast('Subscribed!','success')"><i class="fas fa-bell me-1"></i>Subscribe</button></div>${b.messages.map(msg=>`<div class="broadcast-msg">${msg.text}</div><div class="broadcast-footer"><span><i class="fas fa-eye me-1"></i>${msg.opens?.toLocaleString()||0}</span><span><i class="fas fa-mouse-pointer me-1"></i>${msg.clicks?.toLocaleString()||0}</span><span>${msg.time}</span></div>`).join('')}</div>`).join('');
-}
-function createBroadcastChannel(){closeModal('create-broadcast-modal');toast('Broadcast channel created!','success');renderBroadcasts();}
-
-// ── WALLET ──
-function renderWallet(){
-  const list=document.getElementById('transaction-list');
-  if(!list) return;
-  list.innerHTML=TRANSACTIONS.map(t=>`<div class="transaction-item"><div class="txn-icon ${t.type}"><i class="fas ${t.icon}"></i></div><div style="flex:1"><div style="font-size:14px;font-weight:600">${t.label}</div><div style="font-size:12px;color:var(--text3)">${t.sub} · ${t.date}</div></div><div class="txn-amount ${t.type}">${t.amount}</div></div>`).join('');
-}
-function setTopupAmount(a){const el=document.getElementById('topup-amount');if(el)el.value=a;}
-function processTopup(){closeModal('topup-modal');toast('Redirecting to payment gateway...','info');setTimeout(()=>toast('₦5,000 added to wallet! ✓','success'),2000);}
-function processSendMoney(){const r=document.getElementById('send-recipient')?.value;const a=document.getElementById('send-amount')?.value;if(!r||!a){toast('Please fill all fields','error');return;}closeModal('send-money-modal');toast(`₦${Number(a).toLocaleString()} sent to ${r}! ✓`,'success');}
-function processWithdraw(){closeModal('withdraw-modal');toast('Withdrawal request submitted. Processing in 24hrs.','info');}
-
-// ── ANALYTICS ──
-function renderAnalytics(){
-  const statsEl=document.getElementById('analytics-stats');
-  if(!statsEl) return;
-  const stats=[{label:'Post Reach',value:'142K',change:'+12%',up:true,icon:'fa-eye'},{label:'Engagement Rate',value:'8.4%',change:'+2.1%',up:true,icon:'fa-heart'},{label:'New Followers',value:'284',change:'+48',up:true,icon:'fa-user-plus'},{label:'Profile Views',value:'3.2K',change:'-5%',up:false,icon:'fa-user-circle'}];
-  statsEl.innerHTML=stats.map(s=>`<div class="stat-card"><div class="icon"><i class="fas ${s.icon}"></i></div><div class="value" style="font-size:22px">${s.value}</div><div class="label">${s.label}</div><div class="change ${s.up?'up':'down'}"><i class="fas fa-arrow-${s.up?'up':'down'}"></i>${s.change}</div></div>`).join('');
-  renderReachChart();renderEngagementBreakdown();renderTopPostsAnalytics();
-}
-function changeAnalyticsPeriod(v){toast(`Analytics: ${v}`,'info');renderAnalytics();}
-function renderReachChart(){
-  const chart=document.getElementById('reach-chart');const labels=document.getElementById('reach-labels');
-  if(!chart) return;
-  const vals=[8200,12400,9800,15600,18200,13400,21000];const days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];const max=Math.max(...vals);
-  chart.innerHTML=vals.map((v,i)=>`<div class="chart-bar" style="height:${Math.round(v/max*100)}%" title="${days[i]}: ${v.toLocaleString()}"></div>`).join('');
-  if(labels) labels.innerHTML=days.map(d=>`<div class="chart-label">${d}</div>`).join('');
-}
-function renderEngagementBreakdown(){
-  const el=document.getElementById('engagement-breakdown');if(!el) return;
-  const items=[{label:'Likes',value:4280,icon:'fa-heart',color:'var(--error)'},{label:'Comments',value:892,icon:'fa-comment',color:'var(--info)'},{label:'Shares',value:347,icon:'fa-share',color:'var(--success)'},{label:'Saves',value:215,icon:'fa-bookmark',color:'var(--warn)'}];
-  const total=items.reduce((a,b)=>a+b.value,0);
-  el.innerHTML=items.map(item=>`<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><div style="width:32px;height:32px;border-radius:8px;background:rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:${item.color}"><i class="fas ${item.icon}"></i></div><div style="flex:1"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:13px;font-weight:600">${item.label}</span><span style="font-size:12px;color:var(--text3)">${item.value.toLocaleString()} (${Math.round(item.value/total*100)}%)</span></div><div style="height:6px;background:var(--bg3);border-radius:3px;overflow:hidden"><div style="height:100%;width:${Math.round(item.value/total*100)}%;background:${item.color};border-radius:3px"></div></div></div></div>`).join('');
-}
-function renderTopPostsAnalytics(){
-  const el=document.getElementById('top-posts-list');if(!el) return;
-  el.innerHTML=POST_TEXTS.slice(0,3).map((text,i)=>{const reach=[42000,28500,19800][i];return `<div style="padding:12px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center"><div style="flex:1"><div style="font-size:13px;font-weight:600;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${text.substring(0,80)}...</div><div style="font-size:11px;color:var(--text3);margin-top:4px"><i class="fas fa-eye me-1"></i>${reach.toLocaleString()} reach</div></div><div style="text-align:center;flex-shrink:0"><div style="font-size:16px;font-weight:800;color:var(--green)">#${i+1}</div></div></div>`;}).join('');
-}
-
-// ── TRENDING ──
-function renderTrendingTags(){
-  const el=document.getElementById('trending-tags');
-  if(!el) return;
-  el.innerHTML=TRENDING_TAGS.map(tag=>`<span style="background:rgba(0,132,61,.1);border:1px solid rgba(0,132,61,.2);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;color:var(--green);cursor:pointer" onclick="const si=document.getElementById('search-input');if(si){si.value='${tag}';doSearch('${tag}');navigate('search');}">${tag}</span>`).join('');
-}
-
-// ── MEMBER PROFILE MODAL ──
-function openMemberProfile(memberId){
-  const m=MEMBERS.find(x=>x.id===memberId);if(!m) return;
-  const nameEl=document.getElementById('mp-name');const bodyEl=document.getElementById('mp-body');
-  if(nameEl) nameEl.textContent=m.name;
-  if(bodyEl) bodyEl.innerHTML=`<div style="text-align:center;padding:20px 0 10px"><div class="av av-80 ${m.color} av-ring" style="display:inline-flex;align-items:center;justify-content:center;font-size:28px">${m.av}</div><div style="font-size:18px;font-weight:800;margin-top:10px">${m.name} ${m.verified?'<span class="badge-role" style="font-size:11px"><i class="fas fa-check-circle"></i></span>':''}</div><div style="font-size:13px;color:var(--text3)">@${m.handle} · ${m.role}</div><div style="font-size:12px;color:var(--text3);margin-top:4px"><i class="fas fa-map-marker-alt me-1"></i>${m.zone}</div><p style="font-size:14px;color:var(--text2);margin-top:10px;line-height:1.6">${m.bio||'Dedicated APC member committed to party ideals and community development.'}</p><div style="display:flex;justify-content:center;gap:24px;margin:14px 0"><div style="text-align:center"><div style="font-size:18px;font-weight:800">${(m.followers||0).toLocaleString()}</div><div style="font-size:12px;color:var(--text3)">Followers</div></div><div style="text-align:center"><div style="font-size:18px;font-weight:800">${Math.floor(Math.random()*500+100)}</div><div style="font-size:12px;color:var(--text3)">Posts</div></div></div></div><div style="display:flex;gap:10px;padding:0 0 16px"><button class="btn-green" style="flex:1;justify-content:center" onclick="toast('Message sent','success')"><i class="fas fa-comment me-2"></i>Message</button><button class="btn-outline" style="flex:1;justify-content:center" onclick="toast('Following!','success')"><i class="fas fa-user-plus me-2"></i>Follow</button></div>`;
-  openModal('member-profile-modal');
-}
-
-// ── FOLLOWER LISTS ──
-function populateFollowerLists(){
-  const html=MEMBERS.slice(0,8).map(m=>`<div class="dir-item" onclick="openMemberProfile(${m.id})"><div class="av av-48 ${m.color}" style="display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:16px;font-weight:700">${m.av}</div><div class="dir-info"><div class="dir-name">${m.name}</div><div class="dir-zone">${m.role}</div></div><button class="btn-green btn-sm" onclick="event.stopPropagation();toast('Following','success')">Follow</button></div>`).join('');
-  const fl=document.getElementById('followers-list');const fgl=document.getElementById('following-list');
-  if(fl) fl.innerHTML=html;if(fgl) fgl.innerHTML=html;
-}
-
-// ── SETTINGS EXTRAS ──
-function changePassword(){closeModal('change-password-modal');toast('Password updated successfully! ✓','success');}
-function downloadMyData(){toast('Generating data archive... You\'ll receive an email when ready.','info');}
-function changeLanguage(v){toast(`Language changed to ${v}`,'success');}
-function deleteAccount(){const input=document.getElementById('delete-confirm-input')?.value;if(input!=='DELETE'){toast('Please type DELETE to confirm','error');return;}closeModal('delete-account-modal');toast('Account deletion scheduled. You have 30 days to cancel.','warn');}
-function submitSupportTicket(){toast("Support ticket submitted! We'll respond within 24 hours.",'success');}
-
-// ── NOTIFICATION HELPER ──
-function sendNotification(message){
-  if('Notification' in window && Notification.permission === 'granted'){
-    new Notification('APC Connect', { body: message, icon: '/favicon.ico' });
-  }
-  toast(message, 'info');
-}
 
 // ── MODAL (preserved) ──
 function openModal(id){document.getElementById(id).classList.add('active');}
